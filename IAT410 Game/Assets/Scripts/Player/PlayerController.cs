@@ -2,38 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
 
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
-    public LayerMask groundLayer; // Set in the Inspector
-    public float stopFallingAtZ = -1f; // Z-coordinate to stop falling
-    public float gravity = 9.81f; // Adjust gravity as needed
+    public Tilemap groundTilemap;
+    public float stopFallingAtZ = -1f; 
+    public float gravity = 9.81f; 
 
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     private bool isGrounded;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0f; // Disable Rigidbody2D's built-in gravity
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = false; // Disable Unity's built-in gravity
     }
 
     private void Update()
     {
-        if (!isGrounded && transform.position.z >= stopFallingAtZ)
+        if (!isGrounded && transform.position.z <= stopFallingAtZ)
         {
-            // Apply gravity manually along the positive z-axis
-            transform.position += Vector3.forward * gravity * Time.deltaTime;
+            // Apply gravity manually along the z-axis
+            rb.velocity += Vector3.forward * gravity * Time.deltaTime;
         }
     }
 
     public void OnMove(InputValue value)
     {
         Vector2 moveInput = value.Get<Vector2>();
-        Vector2 movement = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
+        Vector3 movement = new Vector3(moveInput.x * moveSpeed, moveInput.y * moveSpeed, 0f);
         rb.velocity = movement;
     }
 
@@ -41,30 +42,70 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
+{
+    if (collision.gameObject.CompareTag("Tilemap"))
     {
-        CheckGrounded();
+        // Player collided with tilemap
+        isGrounded = true;
     }
+}
 
-    private void OnCollisionStay2D(Collision2D collision)
+private void OnCollisionStay(Collision collision)
+{
+    if (collision.gameObject.CompareTag("Tilemap"))
     {
-        CheckGrounded();
+        // Player is still colliding with tilemap
+        isGrounded = true;
     }
+}
 
-    private void OnCollisionExit2D(Collision2D collision)
+private void OnCollisionExit(Collision collision)
+{
+    if (collision.gameObject.CompareTag("Tilemap"))
     {
-        CheckGrounded();
+        // Player is no longer colliding with tilemap
+        isGrounded = false;
     }
+}
 
     private void CheckGrounded()
     {
-        // Check if the player's z-position is less than or equal to stopFallingAtZ
-        isGrounded = transform.position.z <= stopFallingAtZ;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 0.1f);
+        foreach (Collider collider in colliders)
+        {
+            // Check if the collider belongs to the groundTilemap
+            if (collider.GetComponent<Tilemap>() == groundTilemap)
+            {
+                isGrounded = true;
+                return;
+            }
+        }
+
+        isGrounded = false;
     }
+
+
+
+        // // Cast a ray downwards to check for collision with the ground layer
+        // RaycastHit hit;
+        // if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.1f))
+        // {
+        //     // Check if the hit object is part of the groundTilemap
+        //     if (hit.collider.GetComponent<Tilemap>() == groundTilemap)
+        //     {
+        //         isGrounded = true;
+        //         return;
+        //     }
+        // }
+
+        // Debug.DrawRay(transform.position, Vector3.down * 0.1f, Color.red);
+        // isGrounded = false;
+}
 
 
 
@@ -140,6 +181,6 @@ public class PlayerController : MonoBehaviour
 
 
 
-}
+
 
 
