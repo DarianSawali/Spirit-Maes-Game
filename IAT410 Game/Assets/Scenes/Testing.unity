@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &30432736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 30432737}
+  m_Layer: 0
+  m_Name: Skunk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &30432737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30432736}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.046605796, y: -1.363433, z: 0.06984496}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &153947728
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +458,7 @@ GameObject:
   - component: {fileID: 712700275}
   - component: {fileID: 712700277}
   - component: {fileID: 712700278}
+  - component: {fileID: 712700279}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -495,7 +527,7 @@ Transform:
   m_GameObject: {fileID: 712700272}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -520,7 +552,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
-  groundedCheckDist: 0.1
+  groundedCheckDist: 0
 --- !u!114 &712700276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,8 +602,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.12789366, y: 0.14366218, z: 0.14054078}
+  m_Center: {x: -0.00028946996, y: 0.0017470121, z: 0.04221201}
 --- !u!54 &712700278
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -599,6 +631,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &712700279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712700272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b643b6f48c32c4b863281edc8df01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  possessionPrompt: {fileID: 0}
 --- !u!1 &1218353002
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +658,7 @@ GameObject:
   - component: {fileID: 1218353004}
   - component: {fileID: 1218353006}
   - component: {fileID: 1218353007}
+  - component: {fileID: 1218353008}
   m_Layer: 7
   m_Name: Tilemap
   m_TagString: Tilemap
@@ -1048,8 +1095,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.31296784, y: 0, z: 0.6414299}
-  m_Center: {x: -0.0023913085, y: 0, z: -9.923964}
+  m_Size: {x: 0.31296784, y: 0.014710064, z: 0.6414299}
+  m_Center: {x: -0.0023913085, y: 0.003, z: -9.923964}
 --- !u!65 &1218353007
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1070,7 +1117,28 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3220793, y: 0, z: 0.31561947}
-  m_Center: {x: 0.0010111928, y: 0, z: -9.119261}
+  m_Center: {x: 0.0010111928, y: 0.003, z: -9.119261}
+--- !u!65 &1218353008
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218353002}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.32746235, y: 0.01, z: 0.48218346}
+  m_Center: {x: -0.6412676, y: 0.0029999996, z: -9.520316}
 --- !u!1 &2087409114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,3 +1254,4 @@ SceneRoots:
   - {fileID: 2087409117}
   - {fileID: 153947730}
   - {fileID: 712700274}
+  - {fileID: 30432737}
