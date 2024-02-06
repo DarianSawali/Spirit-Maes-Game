@@ -12,16 +12,16 @@ public class PlayerController : MonoBehaviour
     public Tilemap groundTilemap;
     public float gravity = 9.81f; 
     public LayerMask groundLayer;
-    public float groundedCheckDist = 0.05f;
+    private float groundedCheckDist = 0.1f;
 
     private Rigidbody rb;
     private bool isGrounded;
-    private Vector3 fixedEulerRotation = new Vector3(90f, 0f, 0f);
+    private Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.useGravity = false; 
+        rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
@@ -54,11 +54,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        //Debug.Log("jump");
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            //Debug.Log("jump");
         }
     }
 
