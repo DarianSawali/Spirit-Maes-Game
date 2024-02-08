@@ -170,7 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d36b8438a77e38b46bddda3f4f0e3e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundTilemap: {fileID: 0}
+  player: {fileID: 712700272}
+  possessionPrompt: {fileID: 1763673019}
+  groundTilemap: {fileID: 1218353005}
   gravity: 6
   groundLayer:
     serializedVersion: 2

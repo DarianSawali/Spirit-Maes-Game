@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
-public class Skunk : MonoBehaviour
+public class Skunk : AnimalPossession
 {
     public Tilemap groundTilemap;
     public float gravity = 9.81f; 
@@ -54,59 +54,6 @@ public class Skunk : MonoBehaviour
         }
         return false;
     }
-
-
-
-    // private void Start()
-    // {
-    //     rb = GetComponent<Rigidbody>();
-    //     rb.useGravity = false;
-    //     rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-    //     rb.isKinematic = false;
-    // }
-
-    // // Update is called once per frame
-    // private void Update()
-    // {
-    //     transform.rotation = Quaternion.Euler(fixedEulerRotation);
-
-    //     if (!isGrounded)
-    //     {
-    //         isGrounded = CheckGrounded();
-    //         rb.velocity += Vector3.down * gravity * Time.deltaTime;
-    //     }
-
-    //     if (isGrounded)
-    //     {
-    //         Debug.Log("Grounded");
-    //         ApplyFriction();
-    //     }
-    // }
-
-    // private bool CheckGrounded()
-    // {
-    //     if (Physics.Raycast(transform.position, Vector3.down, groundedCheckDist, groundLayer))
-    //     {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-
-    // // Apply friction to gradually slow down the skunk's movement
-    // private void ApplyFriction()
-    // {
-    //     // Reduce velocity using damping factor
-    //     rb.velocity *= dampingFactor;
-    // }
-
-    // // Apply force to move the skunk
-    // public void ApplyForce(Vector3 force)
-    // {
-    //     rb.AddForce(force, ForceMode.Impulse);
-    // }
-
-
-
 
 
 }
