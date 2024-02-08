@@ -6,6 +6,8 @@ public class AnimalPossession : MonoBehaviour
 {
     public GameObject player;
     public GameObject possessionPrompt;
+    public float possessionRadius = 0.2f;
+
     private GameObject nearbyAnimal;
     private bool isPossessingAnimal;
 
@@ -31,7 +33,12 @@ public class AnimalPossession : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && nearbyAnimal != null && !isPossessingAnimal)
         {
-            PossessAnimal();
+            // Check if the player is within the possession radius of the animal
+            float distance = Vector3.Distance(player.transform.position, nearbyAnimal.transform.position);
+            if (distance <= possessionRadius)
+            {
+                PossessAnimal();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.E) && isPossessingAnimal)
         {
