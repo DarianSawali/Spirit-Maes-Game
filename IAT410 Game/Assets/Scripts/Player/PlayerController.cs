@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float gravity = 9.81f; 
     public LayerMask groundLayer;
     private float groundedCheckDist = 0.1f;
+    public Transform spawnPoint;
 
     private Rigidbody rb;
     private bool isGrounded;
@@ -33,6 +34,11 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = CheckGrounded();
             rb.velocity += Vector3.down * gravity * Time.deltaTime;
+        }
+
+        if (transform.position.y < -2f)
+        {
+            transform.position = spawnPoint.position;
         }
 
         if(isGrounded){

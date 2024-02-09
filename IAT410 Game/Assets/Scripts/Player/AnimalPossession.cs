@@ -6,10 +6,13 @@ public class AnimalPossession : MonoBehaviour
 {
     public GameObject player;
     public GameObject possessionPrompt;
+    public GameObject promptSprite;
     public float possessionRadius = 0.2f;
 
     private GameObject nearbyAnimal;
     private bool isPossessingAnimal;
+
+    public float promptHeightOffset = 0.2f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +20,11 @@ public class AnimalPossession : MonoBehaviour
         {
             nearbyAnimal = other.gameObject;
             possessionPrompt.SetActive(true);
+
+            promptSprite.SetActive(true);
+
+            Vector3 promptPosition = player.transform.position + Vector3.up * promptHeightOffset;
+            promptSprite.transform.position = promptPosition;
         }
     }
 
@@ -33,7 +41,6 @@ public class AnimalPossession : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && nearbyAnimal != null && !isPossessingAnimal)
         {
-            // Check if the player is within the possession radius of the animal
             float distance = Vector3.Distance(player.transform.position, nearbyAnimal.transform.position);
             if (distance <= possessionRadius)
             {
@@ -65,6 +72,7 @@ public class AnimalPossession : MonoBehaviour
         // Return camera control to the player
         // You'll need to implement this logic based on your setup
     }
+
 
     // private void CheckPressurePlate()
     // {
