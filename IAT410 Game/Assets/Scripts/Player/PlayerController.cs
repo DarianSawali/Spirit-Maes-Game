@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 0.01f;
     public Tilemap groundTilemap;
-    public float gravity = 9.81f; 
+    public float gravity = 9.81f;
     public LayerMask groundLayer;
     private float groundedCheckDist = 0.1f;
     public Transform spawnPoint;
@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool isGrounded;
     private Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
+
+    private bool controlsEnabled = true; // enable/disable player movement
 
     private void Start()
     {
@@ -41,7 +43,8 @@ public class PlayerController : MonoBehaviour
             transform.position = spawnPoint.position;
         }
 
-        if(isGrounded){
+        if (isGrounded)
+        {
             Debug.Log("ground");
         }
     }
@@ -51,8 +54,20 @@ public class PlayerController : MonoBehaviour
         isGrounded = CheckGrounded();
     }
 
+    public void EnableControls()
+    {
+        controlsEnabled = true;
+    }
+
+    public void DisableControls()
+    {
+        controlsEnabled = false;
+    }
+
     public void OnMove(InputValue value)
     {
+        if (!controlsEnabled) return;
+
         Vector3 moveInput = value.Get<Vector3>();
         Vector3 movement = new Vector3(moveInput.x * moveSpeed, moveInput.y * moveSpeed, moveInput.z * moveSpeed);
         rb.velocity = movement;
@@ -60,19 +75,18 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        if (isGrounded)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
+        if (!controlsEnabled || !isGrounded) return;
+        
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Tilemap"))
-            {
+        {
             isGrounded = true;
             Debug.Log("enter");
-            }
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -88,7 +102,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Tilemap"))
         {
-        // Player is no longer colliding with tilemap
+            // Player is no longer colliding with tilemap
             isGrounded = false;
             Debug.Log("exit");
         }
