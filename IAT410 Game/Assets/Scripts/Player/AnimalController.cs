@@ -6,6 +6,7 @@ public class AnimalController : MonoBehaviour
 {
     public float moveSpeed = 5f; // Movement speed
     public float gravity = 9.81f;
+    public float jumpForce = 0.01f;
     public LayerMask groundLayer;
     private float groundedCheckDist = 0.1f;
 
@@ -31,7 +32,7 @@ public class AnimalController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Check if the skunk is grounded
+        // Check if the animal is grounded
         isGrounded = CheckGrounded();
     }
 

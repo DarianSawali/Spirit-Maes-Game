@@ -8,11 +8,12 @@ using UnityEngine.Tilemaps;
 
 public class PossessionTrigger : MonoBehaviour
 {
-    public GameObject playerModel; 
+    public GameObject playerModel;
     private GameObject targetAnimal = null;
 
     void Update()
     {
+        //'e' button currently not working
         // if (Input.GetKeyDown(KeyCode.E) && targetAnimal != null)
         // {
         //     Debug.Log("e pressed down");
@@ -52,7 +53,7 @@ public class PossessionTrigger : MonoBehaviour
         playerModel.SetActive(false); // Hide the player model
 
         // Enable the animal control script
-        var animalControl = animal.GetComponent<AnimalController>();
+        AnimalController animalControl = animal.GetComponent<AnimalController>();
         if (animalControl != null)
         {
             animalControl.enabled = true;
@@ -64,5 +65,6 @@ public class PossessionTrigger : MonoBehaviour
 
         // Transfer 'camera focus' or any other player-centric components to the animal
         // This might involve setting the camera's target to the animal or enabling animal-specific UI elements
+        // Camera.main.GetComponent<CamFollow>().target = animal.transform; need to change access
     }
 }
