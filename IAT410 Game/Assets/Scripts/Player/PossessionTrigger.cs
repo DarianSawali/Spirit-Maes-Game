@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
+//This code is used to check if player collides with animal object, and possess them
+
 public class PossessionTrigger : MonoBehaviour
 {
-    public GameObject playerModel; // Assign your player model in the inspector
+    public GameObject playerModel; 
     private GameObject targetAnimal = null;
 
     void Update()
