@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 30432741}
   - component: {fileID: 30432740}
   - component: {fileID: 30432742}
+  - component: {fileID: 30432743}
   m_Layer: 8
   m_Name: Skunk
   m_TagString: Animal
@@ -275,6 +276,27 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!65 &30432743
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30432736}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.16, y: 0.16000004, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &153947728
 GameObject:
   m_ObjectHideFlags: 0

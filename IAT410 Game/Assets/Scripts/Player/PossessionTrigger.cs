@@ -13,6 +13,7 @@ public class PossessionTrigger : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && targetAnimal != null)
         {
+            Debug.Log("e pressed down");
             PossessAnimal(targetAnimal);
         }
     }
@@ -22,6 +23,7 @@ public class PossessionTrigger : MonoBehaviour
         if (other.CompareTag("Animal")) // Make sure your animals have the "Animal" tag
         {
             targetAnimal = other.gameObject;
+            Debug.Log("trigger called");
         }
     }
 
