@@ -11,9 +11,14 @@ public class PossessionTrigger : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && targetAnimal != null)
+        // if (Input.GetKeyDown(KeyCode.E) && targetAnimal != null)
+        // {
+        //     Debug.Log("e pressed down");
+        //     PossessAnimal(targetAnimal);
+        // }
+
+        if (targetAnimal != null)
         {
-            Debug.Log("e pressed down");
             PossessAnimal(targetAnimal);
         }
     }
@@ -37,8 +42,25 @@ public class PossessionTrigger : MonoBehaviour
 
     void PossessAnimal(GameObject animal)
     {
+        Debug.Log("Possessing animal");
+
+        // Optionally, disable the player's movement and control scripts
+        GetComponent<PlayerController>().enabled = false; // Assuming you have a PlayerController script
+
         playerModel.SetActive(false); // Hide the player model
-        animal.GetComponent<AnimalController>().enabled = true; // Enable the animal control script
-        this.enabled = false; // Optionally disable this script to prevent re-possession while already possessing an animal
+
+        // Enable the animal control script
+        var animalControl = animal.GetComponent<AnimalController>();
+        if (animalControl != null)
+        {
+            animalControl.enabled = true;
+        }
+        else
+        {
+            Debug.LogError("AnimalControl script not found on the target animal");
+        }
+
+        // Transfer 'camera focus' or any other player-centric components to the animal
+        // This might involve setting the camera's target to the animal or enabling animal-specific UI elements
     }
 }
