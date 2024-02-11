@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimalController : MonoBehaviour // Assuming you handle possession elsewhere
+public class AnimalController : MonoBehaviour
 {
     public float moveSpeed = 5f; // Movement speed
-    public float gravity = 9.81f; 
+    public float gravity = 9.81f;
     public LayerMask groundLayer;
     private float groundedCheckDist = 0.1f;
 
