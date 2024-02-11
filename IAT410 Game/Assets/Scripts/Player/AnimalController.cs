@@ -15,6 +15,9 @@ public class AnimalController : MonoBehaviour
     private Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
     private const float dampingFactor = 0.9f;
 
+    private PlayerAnimalInput inputActions; // Assuming PlayerInputActions is the generated class for your input actions
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
