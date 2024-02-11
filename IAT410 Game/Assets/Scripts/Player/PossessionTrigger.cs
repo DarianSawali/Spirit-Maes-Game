@@ -1,4 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class PossessionTrigger : MonoBehaviour
 {
@@ -32,7 +36,7 @@ public class PossessionTrigger : MonoBehaviour
     void PossessAnimal(GameObject animal)
     {
         playerModel.SetActive(false); // Hide the player model
-        animal.GetComponent<AnimalControl>().enabled = true; // Enable the animal control script
+        animal.GetComponent<AnimalController>().enabled = true; // Enable the animal control script
         this.enabled = false; // Optionally disable this script to prevent re-possession while already possessing an animal
     }
 }
