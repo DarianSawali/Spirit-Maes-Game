@@ -56,7 +56,7 @@ public class AnimalPossession : MonoBehaviour
     private void PossessAnimal()
     {
         isPossessingAnimal = true;
-        possessionPrompt.SetActive(false);
+        // possessionPrompt.SetActive(false);
         // Disable player control
         player.SetActive(false);
         // Enable control for the possessed animal
