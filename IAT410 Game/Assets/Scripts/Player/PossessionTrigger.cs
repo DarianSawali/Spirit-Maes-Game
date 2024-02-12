@@ -59,10 +59,8 @@ public class PossessionTrigger : MonoBehaviour
 
         playerModel.SetActive(false); // Hide the player model
         skunk.EnableSkunkInput();
-    }
-}
 
-
+        
         // Enable the animal control script
         // AnimalController animalControl = animal.GetComponent<AnimalController>();
         // if (animalControl != null)
@@ -77,3 +75,7 @@ public class PossessionTrigger : MonoBehaviour
         // Transfer 'camera focus' or any other player-centric components to the animal
         // This might involve setting the camera's target to the animal or enabling animal-specific UI elements
         // Camera.main.GetComponent<CamFollow>().target = animal.transform; need to change access
+    }
+}
+
+
