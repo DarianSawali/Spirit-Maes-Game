@@ -10,6 +10,13 @@ public class PossessionTrigger : MonoBehaviour
 {
     public GameObject playerModel;
     private GameObject targetAnimal = null;
+    public PlayerInput playerInput;
+    private Skunk skunk;
+
+    private void Start()
+    {
+        skunk = FindObjectOfType<Skunk>();
+    }
 
     void Update()
     {
@@ -51,20 +58,22 @@ public class PossessionTrigger : MonoBehaviour
         GetComponent<PlayerController>().enabled = false; // Assuming you have a PlayerController script
 
         playerModel.SetActive(false); // Hide the player model
+        skunk.EnableSkunkInput();
+    }
+}
+
 
         // Enable the animal control script
-        AnimalController animalControl = animal.GetComponent<AnimalController>();
-        if (animalControl != null)
-        {
-            animalControl.enabled = true;
-        }
-        else
-        {
-            Debug.LogError("AnimalControl script not found on the target animal");
-        }
+        // AnimalController animalControl = animal.GetComponent<AnimalController>();
+        // if (animalControl != null)
+        // {
+        //     animalControl.enabled = true;
+        // }
+        // else
+        // {
+        //     Debug.LogError("AnimalControl script not found on the target animal");
+        // }
 
         // Transfer 'camera focus' or any other player-centric components to the animal
         // This might involve setting the camera's target to the animal or enabling animal-specific UI elements
         // Camera.main.GetComponent<CamFollow>().target = animal.transform; need to change access
-    }
-}
