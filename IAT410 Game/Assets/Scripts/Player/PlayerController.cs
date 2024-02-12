@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
 
     //protected bool controlsEnabled = true; // enable/disable player movement
 
+    public GameObject playerModel; // Assign your player model in the inspector
+    private GameObject targetAnimal = null;
+    private bool isPossessing = false;
+
     protected void Start()
     {
         PlayerInput input = GetComponent<PlayerInput>();
@@ -34,15 +38,19 @@ public class PlayerController : MonoBehaviour
         input.actions.FindAction("Jump").Disable();
         //playerInput.Disable();
 
-        if(isPlayerActive){
-            // Disable SkunkMove action and enable PlayerMove action
+        skunk = FindObjectOfType<Skunk>();
+
+        if (isPlayerActive)
+        {
+            // Disable SkunkMove action, enable PlayerMove action, enable possession
             input.actions.FindAction("PlayerMove").Enable();
             input.actions.FindAction("SkunkMove").Disable();
-            
+            input.actions.FindAction("Possess").Enable();
         }
     }
 
-    protected void DisableJump(){
+    protected void DisableJump()
+    {
         playerInput.actions["Jump"].Disable();
     }
 
@@ -59,6 +67,7 @@ public class PlayerController : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
         isPlayerActive = false;
         input.actions.FindAction("PlayerMove").Disable();
+        input.actions.FindAction("Dispossess").Enable();
     }
 
     protected void Update()
@@ -74,6 +83,22 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y < -2f)
         {
             transform.position = spawnPoint.position;
+        }
+
+        if (!isPossessing)
+        {
+            EnablePlayerInput();
+            EnablePlayerPossession();
+        }
+
+        if (isPossessing)
+        {
+            DisablePlayerPossession();
+            DisablePlayerInput();
+        }
+
+        if (!isPlayerActive) {
+
         }
 
     }
@@ -110,39 +135,110 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+
+    public void EnablePlayerPossession()
+    {
+        PlayerInput input = GetComponent<PlayerInput>();
+        isPossessing = false;
+        input.actions.FindAction("Possess").Enable();
+        input.actions.FindAction("Dispossess").Disable();
+    }
+
+    public void DisablePlayerPossession()
+    {
+        PlayerInput input = GetComponent<PlayerInput>();
+        isPossessing = true;
+        input.actions.FindAction("Possess").Disable();
+        input.actions.FindAction("Dispossess").Enable();
+    }
+
+    protected void OnPossess(InputValue value)
+    {
+        Debug.Log("OnPossess called");
+        if (targetAnimal != null && !isPossessing)
+        {
+            PossessAnimal(targetAnimal);
+            isPlayerActive = false;
+        }
+    }
+
+    protected void OnDispossess(InputValue value)
+    {
+        Debug.Log("OnDispossess called");
+        if (isPossessing)
+        {
+            DispossessAnimal();
+        }
+    }
+
+    void PossessAnimal(GameObject animal)
+    {
+        Debug.Log("Possessing animal");
+
+        playerModel.SetActive(false); // Hide the player model
+        skunk.EnableSkunkInput();
+    }
+
+    void DispossessAnimal()
+    {
+        Debug.Log("Dispossessing animal");
+
+        playerModel.SetActive(true); // Show the player model again
+        skunk.DisableSkunkInput(); // Disable animal control
+
+        targetAnimal = null; // Clear the target animal
+    }
+
+    // to check which animal player is colliding with
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Animal"))
+        {
+            targetAnimal = other.gameObject;
+            Debug.Log("trigger called");
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Animal") && other.gameObject == targetAnimal)
+        {
+            targetAnimal = null;
+        }
+    }
+
 }
 
 
 
 
-    // public void OnJump(InputValue value)
-    // {
-    //     if (!controlsEnabled || !isGrounded) return;
-        
-    //     rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    // }
+// public void OnJump(InputValue value)
+// {
+//     if (!controlsEnabled || !isGrounded) return;
 
-    // private void OnCollisionEnter(Collision collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Tilemap"))
-    //     {
-    //         isGrounded = true;
-    //     }
-    // }
+//     rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+// }
 
-    // private void OnCollisionStay(Collision collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Tilemap"))
-    //     {
-    //         isGrounded = true;
-    //     }
-    // }
+// private void OnCollisionEnter(Collision collision)
+// {
+//     if (collision.gameObject.CompareTag("Tilemap"))
+//     {
+//         isGrounded = true;
+//     }
+// }
 
-    // private void OnCollisionExit(Collision collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Tilemap"))
-    //     {
-    //         // Player is no longer colliding with tilemap
-    //         isGrounded = false;
-    //     }
-    // }
+// private void OnCollisionStay(Collision collision)
+// {
+//     if (collision.gameObject.CompareTag("Tilemap"))
+//     {
+//         isGrounded = true;
+//     }
+// }
+
+// private void OnCollisionExit(Collision collision)
+// {
+//     if (collision.gameObject.CompareTag("Tilemap"))
+//     {
+//         // Player is no longer colliding with tilemap
+//         isGrounded = false;
+//     }
+// }

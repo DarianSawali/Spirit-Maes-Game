@@ -13,9 +13,16 @@ public class PossessionTrigger : MonoBehaviour
     public PlayerInput playerInput;
     private Skunk skunk;
 
+    private bool isPossessing = false;
+
     private void Start()
     {
+        PlayerInput input = GetComponent<PlayerInput>();
         skunk = FindObjectOfType<Skunk>();
+
+        if (!isPossessing) {
+            // input.actions.FindAction("Possessing").Enable();
+        }
     }
 
     void Update()
@@ -48,6 +55,10 @@ public class PossessionTrigger : MonoBehaviour
         {
             targetAnimal = null;
         }
+    }
+
+    void OnPossess (InputValue value) {
+        Debug.Log("onPossess called");
     }
 
     void PossessAnimal(GameObject animal)

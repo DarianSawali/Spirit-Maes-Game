@@ -83,7 +83,7 @@ public class Skunk : MonoBehaviour
         input.actions.FindAction("Jump").Enable();
     }
 
-    protected void DisableSkunkInput()
+    public void DisableSkunkInput()
     {
         PlayerInput input = GetComponent<PlayerInput>();
         isSkunkActive = false;
