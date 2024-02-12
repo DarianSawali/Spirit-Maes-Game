@@ -332,7 +332,6 @@ MonoBehaviour:
     m_Bits: 128
   spawnPoint: {fileID: 287610979}
   playerInput: {fileID: 0}
-  player: {fileID: 0}
 --- !u!1 &153947728
 GameObject:
   m_ObjectHideFlags: 0
