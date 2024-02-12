@@ -35,7 +35,7 @@ public class PossessionTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Animal")) // Make sure your animals have the "Animal" tag
+        if (other.CompareTag("Animal")) // Make sure animals have the "Animal" tag
         {
             targetAnimal = other.gameObject;
             Debug.Log("trigger called");
