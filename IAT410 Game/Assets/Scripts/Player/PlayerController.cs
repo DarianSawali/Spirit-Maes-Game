@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
         isPlayerActive = false;
         input.actions.FindAction("PlayerMove").Disable();
-        input.actions.FindAction("Dispossess").Enable();
+        input.actions.FindAction("SkunkMove").Enable();
     }
 
     protected void Update()
@@ -85,21 +85,17 @@ public class PlayerController : MonoBehaviour
             transform.position = spawnPoint.position;
         }
 
-        if (!isPossessing)
-        {
-            EnablePlayerInput();
-            EnablePlayerPossession();
-        }
+        // if (!isPossessing)
+        // {
+        //     EnablePlayerInput();
+        //     EnablePlayerPossession();
+        // }
 
-        if (isPossessing)
-        {
-            DisablePlayerPossession();
-            DisablePlayerInput();
-        }
-
-        if (!isPlayerActive) {
-
-        }
+        // if (isPossessing)
+        // {
+        //     DisablePlayerPossession();
+        //     DisablePlayerInput();
+        // }
 
     }
 
@@ -120,8 +116,6 @@ public class PlayerController : MonoBehaviour
 
     protected void OnPlayerMove(InputValue value)
     {
-        //if (!controlsEnabled) return;
-
         Vector3 moveInput = value.Get<Vector3>();
         Vector3 movement = new Vector3(moveInput.x * moveSpeed, moveInput.y * moveSpeed, moveInput.z * moveSpeed);
         rb.velocity = movement;
@@ -139,7 +133,6 @@ public class PlayerController : MonoBehaviour
     public void EnablePlayerPossession()
     {
         PlayerInput input = GetComponent<PlayerInput>();
-        isPossessing = false;
         input.actions.FindAction("Possess").Enable();
         input.actions.FindAction("Dispossess").Disable();
     }
@@ -147,7 +140,6 @@ public class PlayerController : MonoBehaviour
     public void DisablePlayerPossession()
     {
         PlayerInput input = GetComponent<PlayerInput>();
-        isPossessing = true;
         input.actions.FindAction("Possess").Disable();
         input.actions.FindAction("Dispossess").Enable();
     }
@@ -159,6 +151,7 @@ public class PlayerController : MonoBehaviour
         {
             PossessAnimal(targetAnimal);
             isPlayerActive = false;
+            isPossessing = true;
         }
     }
 
@@ -168,6 +161,8 @@ public class PlayerController : MonoBehaviour
         if (isPossessing)
         {
             DispossessAnimal();
+            isPossessing = false;
+            isPlayerActive = true;
         }
     }
 
@@ -176,7 +171,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Possessing animal");
 
         playerModel.SetActive(false); // Hide the player model
-        skunk.EnableSkunkInput();
     }
 
     void DispossessAnimal()
@@ -184,7 +178,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dispossessing animal");
 
         playerModel.SetActive(true); // Show the player model again
-        skunk.DisableSkunkInput(); // Disable animal control
 
         targetAnimal = null; // Clear the target animal
     }
