@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
 
         skunk = FindObjectOfType<Skunk>();
 
+        input.actions.FindAction("Dispossess").Enable();
+
         if (isPlayerActive)
         {
             // Disable SkunkMove action, enable PlayerMove action, enable possession
@@ -134,7 +136,7 @@ public class PlayerController : MonoBehaviour
     {
         PlayerInput input = GetComponent<PlayerInput>();
         input.actions.FindAction("Possess").Enable();
-        input.actions.FindAction("Dispossess").Disable();
+        // input.actions.FindAction("Dispossess").Disable();
     }
 
     public void DisablePlayerPossession()
@@ -155,7 +157,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    protected void OnDispossess(InputValue value)
+    public void OnDispossess(InputValue value)
     {
         Debug.Log("OnDispossess called");
         if (isPossessing)

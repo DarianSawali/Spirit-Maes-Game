@@ -16,7 +16,6 @@ public class Skunk : MonoBehaviour
 
     public PlayerInput playerInput;
     protected bool isSkunkActive = false;
-    public PlayerController player;
 
     protected Rigidbody rb;
     protected bool isGrounded;
