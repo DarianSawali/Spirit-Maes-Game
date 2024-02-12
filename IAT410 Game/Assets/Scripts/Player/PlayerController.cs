@@ -6,29 +6,62 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
-
-    public float moveSpeed = 5f;
-    public float jumpForce = 0.01f;
+    public float moveSpeed = 0.9f;
+    public float jumpForce = 1.4f;
     public Tilemap groundTilemap;
-    public float gravity = 9.81f;
+    public float gravity = 6f;
     public LayerMask groundLayer;
-    private float groundedCheckDist = 0.1f;
+    protected float groundedCheckDist = 0.1f;
     public Transform spawnPoint;
 
-    private Rigidbody rb;
-    private bool isGrounded;
-    private Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
+    public PlayerInput playerInput;
+    private Skunk skunk;
+    protected bool isPlayerActive = true;
+    protected bool isSkunkActive = false;
 
-    private bool controlsEnabled = true; // enable/disable player movement
+    protected Rigidbody rb;
+    protected bool isGrounded;
+    protected Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
 
-    private void Start()
+    //protected bool controlsEnabled = true; // enable/disable player movement
+
+    protected void Start()
     {
+        PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        input.actions.FindAction("Jump").Disable();
+        //playerInput.Disable();
+
+        if(isPlayerActive){
+            // Disable SkunkMove action and enable PlayerMove action
+            input.actions.FindAction("PlayerMove").Enable();
+            input.actions.FindAction("SkunkMove").Disable();
+            
+        }
     }
 
-    private void Update()
+    protected void DisableJump(){
+        playerInput.actions["Jump"].Disable();
+    }
+
+    public void EnablePlayerInput()
+    {
+        PlayerInput input = GetComponent<PlayerInput>();
+        isPlayerActive = true;
+        input.actions.FindAction("PlayerMove").Enable();
+        input.actions.FindAction("SkunkMove").Disable();
+    }
+
+    public void DisablePlayerInput()
+    {
+        PlayerInput input = GetComponent<PlayerInput>();
+        isPlayerActive = false;
+        input.actions.FindAction("PlayerMove").Disable();
+    }
+
+    protected void Update()
     {
         transform.rotation = Quaternion.Euler(fixedEulerRotation);
 
@@ -43,73 +76,33 @@ public class PlayerController : MonoBehaviour
             transform.position = spawnPoint.position;
         }
 
-        if (isGrounded)
-        {
-            Debug.Log("ground");
-        }
     }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         isGrounded = CheckGrounded();
     }
 
-    public void EnableControls()
-    {
-        controlsEnabled = true;
-    }
+    // protected void EnableControls()
+    // {
+    //     controlsEnabled = true;
+    // }
 
-    public void DisableControls()
-    {
-        controlsEnabled = false;
-    }
+    // protected void DisableControls()
+    // {
+    //     controlsEnabled = false;
+    // }
 
-    public void OnMove(InputValue value)
+    protected void OnPlayerMove(InputValue value)
     {
-        if (!controlsEnabled) return;
+        //if (!controlsEnabled) return;
 
         Vector3 moveInput = value.Get<Vector3>();
         Vector3 movement = new Vector3(moveInput.x * moveSpeed, moveInput.y * moveSpeed, moveInput.z * moveSpeed);
         rb.velocity = movement;
     }
 
-    public void OnJump(InputValue value)
-    {
-        if (!controlsEnabled || !isGrounded) return;
-        
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Tilemap"))
-        {
-            isGrounded = true;
-            Debug.Log("enter");
-        }
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Tilemap"))
-        {
-            isGrounded = true;
-            Debug.Log("stay");
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Tilemap"))
-        {
-            // Player is no longer colliding with tilemap
-            isGrounded = false;
-            Debug.Log("exit");
-        }
-    }
-
-
-    private bool CheckGrounded()
+    protected bool CheckGrounded()
     {
         if (Physics.Raycast(transform.position, Vector3.down, groundedCheckDist, groundLayer))
         {
@@ -117,5 +110,39 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
-
 }
+
+
+
+
+    // public void OnJump(InputValue value)
+    // {
+    //     if (!controlsEnabled || !isGrounded) return;
+        
+    //     rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    // }
+
+    // private void OnCollisionEnter(Collision collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Tilemap"))
+    //     {
+    //         isGrounded = true;
+    //     }
+    // }
+
+    // private void OnCollisionStay(Collision collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Tilemap"))
+    //     {
+    //         isGrounded = true;
+    //     }
+    // }
+
+    // private void OnCollisionExit(Collision collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Tilemap"))
+    //     {
+    //         // Player is no longer colliding with tilemap
+    //         isGrounded = false;
+    //     }
+    // }
