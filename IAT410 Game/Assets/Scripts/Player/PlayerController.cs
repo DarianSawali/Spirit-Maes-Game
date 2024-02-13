@@ -87,17 +87,17 @@ public class PlayerController : MonoBehaviour
             transform.position = spawnPoint.position;
         }
 
-        // if (!isPossessing)
-        // {
-        //     EnablePlayerInput();
-        //     EnablePlayerPossession();
-        // }
+        if (!isPossessing)
+        {
+            EnablePlayerInput();
+            EnablePlayerPossession();
+        }
 
-        // if (isPossessing)
-        // {
-        //     DisablePlayerPossession();
-        //     DisablePlayerInput();
-        // }
+        if (isPossessing)
+        {
+            DisablePlayerPossession();
+            DisablePlayerInput();
+        }
 
     }
 
@@ -172,7 +172,9 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Possessing animal");
 
-        playerModel.SetActive(false); // Hide the player model
+        playerModel.SetActive(false); 
+        DisablePlayerInput();
+        skunk.EnableSkunkInput();
     }
 
     void DispossessAnimal()
