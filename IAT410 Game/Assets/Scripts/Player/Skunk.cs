@@ -56,8 +56,12 @@ public class Skunk : MonoBehaviour
         input.actions.FindAction("Jump").Disable();
         input.actions.FindAction("Dispossess").Disable();
 
-        player.EnablePlayerInput();
+        
         playerModel.SetActive(true); // Show the player model again
+        player.EnablePlayerInput();
+        player.DispossessAnimal();
+
+
     }
 
     protected void Update()
