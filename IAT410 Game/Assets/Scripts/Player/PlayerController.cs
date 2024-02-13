@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     private GameObject targetAnimal = null;
     private bool isPossessing = false;
 
+    // public CamFollow cameraFollowScript;
+
     protected void Start()
     {
         PlayerInput input = GetComponent<PlayerInput>();
@@ -39,8 +41,6 @@ public class PlayerController : MonoBehaviour
         //playerInput.Disable();
 
         skunk = FindObjectOfType<Skunk>();
-
-        input.actions.FindAction("Dispossess").Enable();
 
         if (isPlayerActive)
         {
@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
         isPlayerActive = true;
         input.actions.FindAction("PlayerMove").Enable();
         input.actions.FindAction("SkunkMove").Disable();
+        input.actions.FindAction("Jump").Disable();
     }
 
     public void DisablePlayerInput()
@@ -98,7 +99,6 @@ public class PlayerController : MonoBehaviour
             DisablePlayerPossession();
             DisablePlayerInput();
         }
-
     }
 
     protected void FixedUpdate()
@@ -154,6 +154,10 @@ public class PlayerController : MonoBehaviour
             PossessAnimal(targetAnimal);
             isPlayerActive = false;
             isPossessing = true;
+            // cameraFollowScript.SetTarget(skunk.transform); // Make the camera follow the skunk
+            // CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
+            // cameraManager.SetCameraTarget(skunk.transform);
+
         }
     }
 
@@ -168,22 +172,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void PossessAnimal(GameObject animal)
+    public void PossessAnimal(GameObject animal)
     {
         Debug.Log("Possessing animal");
 
-        playerModel.SetActive(false); 
+        playerModel.SetActive(false);
         DisablePlayerInput();
         skunk.EnableSkunkInput();
+
+        // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
+
     }
 
-    void DispossessAnimal()
+    public void DispossessAnimal()
     {
         Debug.Log("Dispossessing animal");
 
         playerModel.SetActive(true); // Show the player model again
 
         targetAnimal = null; // Clear the target animal
+
+        // cameraFollowScript.SetTarget(player.transform); // Make the camera follow the player again
+
     }
 
     // to check which animal player is colliding with

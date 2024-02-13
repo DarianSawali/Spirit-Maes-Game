@@ -21,8 +21,12 @@ public class Skunk : MonoBehaviour
     protected bool isGrounded;
     protected Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
 
-
     protected bool controlsEnabled = true;
+
+    public GameObject playerModel; // Assign your player model in the inspector
+
+    private PlayerController player;
+
 
     protected void Start()
     {
@@ -32,12 +36,28 @@ public class Skunk : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         DisableSkunkInput();
 
+        player = FindObjectOfType<PlayerController>();
+        if (player != null) Debug.Log("player found");
+
         if (isSkunkActive)
         {
             input.actions.FindAction("PlayerMove").Disable();
             input.actions.FindAction("SkunkMove").Enable();
             input.actions.FindAction("Jump").Enable();
+            input.actions.FindAction("Dispossess").Enable();
         }
+    }
+
+    public void OnDispossess(InputValue value)
+    {
+        Debug.Log("OnDispossess called");
+        PlayerInput input = GetComponent<PlayerInput>();
+        input.actions.FindAction("SkunkMove").Disable();
+        input.actions.FindAction("Jump").Disable();
+        input.actions.FindAction("Dispossess").Disable();
+
+        player.EnablePlayerInput();
+        playerModel.SetActive(true); // Show the player model again
     }
 
     protected void Update()
