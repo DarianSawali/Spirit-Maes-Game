@@ -1200,6 +1200,10 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1741191795}
+    - target: {fileID: 2879153164272489322, guid: e1c7ac11f6ef1d84aa90a2ff3cd5bfc6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 110360483, guid: f176289f40ffe56498f2828885cd53b7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
