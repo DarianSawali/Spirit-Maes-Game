@@ -162,7 +162,7 @@
                     "name": "",
                     "id": "1de920e1-5d12-45ef-bbc3-df4e1975bbfe",
                     "path": "<Keyboard>/space",
-                    "interactions": "Tap",
+                    "interactions": "Tap(duration=0.5,pressPoint=0.5)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Jump",
