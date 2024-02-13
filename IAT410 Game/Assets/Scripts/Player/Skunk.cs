@@ -60,8 +60,7 @@ public class Skunk : MonoBehaviour
         playerModel.SetActive(true); // Show the player model again
         player.EnablePlayerInput();
         player.DispossessAnimal();
-
-
+        isSkunkActive = false;
     }
 
     protected void Update()
@@ -105,6 +104,7 @@ public class Skunk : MonoBehaviour
         input.actions.FindAction("PlayerMove").Disable();
         input.actions.FindAction("SkunkMove").Enable();
         input.actions.FindAction("Jump").Enable();
+        input.actions.FindAction("Dispossess").Enable();
     }
 
     public void DisableSkunkInput()
