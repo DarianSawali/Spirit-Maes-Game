@@ -139,6 +139,14 @@ PrefabInstance:
       propertyPath: playerModel
       value: 
       objectReference: {fileID: 739209583}
+    - target: {fileID: 4668058625201926868, guid: 6f681602dd093e147992e822c6261a1b, type: 3}
+      propertyPath: m_Size.z
+      value: 0.06703323
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668058625201926868, guid: 6f681602dd093e147992e822c6261a1b, type: 3}
+      propertyPath: m_Center.z
+      value: -0.02363132
+      objectReference: {fileID: 0}
     - target: {fileID: 6125432252964898421, guid: 6f681602dd093e147992e822c6261a1b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -471,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6941434749929042742, guid: 9809d053e71792b41a90bb265c2dc1cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6941434749929042742, guid: 9809d053e71792b41a90bb265c2dc1cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -721,6 +729,10 @@ PrefabInstance:
     - target: {fileID: 275656942775692040, guid: 3eff232298352c446acfed777653cdcf, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209629407549587906, guid: 3eff232298352c446acfed777653cdcf, type: 3}
+      propertyPath: orthographic size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4054934135550360007, guid: 3eff232298352c446acfed777653cdcf, type: 3}
       propertyPath: target
@@ -1102,11 +1114,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6941434749929042742, guid: 9809d053e71792b41a90bb265c2dc1cf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.96
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941434749929042742, guid: 9809d053e71792b41a90bb265c2dc1cf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 6941434749929042742, guid: 9809d053e71792b41a90bb265c2dc1cf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.28
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6941434749929042742, guid: 9809d053e71792b41a90bb265c2dc1cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1114,7 +1130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6941434749929042742, guid: 9809d053e71792b41a90bb265c2dc1cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6941434749929042742, guid: 9809d053e71792b41a90bb265c2dc1cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1148,6 +1164,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6941434749929042742, guid: 9809d053e71792b41a90bb265c2dc1cf, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1164,6 +1184,10 @@ PrefabInstance:
     - target: {fileID: 329859584638631775, guid: e1c7ac11f6ef1d84aa90a2ff3cd5bfc6, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983540037445563052, guid: e1c7ac11f6ef1d84aa90a2ff3cd5bfc6, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2016871273334889248, guid: e1c7ac11f6ef1d84aa90a2ff3cd5bfc6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1213,6 +1237,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 110360483, guid: f176289f40ffe56498f2828885cd53b7, type: 3}
+    - target: {fileID: 6121064399101961265, guid: e1c7ac11f6ef1d84aa90a2ff3cd5bfc6, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

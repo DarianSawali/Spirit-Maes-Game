@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControl : MonoBehaviour
 {
     public float moveSpeed = 0.9f;
     public float jumpForce = 1.4f;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     protected Rigidbody rb;
     protected bool isGrounded;
-    protected Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
+    protected Vector3 fixedEulerRotation = new Vector3(0f, 0f, 0f);
 
     //protected bool controlsEnabled = true; // enable/disable player movement
 
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-        input.actions.FindAction("SkunkJump").Disable();
+        input.actions.FindAction("Jump").Disable();
         //playerInput.Disable();
 
         skunk = FindObjectOfType<Skunk>();
@@ -51,28 +51,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    protected void DisableJump()
-    {
-        playerInput.actions["SkunkJump"].Disable();
-    }
-
-    public void EnablePlayerInput()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-        isPlayerActive = true;
-        input.actions.FindAction("PlayerMove").Enable();
-        input.actions.FindAction("SkunkMove").Disable();
-        input.actions.FindAction("SkunkJump").Disable();
-    }
-
-    public void DisablePlayerInput()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-        isPlayerActive = false;
-        input.actions.FindAction("PlayerMove").Disable();
-        input.actions.FindAction("SkunkMove").Enable();
-    }
-
     protected void Update()
     {
         transform.rotation = Quaternion.Euler(fixedEulerRotation);
@@ -80,10 +58,10 @@ public class PlayerController : MonoBehaviour
         if (!isGrounded)
         {
             isGrounded = CheckGrounded();
-            rb.velocity += Vector3.down * gravity * Time.deltaTime;
+            rb.velocity += Vector3.forward * gravity * Time.deltaTime;
         }
 
-        if (transform.position.y < -2f)
+        if (transform.position.z < -2f)
         {
             transform.position = spawnPoint.position;
         }
@@ -101,6 +79,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    protected void OnPlayerMove(InputValue value)
+    {
+        Vector3 moveInput = value.Get<Vector3>();
+
+    // Calculate the movement direction
+    Vector3 movement = new Vector3(moveInput.x, moveInput.y, moveInput.z).normalized;
+
+    // Apply the movement to the rigidbody's velocity
+    rb.velocity = movement * moveSpeed;
+    }
+
+    protected void DisableJump()
+    {
+        playerInput.actions["Jump"].Disable();
+    }
+
+    public void EnablePlayerInput()
+    {
+        PlayerInput input = GetComponent<PlayerInput>();
+        isPlayerActive = true;
+        input.actions.FindAction("PlayerMove").Enable();
+        input.actions.FindAction("SkunkMove").Disable();
+        input.actions.FindAction("Jump").Disable();
+    }
+
+    public void DisablePlayerInput()
+    {
+        PlayerInput input = GetComponent<PlayerInput>();
+        isPlayerActive = false;
+        input.actions.FindAction("PlayerMove").Disable();
+        input.actions.FindAction("SkunkMove").Enable();
+    }
+
+    
+
     protected void FixedUpdate()
     {
         isGrounded = CheckGrounded();
@@ -116,16 +129,11 @@ public class PlayerController : MonoBehaviour
     //     controlsEnabled = false;
     // }
 
-    protected void OnPlayerMove(InputValue value)
-    {
-        Vector3 moveInput = value.Get<Vector3>();
-        Vector3 movement = new Vector3(moveInput.x * moveSpeed, moveInput.y * moveSpeed, moveInput.z * moveSpeed);
-        rb.velocity = movement;
-    }
+
 
     protected bool CheckGrounded()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, groundedCheckDist, groundLayer))
+        if (Physics.Raycast(transform.position, Vector3.forward, groundedCheckDist, groundLayer))
         {
             return true;
         }

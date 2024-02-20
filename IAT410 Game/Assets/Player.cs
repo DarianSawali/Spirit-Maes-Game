@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public float moveSpeed = 0.9f;
     public float jumpForce = 1.4f;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     protected Rigidbody rb;
     protected bool isGrounded;
-    protected Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
+    protected Vector3 fixedEulerRotation = new Vector3(0f, 0f, 0f);
 
     //protected bool controlsEnabled = true; // enable/disable player movement
 
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-        input.actions.FindAction("SkunkJump").Disable();
+        input.actions.FindAction("Jump").Disable();
         //playerInput.Disable();
 
         skunk = FindObjectOfType<Skunk>();
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     protected void DisableJump()
     {
-        playerInput.actions["SkunkJump"].Disable();
+        playerInput.actions["Jump"].Disable();
     }
 
     public void EnablePlayerInput()
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         isPlayerActive = true;
         input.actions.FindAction("PlayerMove").Enable();
         input.actions.FindAction("SkunkMove").Disable();
-        input.actions.FindAction("SkunkJump").Disable();
+        input.actions.FindAction("Jump").Disable();
     }
 
     public void DisablePlayerInput()
@@ -80,10 +80,10 @@ public class PlayerController : MonoBehaviour
         if (!isGrounded)
         {
             isGrounded = CheckGrounded();
-            rb.velocity += Vector3.down * gravity * Time.deltaTime;
+            rb.velocity += Vector3.forward * gravity * Time.deltaTime;
         }
 
-        if (transform.position.y < -2f)
+        if (transform.position.z < -2f)
         {
             transform.position = spawnPoint.position;
         }

@@ -43,7 +43,7 @@ public class Skunk : MonoBehaviour
         {
             input.actions.FindAction("PlayerMove").Disable();
             input.actions.FindAction("SkunkMove").Enable();
-            input.actions.FindAction("Jump").Enable();
+            input.actions.FindAction("SkunkJump").Enable();
             input.actions.FindAction("Dispossess").Enable();
         }
     }
@@ -53,7 +53,7 @@ public class Skunk : MonoBehaviour
         Debug.Log("OnDispossess called");
         PlayerInput input = GetComponent<PlayerInput>();
         input.actions.FindAction("SkunkMove").Disable();
-        input.actions.FindAction("Jump").Disable();
+        input.actions.FindAction("SkunkJump").Disable();
         input.actions.FindAction("Dispossess").Disable();
 
         
@@ -80,6 +80,36 @@ public class Skunk : MonoBehaviour
 
     }
 
+    protected void OnSkunkMove(InputValue value)
+    {
+        if (!controlsEnabled) return;
+        //Debug.Log("Moving");
+        Vector3 moveInput = value.Get<Vector3>();
+        Vector3 movement = new Vector3(moveInput.x * moveSpeed, moveInput.y * jumpForce, moveInput.z * moveSpeed);
+        rb.velocity = movement;
+    }
+
+    // protected void OnSkunkJump() {
+    //     if(!isGrounded) return;
+    //     rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    // }
+
+    //     protected void Update()
+    // {
+    //     transform.rotation = Quaternion.Euler(fixedEulerRotation);
+
+    //     if (!isGrounded && rb.velocity.y < 0)
+    //     {
+    //         isGrounded = CheckGrounded();
+    //         rb.velocity += Vector3.down * gravity * Time.deltaTime;
+    //     }
+
+    //     if (transform.position.y < -2f)
+    //     {
+    //         transform.position = spawnPoint.position;
+    //     }
+    // }
+
     protected void FixedUpdate()
     {
         isGrounded = CheckGrounded();
@@ -87,14 +117,7 @@ public class Skunk : MonoBehaviour
 
     protected void EnableJump()
     {
-        playerInput.actions["Jump"].Enable();
-    }
-
-    protected void OnJump(InputValue value)
-    {
-        if (!controlsEnabled || !isGrounded) return;
-
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        playerInput.actions["SkunkJump"].Enable();
     }
 
     public void EnableSkunkInput()
@@ -103,7 +126,7 @@ public class Skunk : MonoBehaviour
         isSkunkActive = true;
         input.actions.FindAction("PlayerMove").Disable();
         input.actions.FindAction("SkunkMove").Enable();
-        input.actions.FindAction("Jump").Enable();
+        input.actions.FindAction("SkunkJump").Enable();
         input.actions.FindAction("Dispossess").Enable();
     }
 
@@ -112,16 +135,7 @@ public class Skunk : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
         isSkunkActive = false;
         input.actions.FindAction("SkunkMove").Disable();
-        input.actions.FindAction("Jump").Disable();
-    }
-
-    protected void OnSkunkMove(InputValue value)
-    {
-        if (!controlsEnabled) return;
-
-        Vector3 moveInput = value.Get<Vector3>();
-        Vector3 movement = new Vector3(moveInput.x * moveSpeed, moveInput.y * moveSpeed, moveInput.z * moveSpeed);
-        rb.velocity = movement;
+        input.actions.FindAction("SkunkJump").Disable();
     }
 
     protected bool CheckGrounded()

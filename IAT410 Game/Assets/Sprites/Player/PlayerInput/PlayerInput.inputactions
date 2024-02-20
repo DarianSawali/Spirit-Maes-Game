@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "PlayerMove",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "9c4d82a3-b3b1-4d7a-a86b-6bf77954867f",
                     "expectedControlType": "Vector3",
                     "processors": "",
@@ -15,8 +15,8 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "SkunkMove",
-                    "type": "Value",
+                    "name": "SMove",
+                    "type": "PassThrough",
                     "id": "286195fc-d054-442f-be5f-172ec011ed8d",
                     "expectedControlType": "Vector3",
                     "processors": "",
@@ -42,15 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "dd82aafc-eeb6-4b41-b68e-2c1c3dd365e9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Possess",
                     "type": "Button",
                     "id": "a07b67ac-5679-41a7-ac6a-7340682cb4eb",
@@ -63,6 +54,33 @@
                     "name": "Dispossess",
                     "type": "Button",
                     "id": "86246ded-3457-4e7b-9a85-48c27d9004a8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move",
+                    "type": "PassThrough",
+                    "id": "555fc003-95f5-4841-a34c-8d48178c6b3b",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SkunkMove",
+                    "type": "Value",
+                    "id": "41c3ad03-b823-4544-9569-022946e402c0",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SkunkJump",
+                    "type": "Button",
+                    "id": "281e05b3-bd25-4957-9c73-ff191ef8cb8c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -159,28 +177,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "1de920e1-5d12-45ef-bbc3-df4e1975bbfe",
-                    "path": "<Keyboard>/space",
-                    "interactions": "Tap(duration=0.5,pressPoint=0.5)",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "aeb0f6c4-a777-4243-af16-0a960350175e",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "PlayerMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "WASD",
                     "id": "45244e63-09b3-47ef-b6fc-f675cb3e6061",
                     "path": "3DVector",
@@ -236,46 +232,13 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "6c43d3b4-fe51-4220-9cd2-448106572553",
-                    "path": "<XRController>/{Primary2DAxis}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR",
-                    "action": "PlayerMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a656e696-9edf-47d7-825c-4693189ef42c",
-                    "path": "<Joystick>/stick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Joystick",
-                    "action": "PlayerMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6a9d8c0b-ab83-49b0-bb90-3dc6015d2dea",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "SkunkMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "WASD",
                     "id": "f27b920d-f40d-4ab6-bdd0-a4e072ea8c68",
                     "path": "3DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SkunkMove",
+                    "action": "SMove",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -286,7 +249,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SkunkMove",
+                    "action": "SMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -297,7 +260,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SkunkMove",
+                    "action": "SMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -308,7 +271,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SkunkMove",
+                    "action": "SMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -319,31 +282,9 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SkunkMove",
+                    "action": "SMove",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "91835ce2-27e8-4bf1-9820-624b71e83c8e",
-                    "path": "<XRController>/{Primary2DAxis}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR",
-                    "action": "SkunkMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "926c1e88-f393-416e-ae62-8144e72c2ab6",
-                    "path": "<Joystick>/stick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Joystick",
-                    "action": "SkunkMove",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -364,6 +305,182 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Dispossess",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7accea5a-639c-4905-bd1e-54b989e6ace0",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "WASD",
+                    "id": "334d206d-773a-4926-8f26-84eca4f86969",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "forward",
+                    "id": "69321146-975a-47e7-9be6-0f5e7eaf1eaa",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "c87b11b9-c01e-42eb-aaf1-48badd9d2ce2",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "efe7b761-3dfa-4d12-8ea8-e7cd850487be",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "549304cc-5dd3-4e61-ab5e-a0c2cb756fc2",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "cd09836d-aaf6-43ed-bb74-ae21593ae716",
+                    "path": "<XRController>/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d47ebf88-54b0-446d-851a-ad91fd42b7aa",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "3D Vector",
+                    "id": "78d9d60e-07e3-420e-a8ed-5f2aa399738b",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkunkMove",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "5490dab7-5392-45eb-b87b-c78f12bc1a62",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkunkMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "7e264513-d935-4bea-bdd2-7ff4dcc16083",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkunkMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "af80d790-6134-485f-a71c-57b28bc2740b",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkunkMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "607bb16b-f7ab-49c2-8bcb-938e4598e3de",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkunkMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "d0634c6c-ce61-460c-a88b-2ef932d6b839",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkunkMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "b550e409-0b07-4f73-bbf1-e5d7ab72956c",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkunkMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "d175acaf-330b-436d-a690-d5881525e8a1",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkunkJump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
