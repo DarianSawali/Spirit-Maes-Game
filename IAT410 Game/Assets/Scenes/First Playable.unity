@@ -800,7 +800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3209629407549587906, guid: 3eff232298352c446acfed777653cdcf, type: 3}
       propertyPath: orthographic size
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4054934135550360007, guid: 3eff232298352c446acfed777653cdcf, type: 3}
       propertyPath: target
@@ -1347,6 +1347,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6121064399101961265, guid: e1c7ac11f6ef1d84aa90a2ff3cd5bfc6, type: 3}
       propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121064399101961265, guid: e1c7ac11f6ef1d84aa90a2ff3cd5bfc6, type: 3}
+      propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6121064399101961265, guid: e1c7ac11f6ef1d84aa90a2ff3cd5bfc6, type: 3}
