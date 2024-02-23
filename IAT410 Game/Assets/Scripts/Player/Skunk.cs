@@ -19,7 +19,7 @@ public class Skunk : MonoBehaviour
 
     protected Rigidbody rb;
     protected bool isGrounded;
-    protected Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
+    //protected Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
 
     protected bool controlsEnabled = true;
 
@@ -33,7 +33,7 @@ public class Skunk : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         DisableSkunkInput();
 
         player = FindObjectOfType<PlayerController>();
@@ -65,7 +65,7 @@ public class Skunk : MonoBehaviour
 
     protected void Update()
     {
-        transform.rotation = Quaternion.Euler(fixedEulerRotation);
+        //transform.rotation = Quaternion.Euler(fixedEulerRotation);
 
         if (!isGrounded)
         {
@@ -80,12 +80,33 @@ public class Skunk : MonoBehaviour
 
     }
 
+    // protected void OnSkunkMove(InputValue value)
+    // {
+    //     if (!controlsEnabled) return;
+    //     //Debug.Log("Moving");
+    //     Vector3 moveInput = value.Get<Vector3>();
+    //     Vector3 movement = new Vector3(moveInput.x * moveSpeed, 0f, moveInput.z * moveSpeed);
+    //     rb.velocity = movement;
+    // }
+
     protected void OnSkunkMove(InputValue value)
     {
-        if (!controlsEnabled) return;
-        //Debug.Log("Moving");
-        Vector3 moveInput = value.Get<Vector3>();
-        Vector3 movement = new Vector3(moveInput.x * moveSpeed, moveInput.y * jumpForce, moveInput.z * moveSpeed);
+        // Get the movement input vector
+        Vector2 moveInput = value.Get<Vector2>();
+
+        // Calculate the horizontal movement direction based on the input vector
+        Vector3 horizontalMoveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
+
+        // Normalize the horizontal movement direction to maintain consistent speed regardless of input magnitude
+        horizontalMoveDirection.Normalize();
+
+        // Preserve the current vertical velocity to maintain gravity's effect
+        float verticalVelocity = rb.velocity.y;
+
+        // Combine the horizontal movement with the existing vertical velocity
+        Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
+
+        // Apply the movement to the player's velocity
         rb.velocity = movement;
     }
 

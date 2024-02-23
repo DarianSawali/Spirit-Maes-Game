@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 4f;
     //public float jumpForce = 1.4f;
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     protected Rigidbody rb;
     protected bool isGrounded;
-    //protected Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
+    protected Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
 
     //protected bool controlsEnabled = true; // enable/disable player movement
 
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         input.actions.FindAction("SkunkJump").Disable();
         //playerInput.Disable();
 
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     protected void Update()
     {
-        //transform.rotation = Quaternion.Euler(fixedEulerRotation);
+        transform.rotation = Quaternion.Euler(fixedEulerRotation);
 
         if (transform.position.y < -2f)
         {
