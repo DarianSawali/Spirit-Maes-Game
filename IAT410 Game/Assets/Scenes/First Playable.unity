@@ -762,7 +762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 4
-  gravity: 0.2
+  gravity: 1
   gravityScale: 1
   playerInput: {fileID: 0}
   rb: {fileID: 0}
