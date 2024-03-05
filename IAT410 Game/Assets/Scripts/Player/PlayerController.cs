@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private bool isPossessing = false;
 
     public PlayerJump playerJump;
+    public GameObject teleportTarget;
 
     // public CamFollow cameraFollowScript;
 
@@ -55,14 +56,6 @@ public class PlayerController : MonoBehaviour
             input.actions.FindAction("Possess").Enable();
         }
     }
-
-    // protected void OnPlayerMove(InputValue value)
-    // {
-    //     Vector2 moveInput = value.Get<Vector2>();
-    //     Vector3 movement = new Vector3(moveInput.x * moveSpeed, 0f, moveInput.y * moveSpeed);
-    //     rb.velocity = movement;
-    //     Debug.Log("Moving");
-    // }
 
     protected void OnPlayerMove(InputValue value)
     {
@@ -155,6 +148,22 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void OnDig()
+    {
+        
+        TeleportToDigLocation();
+    }
+
+    public void TeleportToDigLocation()
+    {
+        if (teleportTarget != null)
+        {
+            transform.position = teleportTarget.transform.position;
+        }
+    }
+
+}
+
     // private bool IsGrounded()
     // {
     //     float raycastDistance = 0.1f; // Adjust this distance based on your player's size
@@ -235,9 +244,6 @@ public class PlayerController : MonoBehaviour
     //     // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
 
     // }
-
-
-}
 
 
     // protected void FixedUpdate()
