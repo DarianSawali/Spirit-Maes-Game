@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8706568977126580934}
   - component: {fileID: 5962851162943348258}
   - component: {fileID: 2334330955270124986}
+  - component: {fileID: 9074559644301126793}
   m_Layer: 8
   m_Name: Pigeon
   m_TagString: Animal
@@ -78,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 325694334, guid: fd2617d82bd6855408d2c79a05ec95a7, type: 3}
+  m_Sprite: {fileID: -179694688, guid: a5456e920f560ea45a396427fa327fc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1.28, y: 1.92}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -210,3 +211,15 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   playerInput: {fileID: 0}
   playerModel: {fileID: 0}
+--- !u!114 &9074559644301126793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6243248192482893930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4affda7cf24508f448178547f6d6a467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
