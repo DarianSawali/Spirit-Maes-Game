@@ -41,7 +41,7 @@ public class Skunk : MonoBehaviour
 
         if (isSkunkActive)
         {
-            input.actions.FindAction("PlayerMove").Disable();
+            // input.actions.FindAction("PlayerMove").Disable();
             input.actions.FindAction("SkunkMove").Enable();
             input.actions.FindAction("SkunkJump").Enable();
             input.actions.FindAction("Dispossess").Enable();
@@ -155,8 +155,10 @@ public class Skunk : MonoBehaviour
     {
         PlayerInput input = GetComponent<PlayerInput>();
         isSkunkActive = false;
+        input.actions.FindAction("PlayerMove").Enable();
         input.actions.FindAction("SkunkMove").Disable();
         input.actions.FindAction("SkunkJump").Disable();
+        input.actions.FindAction("Dispossess").Disable();
     }
 
     protected bool CheckGrounded()
