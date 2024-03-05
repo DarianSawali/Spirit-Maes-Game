@@ -60,6 +60,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Dig",
+                    "type": "Button",
+                    "id": "367d8841-7e45-4f7d-8064-409569fd73a7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Move",
                     "type": "Value",
                     "id": "555fc003-95f5-4841-a34c-8d48178c6b3b",
@@ -545,6 +554,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8405129f-589b-43ab-b40b-7bb4a594450e",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Dig",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
