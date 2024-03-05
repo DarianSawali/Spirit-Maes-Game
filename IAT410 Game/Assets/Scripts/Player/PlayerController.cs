@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     public PlayerInput playerInput;
     private Skunk skunk;
     protected bool isPlayerActive = true;
-    protected bool isSkunkActive = false;
 
     protected Rigidbody rb;
     protected bool isGrounded;
@@ -30,7 +29,6 @@ public class PlayerController : MonoBehaviour
 
     public GameObject playerModel; // Assign your player model in the inspector
     private GameObject targetAnimal = null;
-    private bool isPossessing = false;
 
     public PlayerJump playerJump;
 
@@ -162,11 +160,9 @@ public class PlayerController : MonoBehaviour
     protected void OnPossess(InputValue value)
     {
         Debug.Log("OnPossess called");
-        if (targetAnimal != null && !isPossessing)
+        if (targetAnimal != null && isPlayerActive)
         {
             PossessAnimal(targetAnimal);
-            isPlayerActive = false;
-            isPossessing = true;
             // cameraFollowScript.SetTarget(skunk.transform); // Make the camera follow the skunk
             // CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
             // cameraManager.SetCameraTarget(skunk.transform);
@@ -177,22 +173,22 @@ public class PlayerController : MonoBehaviour
     public void OnDispossess(InputValue value)
     {
         Debug.Log("OnDispossess called");
-        if (isPossessing)
-        {
-            DispossessAnimal();
-            isPossessing = false;
-        }
+        DispossessAnimal();
+        // if (isPossessing)
+        // {
+        //     DispossessAnimal();
+        //     isPossessing = false;
+        // }
     }
 
     public void PossessAnimal(GameObject animal)
     {
         Debug.Log("Possessing animal");
 
-        DisablePlayerInput();
+        isPlayerActive = false;
+
         playerModel.SetActive(false);
         skunk.EnableSkunkInput();
-
-        isPlayerActive = false;
 
         // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
     }
