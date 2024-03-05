@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     public PlayerInput playerInput;
     private Skunk skunk;
     protected bool isPlayerActive = true;
-    protected bool isSkunkActive = false;
 
     protected Rigidbody rb;
     protected bool isGrounded;
@@ -30,7 +29,6 @@ public class PlayerController : MonoBehaviour
 
     public GameObject playerModel; // Assign your player model in the inspector
     private GameObject targetAnimal = null;
-    private bool isPossessing = false;
 
     public PlayerJump playerJump;
 
@@ -93,19 +91,38 @@ public class PlayerController : MonoBehaviour
     public void EnablePlayerInput()
     {
         PlayerInput input = GetComponent<PlayerInput>();
-        isPlayerActive = true;
         input.actions.FindAction("PlayerMove").Enable();
         input.actions.FindAction("SkunkMove").Disable();
         input.actions.FindAction("SkunkJump").Disable();
+
+        input.actions.FindAction("Possess").Enable();
+        input.actions.FindAction("Dispossess").Disable();
     }
 
     public void DisablePlayerInput()
     {
         PlayerInput input = GetComponent<PlayerInput>();
-        isPlayerActive = false;
         input.actions.FindAction("PlayerMove").Disable();
         input.actions.FindAction("SkunkMove").Enable();
+
+        input.actions.FindAction("Possess").Disable();
+        input.actions.FindAction("Dispossess").Enable();
+
     }
+
+    // public void EnablePlayerPossession()
+    // {
+    //     PlayerInput input = GetComponent<PlayerInput>();
+    //     input.actions.FindAction("Possess").Enable();
+    //     // input.actions.FindAction("Dispossess").Disable();
+    // }
+
+    // public void DisablePlayerPossession()
+    // {
+    //     PlayerInput input = GetComponent<PlayerInput>();
+    //     input.actions.FindAction("Possess").Disable();
+    //     input.actions.FindAction("Dispossess").Enable();
+    // }
 
     protected void Update()
     {
@@ -116,31 +133,64 @@ public class PlayerController : MonoBehaviour
             transform.position = spawnPoint.position;
         }
 
-        if (!isPossessing)
+        if (isPlayerActive)
         {
             EnablePlayerInput();
-            EnablePlayerPossession();
         }
 
-        if (isPossessing)
+        if(!isPlayerActive)
         {
-            DisablePlayerPossession();
             DisablePlayerInput();
         }
+
+        // if (!isPossessing)
+        // {
+        //     EnablePlayerInput();
+        //     EnablePlayerPossession();
+        // }
+
+        // if (isPossessing)
+        // {
+        //     DisablePlayerPossession();
+        //     DisablePlayerInput();
+        // }
     }
 
-    public void EnablePlayerPossession()
+    //possessing mechanic
+    protected void OnPossess(InputValue value)
     {
-        PlayerInput input = GetComponent<PlayerInput>();
-        input.actions.FindAction("Possess").Enable();
-        // input.actions.FindAction("Dispossess").Disable();
+        Debug.Log("OnPossess called");
+        if (targetAnimal != null && isPlayerActive)
+        {
+            PossessAnimal(targetAnimal);
+            // cameraFollowScript.SetTarget(skunk.transform); // Make the camera follow the skunk
+            // CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
+            // cameraManager.SetCameraTarget(skunk.transform);
+
+        }
     }
 
-    public void DisablePlayerPossession()
+    public void OnDispossess(InputValue value)
     {
-        PlayerInput input = GetComponent<PlayerInput>();
-        input.actions.FindAction("Possess").Disable();
-        input.actions.FindAction("Dispossess").Enable();
+        Debug.Log("OnDispossess called");
+        DispossessAnimal();
+        // if (isPossessing)
+        // {
+        //     DispossessAnimal();
+        //     isPossessing = false;
+        // }
+    }
+
+    public void PossessAnimal(GameObject animal)
+    {
+        Debug.Log("Possessing animal");
+
+        isPlayerActive = false;
+
+        playerModel.SetActive(false);
+        skunk.EnableSkunkInput();
+
+        // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
     }
 
     public void DispossessAnimal()
@@ -148,11 +198,31 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dispossessing animal");
 
         playerModel.SetActive(true); // Show the player model again
+        EnablePlayerInput();
 
         targetAnimal = null; // Clear the target animal
 
+        isPlayerActive = true;
+
         // cameraFollowScript.SetTarget(player.transform); // Make the camera follow the player again
 
+    }
+
+    // to handle which animal is the possess target
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Animal"))
+        {
+            targetAnimal = other.gameObject;
+            Debug.Log("trigger called");
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Animal") && other.gameObject == targetAnimal)
+        {
+            targetAnimal = null;
+        }
     }
 
     // private bool IsGrounded()
@@ -171,7 +241,7 @@ public class PlayerController : MonoBehaviour
     //     return false;
     // }
 
-    
+
 
     // private void OnCollisionEnter(Collision collision)
     // {
@@ -198,73 +268,34 @@ public class PlayerController : MonoBehaviour
     //     }
     // }
 
-    // protected void OnPossess(InputValue value)
-    // {
-    //     Debug.Log("OnPossess called");
-    //     if (targetAnimal != null && !isPossessing)
-    //     {
-    //         PossessAnimal(targetAnimal);
-    //         isPlayerActive = false;
-    //         isPossessing = true;
-    //         // cameraFollowScript.SetTarget(skunk.transform); // Make the camera follow the skunk
-    //         // CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
-    //         // cameraManager.SetCameraTarget(skunk.transform);
-
-    //     }
-    // }
-
-    // public void OnDispossess(InputValue value)
-    // {
-    //     Debug.Log("OnDispossess called");
-    //     if (isPossessing)
-    //     {
-    //         DispossessAnimal();
-    //         isPossessing = false;
-    //         isPlayerActive = true;
-    //     }
-    // }
-
-    // public void PossessAnimal(GameObject animal)
-    // {
-    //     Debug.Log("Possessing animal");
-
-    //     playerModel.SetActive(false);
-    //     DisablePlayerInput();
-    //     skunk.EnableSkunkInput();
-
-    //     // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
-
-    // }
-
-
 }
 
 
-    // protected void FixedUpdate()
-    // {
-    //     isGrounded = CheckGrounded();
-    // }
+// protected void FixedUpdate()
+// {
+//     isGrounded = CheckGrounded();
+// }
 
-    // protected void EnableControls()
-    // {
-    //     controlsEnabled = true;
-    // }
+// protected void EnableControls()
+// {
+//     controlsEnabled = true;
+// }
 
-    // protected void DisableControls()
-    // {
-    //     controlsEnabled = false;
-    // }
+// protected void DisableControls()
+// {
+//     controlsEnabled = false;
+// }
 
-    
 
-    // public bool CheckGrounded()
-    // {
-    //     if (Physics.Raycast(transform.position, Vector3.down, groundedCheckDist, groundLayer))
-    //     {
-    //         return true;
-    //     }
-    //     return false;
-    // }
+
+// public bool CheckGrounded()
+// {
+//     if (Physics.Raycast(transform.position, Vector3.down, groundedCheckDist, groundLayer))
+//     {
+//         return true;
+//     }
+//     return false;
+// }
 
 
 
@@ -300,58 +331,41 @@ public class PlayerController : MonoBehaviour
 //     }
 // }
 
+// public bool CheckGrounded()
+// {
+//     // RaycastHit hit;
+//     // Vector3 raycastOrigin = transform.position + Vector3.up * 0.1f; // Offset slightly above player's position
+//     // if (Physics.Raycast(raycastOrigin, Vector3.down, out hit, groundedCheckDist, groundLayer))
+//     // {
+//     //     Debug.Log("Hit ground: " + hit.collider.gameObject.name);
+//     //     return true;
+//     // }
+//     return false;
+// }
 
-// private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag("Animal"))
-    //     {
-    //         targetAnimal = other.gameObject;
-    //         Debug.Log("trigger called");
-    //     }
-    // }
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     if (other.CompareTag("Animal") && other.gameObject == targetAnimal)
-    //     {
-    //         targetAnimal = null;
-    //     }
-    // }
+// public bool CheckGrounded()
+// {
 
-    // public bool CheckGrounded()
-    // {
-    //     // RaycastHit hit;
-    //     // Vector3 raycastOrigin = transform.position + Vector3.up * 0.1f; // Offset slightly above player's position
-    //     // if (Physics.Raycast(raycastOrigin, Vector3.down, out hit, groundedCheckDist, groundLayer))
-    //     // {
-    //     //     Debug.Log("Hit ground: " + hit.collider.gameObject.name);
-    //     //     return true;
-    //     // }
-    //     return false;
-    // }
+//     return rb.velocity.y == 0;
+//     // RaycastHit hit;
 
-    // public bool CheckGrounded()
-    // {
+//     // if (Physics.Raycast(transform.position, Vector3.down, out hit, groundedCheckDist, groundLayer))
+//     // {
+//     //     if (hit.collider.CompareTag("Ground"))
+//     //     {
+//     //         return true;
+//     //     }
+//     // }
 
-    //     return rb.velocity.y == 0;
-    //     // RaycastHit hit;
+//     // return false;
+// }
 
-    //     // if (Physics.Raycast(transform.position, Vector3.down, out hit, groundedCheckDist, groundLayer))
-    //     // {
-    //     //     if (hit.collider.CompareTag("Ground"))
-    //     //     {
-    //     //         return true;
-    //     //     }
-    //     // }
 
-    //     // return false;
-    // }
+//rb.velocity += Vector3.down * gravity * Time.deltaTime;
 
-    
-        //rb.velocity += Vector3.down * gravity * Time.deltaTime;
-        
-        // if (!isGrounded)
-        // {
-        //     isGrounded = CheckGrounded();
-        //     Debug.Log("not ground");
-        //     //rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
-        // }
+// if (!isGrounded)
+// {
+//     isGrounded = CheckGrounded();
+//     Debug.Log("not ground");
+//     //rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
+// }
