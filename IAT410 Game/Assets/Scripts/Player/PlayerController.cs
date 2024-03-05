@@ -200,6 +200,37 @@ public class PlayerController : MonoBehaviour
         // cameraFollowScript.SetTarget(player.transform); // Make the camera follow the player again
 
     }
+
+
+    public void OnDig()
+    {
+        TeleportToDigLocation();
+    }
+
+    public void TeleportToDigLocation()
+    {
+        if (teleportTarget != null)
+        {
+            transform.position = teleportTarget.transform.position;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Animal"))
+        {
+            targetAnimal = other.gameObject;
+            Debug.Log("trigger called");
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Animal") && other.gameObject == targetAnimal)
+        {
+            targetAnimal = null;
+        }
+    }
+
     
 
 
