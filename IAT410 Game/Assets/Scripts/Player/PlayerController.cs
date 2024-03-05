@@ -198,44 +198,59 @@ public class PlayerController : MonoBehaviour
     //     }
     // }
 
-    // protected void OnPossess(InputValue value)
-    // {
-    //     Debug.Log("OnPossess called");
-    //     if (targetAnimal != null && !isPossessing)
-    //     {
-    //         PossessAnimal(targetAnimal);
-    //         isPlayerActive = false;
-    //         isPossessing = true;
-    //         // cameraFollowScript.SetTarget(skunk.transform); // Make the camera follow the skunk
-    //         // CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
-    //         // cameraManager.SetCameraTarget(skunk.transform);
+    protected void OnPossess(InputValue value)
+    {
+        Debug.Log("OnPossess called");
+        if (targetAnimal != null && !isPossessing)
+        {
+            PossessAnimal(targetAnimal);
+            isPlayerActive = false;
+            isPossessing = true;
+            // cameraFollowScript.SetTarget(skunk.transform); // Make the camera follow the skunk
+            // CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
+            // cameraManager.SetCameraTarget(skunk.transform);
 
-    //     }
-    // }
+        }
+    }
 
-    // public void OnDispossess(InputValue value)
-    // {
-    //     Debug.Log("OnDispossess called");
-    //     if (isPossessing)
-    //     {
-    //         DispossessAnimal();
-    //         isPossessing = false;
-    //         isPlayerActive = true;
-    //     }
-    // }
+    public void OnDispossess(InputValue value)
+    {
+        Debug.Log("OnDispossess called");
+        if (isPossessing)
+        {
+            DispossessAnimal();
+            isPossessing = false;
+            isPlayerActive = true;
+        }
+    }
 
-    // public void PossessAnimal(GameObject animal)
-    // {
-    //     Debug.Log("Possessing animal");
+    public void PossessAnimal(GameObject animal)
+    {
+        Debug.Log("Possessing animal");
 
-    //     playerModel.SetActive(false);
-    //     DisablePlayerInput();
-    //     skunk.EnableSkunkInput();
+        playerModel.SetActive(false);
+        DisablePlayerInput();
+        skunk.EnableSkunkInput();
 
-    //     // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
+        // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
 
-    // }
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Animal"))
+        {
+            targetAnimal = other.gameObject;
+            Debug.Log("trigger called");
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Animal") && other.gameObject == targetAnimal)
+        {
+            targetAnimal = null;
+        }
+    }
 
 }
 
@@ -299,23 +314,6 @@ public class PlayerController : MonoBehaviour
 //         isGrounded = false;
 //     }
 // }
-
-
-// private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag("Animal"))
-    //     {
-    //         targetAnimal = other.gameObject;
-    //         Debug.Log("trigger called");
-    //     }
-    // }
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     if (other.CompareTag("Animal") && other.gameObject == targetAnimal)
-    //     {
-    //         targetAnimal = null;
-    //     }
-    // }
 
     // public bool CheckGrounded()
     // {
