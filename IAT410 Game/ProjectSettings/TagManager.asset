@@ -7,6 +7,8 @@ TagManager:
   - Tilemap
   - Animal
   - Ground
+  - DigTrigger
+  - Button
   layers:
   - Default
   - TransparentFX
