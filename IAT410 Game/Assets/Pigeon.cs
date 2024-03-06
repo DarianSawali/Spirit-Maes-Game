@@ -39,13 +39,13 @@ public class Pigeon : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
         if (player != null) Debug.Log("player found");
 
-        if (isSkunkActive)
-        {
-            // input.actions.FindAction("PlayerMove").Disable();
-            input.actions.FindAction("SkunkMove").Enable();
-            input.actions.FindAction("SkunkJump").Enable();
-            input.actions.FindAction("Dispossess").Enable();
-        }
+        // if (isSkunkActive)
+        // {
+        //     // input.actions.FindAction("PlayerMove").Disable();
+        //     input.actions.FindAction("SkunkMove").Enable();
+        //     input.actions.FindAction("SkunkJump").Enable();
+        //     input.actions.FindAction("Dispossess").Enable();
+        // }
     }
 
     public void OnDispossess(InputValue value)
@@ -60,7 +60,7 @@ public class Pigeon : MonoBehaviour
         playerModel.SetActive(true); // Show the player model again
         // player.EnablePlayerInput();
         player.DispossessAnimal();
-        isSkunkActive = false;
+        // isSkunkActive = false;
     }
 
     protected void Update()
@@ -144,7 +144,7 @@ public class Pigeon : MonoBehaviour
     public void EnableSkunkInput()
     {
         PlayerInput input = GetComponent<PlayerInput>();
-        isSkunkActive = true;
+        // isSkunkActive = true;
         input.actions.FindAction("PlayerMove").Disable();
         input.actions.FindAction("SkunkMove").Enable();
         input.actions.FindAction("SkunkJump").Enable();
@@ -154,7 +154,7 @@ public class Pigeon : MonoBehaviour
     public void DisableSkunkInput()
     {
         PlayerInput input = GetComponent<PlayerInput>();
-        isSkunkActive = false;
+        // isSkunkActive = false;
         input.actions.FindAction("PlayerMove").Enable();
         input.actions.FindAction("SkunkMove").Disable();
         input.actions.FindAction("SkunkJump").Disable();
