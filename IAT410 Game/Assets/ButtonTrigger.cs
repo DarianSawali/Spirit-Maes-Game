@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private TilemapSwitch tilemapSwitch;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Animal") || other.CompareTag("Player"))
+        {
+            TilemapSwitch tilemapSwitch = GetComponent<TilemapSwitch>();
+            tilemapSwitch.SwitchTilemaps();
+            Debug.Log("Button");
+        }
+
     }
 }
