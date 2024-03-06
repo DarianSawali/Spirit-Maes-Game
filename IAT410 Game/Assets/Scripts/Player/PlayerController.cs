@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private float speed = 6;
     private float grav = -9.81f;
 
-    public PlayerInput playerInput;
+    private PlayerInput playerInput;
     private Skunk skunk;
     protected bool isPlayerActive = true;
 
@@ -31,8 +31,10 @@ public class PlayerController : MonoBehaviour
     private GameObject targetAnimal = null;
 
     public PlayerJump playerJump;
-    public GameObject teleportTarget;
+    private Transform teleportTarget;
 
+    private bool canDig = false;
+    //public GameObject[] teleportTargets;
     // public CamFollow cameraFollowScript;
 
     protected void Start()
@@ -204,16 +206,18 @@ public class PlayerController : MonoBehaviour
 
     public void OnDig()
     {
-        TeleportToDigLocation();
-    }
-
-    public void TeleportToDigLocation()
-    {
-        if (teleportTarget != null)
+        if (canDig && teleportTarget != null)
         {
-            transform.position = teleportTarget.transform.position;
+            TeleportToDigLocation(teleportTarget.position);
+            Debug.Log("Dig");
         }
     }
+
+    public void TeleportToDigLocation(Vector3 position)
+    {
+        transform.position = position;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -222,6 +226,13 @@ public class PlayerController : MonoBehaviour
             targetAnimal = other.gameObject;
             Debug.Log("trigger called");
         }
+
+        if (other.CompareTag("DigTrigger"))
+        {
+            canDig = true;
+            teleportTarget = other.GetComponent<DigTrigger>().teleportLocation;
+            Debug.Log("canDig");
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -229,6 +240,14 @@ public class PlayerController : MonoBehaviour
         {
             targetAnimal = null;
         }
+
+        DigTrigger digTrigger = other.GetComponent<DigTrigger>();
+        if (other.CompareTag("DigTrigger"))
+        {
+            canDig = false;
+            teleportTarget = null;
+        }
+
     }
 
     
