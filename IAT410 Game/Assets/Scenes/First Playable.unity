@@ -198,6 +198,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6243248192482893930, guid: 6f681602dd093e147992e822c6261a1b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1652709605}
+    - targetCorrespondingSourceObject: {fileID: 6243248192482893930, guid: 6f681602dd093e147992e822c6261a1b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1652709606}
   m_SourcePrefab: {fileID: 100100000, guid: 6f681602dd093e147992e822c6261a1b, type: 3}
 --- !u!1001 &67342826
 PrefabInstance:
@@ -1295,6 +1298,26 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &1652709606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652709604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e46900647e4934c93cf87e28b24262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 4
+  gravity: 1
+  gravityScale: 1
+  playerInput: {fileID: 0}
+  rb: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &1710617033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1598,9 +1621,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f60bed4b6016054f9820ccbc3a53ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 1.4
-  gravity: 5
-  gravityScale: 0.2
+  jumpForce: 4
+  gravity: 1
+  gravityScale: 1
   playerInput: {fileID: 0}
   rb: {fileID: 0}
   groundLayer:
