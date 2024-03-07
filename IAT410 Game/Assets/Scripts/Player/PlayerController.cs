@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
 
         playerModel.SetActive(true); // Show the player model again
         EnablePlayerInput();
+        transform.position = targetAnimal.transform.position;
 
         targetAnimal = null; // Clear the target animal
 
