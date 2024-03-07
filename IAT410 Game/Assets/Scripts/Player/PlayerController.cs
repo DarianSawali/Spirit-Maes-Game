@@ -62,22 +62,14 @@ public class PlayerController : MonoBehaviour
 
     protected void OnPlayerMove(InputValue value)
     {
-        // Get the movement input vector
         Vector2 moveInput = value.Get<Vector2>();
-
-        // Calculate the horizontal movement direction based on the input vector
         Vector3 horizontalMoveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
 
-        // Normalize the horizontal movement direction to maintain consistent speed regardless of input magnitude
         horizontalMoveDirection.Normalize();
 
-        // Preserve the current vertical velocity to maintain gravity's effect
         float verticalVelocity = rb.velocity.y;
-
-        // Combine the horizontal movement with the existing vertical velocity
         Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
 
-        // Apply the movement to the player's velocity
         rb.velocity = movement;
     }
 
