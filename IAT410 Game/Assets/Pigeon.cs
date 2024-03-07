@@ -43,8 +43,8 @@ public class Pigeon : MonoBehaviour
     {
         Debug.Log("OnDispossess called");
         PlayerInput input = GetComponent<PlayerInput>();
-        input.actions.FindAction("SkunkMove").Disable();
-        input.actions.FindAction("SkunkJump").Disable();
+        input.actions.FindAction("PigeonMove").Disable();
+        input.actions.FindAction("PigeonJump").Disable();
         input.actions.FindAction("Dispossess").Disable();
 
         
@@ -120,7 +120,7 @@ public class Pigeon : MonoBehaviour
 
     protected void EnableJump()
     {
-        playerInput.actions["SkunkJump"].Enable();
+        playerInput.actions["PigeonJump"].Enable();
     }
 
     public void EnablePigeonInput()
@@ -128,8 +128,8 @@ public class Pigeon : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
 
         input.actions.FindAction("PlayerMove").Disable();
-        input.actions.FindAction("SkunkMove").Enable();
-        input.actions.FindAction("SkunkJump").Enable();
+        input.actions.FindAction("PigeonMove").Enable();
+        input.actions.FindAction("PigeonJump").Enable();
         input.actions.FindAction("Dispossess").Enable();
     }
 
@@ -138,8 +138,8 @@ public class Pigeon : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
 
         input.actions.FindAction("PlayerMove").Enable();
-        input.actions.FindAction("SkunkMove").Disable();
-        input.actions.FindAction("SkunkJump").Disable();
+        input.actions.FindAction("PigeonMove").Disable();
+        input.actions.FindAction("PigeonJump").Disable();
         input.actions.FindAction("Dispossess").Disable();
     }
 
