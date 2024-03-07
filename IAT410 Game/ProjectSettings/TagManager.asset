@@ -5,10 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Tilemap
-  - Animal
   - Ground
   - DigTrigger
   - Button
+  - Skunk
+  - Pigeon
   layers:
   - Default
   - TransparentFX

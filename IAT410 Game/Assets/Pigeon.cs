@@ -34,18 +34,9 @@ public class Pigeon : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-        DisableSkunkInput();
+        DisablePigeonInput();
 
         player = FindObjectOfType<PlayerController>();
-        if (player != null) Debug.Log("player found");
-
-        // if (isSkunkActive)
-        // {
-        //     // input.actions.FindAction("PlayerMove").Disable();
-        //     input.actions.FindAction("SkunkMove").Enable();
-        //     input.actions.FindAction("SkunkJump").Enable();
-        //     input.actions.FindAction("Dispossess").Enable();
-        // }
     }
 
     public void OnDispossess(InputValue value)
@@ -80,16 +71,7 @@ public class Pigeon : MonoBehaviour
 
     }
 
-    // protected void OnSkunkMove(InputValue value)
-    // {
-    //     if (!controlsEnabled) return;
-    //     //Debug.Log("Moving");
-    //     Vector3 moveInput = value.Get<Vector3>();
-    //     Vector3 movement = new Vector3(moveInput.x * moveSpeed, 0f, moveInput.z * moveSpeed);
-    //     rb.velocity = movement;
-    // }
-
-    protected void OnSkunkMove(InputValue value)
+    protected void OnPigeonMove(InputValue value)
     {
         // Get the movement input vector
         Vector2 moveInput = value.Get<Vector2>();
@@ -141,20 +123,20 @@ public class Pigeon : MonoBehaviour
         playerInput.actions["SkunkJump"].Enable();
     }
 
-    public void EnableSkunkInput()
+    public void EnablePigeonInput()
     {
         PlayerInput input = GetComponent<PlayerInput>();
-        // isSkunkActive = true;
+
         input.actions.FindAction("PlayerMove").Disable();
         input.actions.FindAction("SkunkMove").Enable();
         input.actions.FindAction("SkunkJump").Enable();
         input.actions.FindAction("Dispossess").Enable();
     }
 
-    public void DisableSkunkInput()
+    public void DisablePigeonInput()
     {
         PlayerInput input = GetComponent<PlayerInput>();
-        // isSkunkActive = false;
+
         input.actions.FindAction("PlayerMove").Enable();
         input.actions.FindAction("SkunkMove").Disable();
         input.actions.FindAction("SkunkJump").Disable();
@@ -171,43 +153,3 @@ public class Pigeon : MonoBehaviour
     }
 }
 
-
-
-// private void Start()
-// {
-//     rb = GetComponent<Rigidbody>();
-//     rb.useGravity = false; 
-//     rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-// }
-
-// private void Update()
-// {
-//     transform.rotation = Quaternion.Euler(fixedEulerRotation);
-// }
-
-// private void FixedUpdate()
-// {
-//     // Check if the skunk is grounded
-//     isGrounded = CheckGrounded();
-
-//     // Apply friction to stop gliding when not pushed
-//     if (isGrounded)
-//     {
-//         // Apply friction only if the skunk is not being pushed
-//         if (Mathf.Approximately(rb.velocity.magnitude, 0f))
-//         {
-//             rb.velocity = Vector3.zero;
-//         }
-//     }
-// }
-
-// private bool CheckGrounded()
-// {
-//     // Raycast down to check for collisions with the groundTilemap
-//     RaycastHit hit;
-//     if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, groundLayer))
-//     {
-//         return true;
-//     }
-//     return false;
-// }

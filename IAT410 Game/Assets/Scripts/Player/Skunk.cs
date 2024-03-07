@@ -37,15 +37,6 @@ public class Skunk : MonoBehaviour
         DisableSkunkInput();
 
         player = FindObjectOfType<PlayerController>();
-        if (player != null) Debug.Log("player found");
-
-        if (isSkunkActive)
-        {
-            // input.actions.FindAction("PlayerMove").Disable();
-            input.actions.FindAction("SkunkMove").Enable();
-            input.actions.FindAction("SkunkJump").Enable();
-            input.actions.FindAction("Dispossess").Enable();
-        }
     }
 
     public void OnDispossess(InputValue value)

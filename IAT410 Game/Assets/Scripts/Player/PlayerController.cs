@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInput playerInput;
     private Skunk skunk;
+    private Pigeon pigeon;
     protected bool isPlayerActive = true;
 
     protected Rigidbody rb;
@@ -47,13 +48,15 @@ public class PlayerController : MonoBehaviour
         //playerInput.Disable();
 
         skunk = FindObjectOfType<Skunk>();
+        pigeon = FindObjectOfType<Pigeon>();
 
         if (isPlayerActive)
         {
             // Disable SkunkMove action, enable PlayerMove action, enable possession
             input.actions.FindAction("PlayerMove").Enable();
-            input.actions.FindAction("SkunkMove").Disable();
             input.actions.FindAction("Possess").Enable();
+
+            input.actions.FindAction("SkunkMove").Disable();
         }
     }
 
@@ -105,20 +108,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // public void EnablePlayerPossession()
-    // {
-    //     PlayerInput input = GetComponent<PlayerInput>();
-    //     input.actions.FindAction("Possess").Enable();
-    //     // input.actions.FindAction("Dispossess").Disable();
-    // }
-
-    // public void DisablePlayerPossession()
-    // {
-    //     PlayerInput input = GetComponent<PlayerInput>();
-    //     input.actions.FindAction("Possess").Disable();
-    //     input.actions.FindAction("Dispossess").Enable();
-    // }
-
     protected void Update()
     {
         //transform.rotation = Quaternion.Euler(fixedEulerRotation);
@@ -133,22 +122,10 @@ public class PlayerController : MonoBehaviour
             EnablePlayerInput();
         }
 
-        if(!isPlayerActive)
+        if (!isPlayerActive)
         {
             DisablePlayerInput();
         }
-
-        // if (!isPossessing)
-        // {
-        //     EnablePlayerInput();
-        //     EnablePlayerPossession();
-        // }
-
-        // if (isPossessing)
-        // {
-        //     DisablePlayerPossession();
-        //     DisablePlayerInput();
-        // }
     }
 
     //possessing mechanic
@@ -169,21 +146,29 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("OnDispossess called");
         DispossessAnimal();
-        // if (isPossessing)
-        // {
-        //     DispossessAnimal();
-        //     isPossessing = false;
-        // }
     }
 
     public void PossessAnimal(GameObject animal)
     {
         Debug.Log("Possessing animal");
 
+        Skunk skunkComponent = targetAnimal.GetComponent<Skunk>();
+        if (skunkComponent != null)
+        {
+            skunk.EnableSkunkInput();
+            Debug.Log("Possessing Skunk");
+        }
+
+        Pigeon pigeonComponent = targetAnimal.GetComponent<Pigeon>();
+        if (pigeonComponent != null)
+        {
+            pigeon.EnablePigeonInput();
+            Debug.Log("Possessing Pigeon");
+        }
+
         isPlayerActive = false;
 
         playerModel.SetActive(false);
-        skunk.EnableSkunkInput();
 
         // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
     }
@@ -200,9 +185,8 @@ public class PlayerController : MonoBehaviour
         isPlayerActive = true;
 
         // cameraFollowScript.SetTarget(player.transform); // Make the camera follow the player again
-
     }
-
+    // end of possessing mechanic
 
     public void OnDig()
     {
@@ -218,12 +202,13 @@ public class PlayerController : MonoBehaviour
         transform.position = position;
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Animal"))
+        if (other.CompareTag("Pigeon") || other.CompareTag("Skunk") || other.CompareTag("Fish"))
         {
             targetAnimal = other.gameObject;
+
+            // Debug.Log(targetAnimal);
             Debug.Log("trigger called");
         }
 
@@ -236,7 +221,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Animal") && other.gameObject == targetAnimal)
+        if ((other.CompareTag("Skunk") || other.CompareTag("Pigeon") || other.CompareTag("Fish")) && other.gameObject == targetAnimal)
         {
             targetAnimal = null;
         }
@@ -249,8 +234,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
-    
 
 
     // private bool IsGrounded()

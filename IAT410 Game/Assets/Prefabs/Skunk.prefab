@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2334330955270124986}
   m_Layer: 8
   m_Name: Skunk
-  m_TagString: Animal
+  m_TagString: Skunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,3 +209,4 @@ MonoBehaviour:
     m_Bits: 128
   spawnPoint: {fileID: 0}
   playerInput: {fileID: 0}
+  playerModel: {fileID: 0}
