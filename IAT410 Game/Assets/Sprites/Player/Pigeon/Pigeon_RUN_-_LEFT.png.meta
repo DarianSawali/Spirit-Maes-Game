@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a5456e920f560ea45a396427fa327fc5
+guid: 9e95aad2aa5b0b84aacb0e5f58876006
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled_6_2_3_2_2_0
+      name: Pigeon_RUN_-_LEFT_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 403710e17049c0149ae2ded66b9438f8
-      internalID: -855703280
+      spriteID: 0c1e85bb5ab47b94fa35f085f3ff0dc2
+      internalID: 1539906697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_6_2_3_2_2_1
+      name: Pigeon_RUN_-_LEFT_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 16
         y: 0
-        width: 128
-        height: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f810a2007d060e41a827a153efa5663
-      internalID: -155935986
+      spriteID: 006fdbe7475b7f5409b916bc7cee836d
+      internalID: 1155831331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_6_2_3_2_2_2
+      name: Pigeon_RUN_-_LEFT_2
       rect:
         serializedVersion: 2
-        x: 256
+        x: 32
         y: 0
-        width: 128
-        height: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc9a332c7a8b1de4a8b7a06c948ce96d
-      internalID: 640355832
+      spriteID: 7510284436722ac47803297ad52c5b92
+      internalID: 2084305022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_6_2_3_2_2_3
+      name: Pigeon_RUN_-_LEFT_3
       rect:
         serializedVersion: 2
-        x: 384
+        x: 48
         y: 0
-        width: 128
-        height: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba5e50e3d87fa6b4798a0cd07bde706a
-      internalID: 1685689854
+      spriteID: 2870a776a01538e4084f438725cf05ef
+      internalID: -704124222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_6_2_3_2_2_4
+      name: Pigeon_RUN_-_LEFT_4
       rect:
         serializedVersion: 2
-        x: 512
+        x: 64
         y: 0
-        width: 128
-        height: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 445e3527c1a82b54b84e1facab684815
-      internalID: -2104120867
+      spriteID: b096431c2db65f24bbf1f033efefa062
+      internalID: 641637860
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_6_2_3_2_2_5
+      name: Pigeon_RUN_-_LEFT_5
       rect:
         serializedVersion: 2
-        x: 640
+        x: 80
         y: 0
-        width: 128
-        height: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ae1c9e43d80e384b94ca1d869edc1fb
-      internalID: 121703714
+      spriteID: 8b4f777bc3b0c914f835bb73ace0304f
+      internalID: 380922005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_6_2_3_2_2_6
+      name: Pigeon_RUN_-_LEFT_6
       rect:
         serializedVersion: 2
-        x: 768
+        x: 96
         y: 0
-        width: 128
-        height: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,29 +263,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8da948dea64aa0b4a94be32565cd0a95
-      internalID: -1659899290
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled_6_2_3_2_2_7
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 0
-        width: 128
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1ff9c4865be03c64a8a7dbd7added69e
-      internalID: -179694688
+      spriteID: 0c12083d489a7154ebb7c56aa38b7678
+      internalID: -1042445192
       vertices: []
       indices: 
       edges: []
@@ -293,7 +272,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e88b32d5906704b4a99e2a20fb0e4397
+    spriteID: 3417e45dbaf571d409ab74c1aac6d8de
     internalID: 0
     vertices: []
     indices: 
@@ -301,14 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Untitled_6_2_3_2_2_0: -855703280
-      Untitled_6_2_3_2_2_1: -155935986
-      Untitled_6_2_3_2_2_2: 640355832
-      Untitled_6_2_3_2_2_3: 1685689854
-      Untitled_6_2_3_2_2_4: -2104120867
-      Untitled_6_2_3_2_2_5: 121703714
-      Untitled_6_2_3_2_2_6: -1659899290
-      Untitled_6_2_3_2_2_7: -179694688
+      Pigeon_RUN_-_LEFT_0: 1539906697
+      Pigeon_RUN_-_LEFT_1: 1155831331
+      Pigeon_RUN_-_LEFT_2: 2084305022
+      Pigeon_RUN_-_LEFT_3: -704124222
+      Pigeon_RUN_-_LEFT_4: 641637860
+      Pigeon_RUN_-_LEFT_5: 380922005
+      Pigeon_RUN_-_LEFT_6: -1042445192
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
