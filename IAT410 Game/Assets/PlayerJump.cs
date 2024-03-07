@@ -35,16 +35,6 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    // public void OnSkunkJump()
-    // {
-    //     if (isGrounded)
-    //     {
-    //         // Apply jump force only when grounded
-    //         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    //         Debug.Log("Jump");
-    //     }
-    // }
-
     public void OnJump()
     {
         if (isGrounded)

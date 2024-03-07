@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private Transform teleportTarget;
 
     private bool canDig = false;
+    public bool dug = false;
     //public GameObject[] teleportTargets;
     // public CamFollow cameraFollowScript;
 
@@ -180,19 +181,19 @@ public class PlayerController : MonoBehaviour
     }
     // end of possessing mechanic
 
-    public void OnDig()
-    {
-        if (canDig && teleportTarget != null)
-        {
-            TeleportToDigLocation(teleportTarget.position);
-            Debug.Log("Dig");
-        }
-    }
+    // public void OnDig()
+    // {
+    //     if (canDig && teleportTarget != null)
+    //     {
+    //         TeleportToDigLocation(teleportTarget.position);
+    //         Debug.Log("Dig");
+    //     }
+    // }
 
-    public void TeleportToDigLocation(Vector3 position)
-    {
-        transform.position = position;
-    }
+    // public void TeleportToDigLocation(Vector3 position)
+    // {
+    //     transform.position = position;
+    // }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -207,7 +208,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("DigTrigger"))
         {
             canDig = true;
-            teleportTarget = other.GetComponent<DigTrigger>().teleportLocation;
+            teleportTarget = other.GetComponent<DigTrigger>().digLocation;
             Debug.Log("canDig");
         }
     }

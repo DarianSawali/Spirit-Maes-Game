@@ -56,39 +56,22 @@ public class Pigeon : MonoBehaviour
 
     protected void Update()
     {
-        //transform.rotation = Quaternion.Euler(fixedEulerRotation);
-
-        if (!isGrounded)
-        {
-            isGrounded = CheckGrounded();
-            rb.velocity += Vector3.down * gravity * Time.deltaTime;
-        }
-
         if (transform.position.y < -2f)
         {
             transform.position = spawnPoint.position;
         }
-
     }
 
     protected void OnPigeonMove(InputValue value)
     {
-        // Get the movement input vector
         Vector2 moveInput = value.Get<Vector2>();
-
-        // Calculate the horizontal movement direction based on the input vector
         Vector3 horizontalMoveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
 
-        // Normalize the horizontal movement direction to maintain consistent speed regardless of input magnitude
         horizontalMoveDirection.Normalize();
 
-        // Preserve the current vertical velocity to maintain gravity's effect
         float verticalVelocity = rb.velocity.y;
-
-        // Combine the horizontal movement with the existing vertical velocity
         Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
 
-        // Apply the movement to the player's velocity
         rb.velocity = movement;
     }
 
@@ -113,10 +96,10 @@ public class Pigeon : MonoBehaviour
     //     }
     // }
 
-    protected void FixedUpdate()
-    {
-        isGrounded = CheckGrounded();
-    }
+    // protected void FixedUpdate()
+    // {
+    //     isGrounded = CheckGrounded();
+    // }
 
     protected void EnableJump()
     {
@@ -141,15 +124,6 @@ public class Pigeon : MonoBehaviour
         input.actions.FindAction("PigeonMove").Disable();
         input.actions.FindAction("PigeonJump").Disable();
         input.actions.FindAction("Dispossess").Disable();
-    }
-
-    protected bool CheckGrounded()
-    {
-        if (Physics.Raycast(transform.position, Vector3.down, groundedCheckDist, groundLayer))
-        {
-            return true;
-        }
-        return false;
     }
 }
 
