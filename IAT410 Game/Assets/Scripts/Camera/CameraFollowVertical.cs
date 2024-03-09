@@ -4,13 +4,34 @@ public class CameraFollowVertical : MonoBehaviour
 {
     public Transform player; // Assign your player transform here
     public float followSpeed = 2f;
-    public float zOffset = -10f; // Set this to whatever Z-offset you want from the player
+    public float zOffset = 0.75f; // Set this to whatever Z-offset you want from the player
+
+    public float orthoZoomSpeed = 1f; // Speed at which the camera zooms in and out
+    public float targetOrthoSize = 1.5f; // Target orthographic size for the zoom level
+
+    private Camera cam; // Reference to the Camera component
+
+    private void Start()
+    {
+        cam = Camera.main; // Cache the main camera
+    }
 
     private void LateUpdate()
     {
-        // Assuming your camera is looking down the Y-axis (typical in 2D games),
-        // and you want to follow the player's Z-axis position.
+        // Follow player's Z-axis position
         Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, player.position.z + zOffset);
         transform.position = Vector3.Lerp(transform.position, newPosition, followSpeed * Time.deltaTime);
+
+        // Adjust camera orthographic size to zoom in or out
+        if (cam.orthographic)
+        {
+            cam.orthographicSize = Mathf.MoveTowards(cam.orthographicSize, targetOrthoSize, orthoZoomSpeed * Time.deltaTime);
+        }
+    }
+
+    // Call this method to adjust zoom level dynamically (e.g., when certain events occur)
+    public void AdjustZoom(float newTargetSize)
+    {
+        targetOrthoSize = newTargetSize;
     }
 }
