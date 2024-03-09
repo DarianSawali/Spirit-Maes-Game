@@ -149,6 +149,7 @@ public class PlayerController : MonoBehaviour
         if (skunkComponent != null)
         {
             skunk.EnableSkunkInput();
+            skunk.GetComponent<CapsuleCollider>().enabled = true;
             Debug.Log("Possessing Skunk");
         }
 
