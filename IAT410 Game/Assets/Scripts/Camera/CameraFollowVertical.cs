@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraFollowVertical : MonoBehaviour
 {
-    public Transform player; // Assign your player transform here
+    public Transform target; // Assign the initial target, e.g., the player, here
     public float followSpeed = 2f;
     public float zOffset = 0.75f; // Set this to whatever Z-offset you want from the player
 
@@ -19,7 +19,7 @@ public class CameraFollowVertical : MonoBehaviour
     private void LateUpdate()
     {
         // Follow player's Z-axis position
-        Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, player.position.z + zOffset);
+        Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, target.position.z + zOffset);
         transform.position = Vector3.Lerp(transform.position, newPosition, followSpeed * Time.deltaTime);
 
         // Adjust camera orthographic size to zoom in or out
@@ -27,6 +27,12 @@ public class CameraFollowVertical : MonoBehaviour
         {
             cam.orthographicSize = Mathf.MoveTowards(cam.orthographicSize, targetOrthoSize, orthoZoomSpeed * Time.deltaTime);
         }
+    }
+
+    // Method to adjust the camera's current target
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
     }
 
     // Call this method to adjust zoom level dynamically (e.g., when certain events occur)
