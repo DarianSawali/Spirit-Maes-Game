@@ -201,6 +201,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Pigeon") || other.CompareTag("Skunk") || other.CompareTag("Fish"))
         {
             targetAnimal = other.gameObject;
+            targetAnimal.GetComponent<CapsuleCollider>().enabled = false;
 
             // Debug.Log(targetAnimal);
             Debug.Log("trigger called");
@@ -217,6 +218,7 @@ public class PlayerController : MonoBehaviour
     {
         if ((other.CompareTag("Skunk") || other.CompareTag("Pigeon") || other.CompareTag("Fish")) && other.gameObject == targetAnimal)
         {
+            targetAnimal.GetComponent<CapsuleCollider>().enabled = true;
             targetAnimal = null;
         }
 
@@ -226,7 +228,6 @@ public class PlayerController : MonoBehaviour
             canDig = false;
             teleportTarget = null;
         }
-
     }
 
 

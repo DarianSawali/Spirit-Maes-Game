@@ -47,7 +47,7 @@ public class Skunk : MonoBehaviour
         input.actions.FindAction("SkunkJump").Disable();
         input.actions.FindAction("Dispossess").Disable();
 
-        
+
         playerModel.SetActive(true); // Show the player model again
         // player.EnablePlayerInput();
         player.DispossessAnimal();
@@ -125,6 +125,8 @@ public class Skunk : MonoBehaviour
     protected void FixedUpdate()
     {
         isGrounded = CheckGrounded();
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
     }
 
     protected void EnableJump()
@@ -160,9 +162,28 @@ public class Skunk : MonoBehaviour
         }
         return false;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Pigeon") || other.CompareTag("Player") || other.CompareTag("Fish"))
+        {
+            rb.constraints = ~RigidbodyConstraints.FreezePosition;
+            // rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
+            Debug.Log("player is near");
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player") || other.CompareTag("Pigeon") || other.CompareTag("Fish"))
+        {
+            // rb.constraints = ~RigidbodyConstraints.FreezePosition;
+            // rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
+            Debug.Log("player is not near");
+        }
+    }
 }
-
-
 
 // private void Start()
 // {
