@@ -167,59 +167,16 @@ public class Skunk : MonoBehaviour
     {
         if (other.CompareTag("Pigeon") || other.CompareTag("Player") || other.CompareTag("Fish"))
         {
-            // rb.constraints = ~RigidbodyConstraints.FreezePosition;
-            // rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-
             Debug.Log("player is near");
+            //testing for invincibility when player approach
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Pigeon") || other.CompareTag("Fish"))
         {
-            // rb.constraints = ~RigidbodyConstraints.FreezePosition;
-            // rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-
             Debug.Log("player is not near");
+            //testing for invincibility when player approach
         }
     }
 }
-
-// private void Start()
-// {
-//     rb = GetComponent<Rigidbody>();
-//     rb.useGravity = false; 
-//     rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-// }
-
-// private void Update()
-// {
-//     transform.rotation = Quaternion.Euler(fixedEulerRotation);
-// }
-
-// private void FixedUpdate()
-// {
-//     // Check if the skunk is grounded
-//     isGrounded = CheckGrounded();
-
-//     // Apply friction to stop gliding when not pushed
-//     if (isGrounded)
-//     {
-//         // Apply friction only if the skunk is not being pushed
-//         if (Mathf.Approximately(rb.velocity.magnitude, 0f))
-//         {
-//             rb.velocity = Vector3.zero;
-//         }
-//     }
-// }
-
-// private bool CheckGrounded()
-// {
-//     // Raycast down to check for collisions with the groundTilemap
-//     RaycastHit hit;
-//     if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, groundLayer))
-//     {
-//         return true;
-//     }
-//     return false;
-// }
