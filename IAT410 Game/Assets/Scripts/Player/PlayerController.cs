@@ -151,8 +151,9 @@ public class PlayerController : MonoBehaviour
         {
             skunk.EnableSkunkInput();
             skunk.GetComponent<CapsuleCollider>().enabled = true;
-            cameraFollowScript.SetTarget(skunk.transform);
             Debug.Log("Possessing Skunk");
+
+            cameraFollowScript.SetTarget(skunk.transform); // set camera to follow skunk
         }
 
         Pigeon pigeonComponent = targetAnimal.GetComponent<Pigeon>();
