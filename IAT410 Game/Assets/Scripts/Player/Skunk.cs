@@ -167,7 +167,7 @@ public class Skunk : MonoBehaviour
     {
         if (other.CompareTag("Pigeon") || other.CompareTag("Player") || other.CompareTag("Fish"))
         {
-            rb.constraints = ~RigidbodyConstraints.FreezePosition;
+            // rb.constraints = ~RigidbodyConstraints.FreezePosition;
             // rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
             Debug.Log("player is near");
