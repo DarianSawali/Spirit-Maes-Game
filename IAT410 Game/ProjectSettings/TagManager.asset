@@ -12,6 +12,7 @@ TagManager:
   - Pigeon
   - Fish
   - Animal
+  - Water
   layers:
   - Default
   - TransparentFX
