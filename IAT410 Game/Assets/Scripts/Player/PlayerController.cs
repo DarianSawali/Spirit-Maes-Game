@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     //protected bool controlsEnabled = true; // enable/disable player movement
 
-    public GameObject playerModel; 
+    public GameObject playerModel;
     private GameObject targetAnimal = null;
 
     public PlayerJump playerJump;
@@ -178,7 +178,8 @@ public class PlayerController : MonoBehaviour
 
         isPlayerActive = true;
 
-        // cameraFollowScript.SetTarget(player.transform); // Make the camera follow the player again
+        CameraFollowVertical cameraFollowScript = Camera.main.GetComponent<CameraFollowVertical>();
+        cameraFollowScript.SetTarget(transform); // set camera to follow player back
     }
     // end of possessing mechanic
 
