@@ -21,7 +21,7 @@ public class Skunk : MonoBehaviour
 
     protected bool controlsEnabled = true;
 
-    public GameObject playerModel;
+    public GameObject playerModel; 
 
     private PlayerController player;
 
@@ -35,7 +35,7 @@ public class Skunk : MonoBehaviour
         DisableSkunkInput();
 
         player = FindObjectOfType<PlayerController>();
-    }
+            }
 
     public void OnDispossess(InputValue value)
     {
@@ -45,7 +45,7 @@ public class Skunk : MonoBehaviour
         input.actions.FindAction("SkunkJump").Disable();
         input.actions.FindAction("Dispossess").Disable();
 
-
+        
         playerModel.SetActive(true); // Show the player model again
         // player.EnablePlayerInput();
         player.DispossessAnimal();
@@ -79,7 +79,8 @@ public class Skunk : MonoBehaviour
     protected void FixedUpdate()
     {
         isGrounded = CheckGrounded();
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
     }
 
     protected void EnableJump()
@@ -101,10 +102,10 @@ public class Skunk : MonoBehaviour
     {
         PlayerInput input = GetComponent<PlayerInput>();
         isSkunkActive = false;
-        input.actions.FindAction("PlayerMove").Enable();
+input.actions.FindAction("PlayerMove").Enable();
         input.actions.FindAction("SkunkMove").Disable();
         input.actions.FindAction("SkunkJump").Disable();
-        input.actions.FindAction("Dispossess").Disable();
+input.actions.FindAction("Dispossess").Disable();
     }
 
     protected bool CheckGrounded()
