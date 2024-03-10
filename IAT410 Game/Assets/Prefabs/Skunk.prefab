@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8366032019715385199}
   - component: {fileID: 5962851162943348258}
   - component: {fileID: 2334330955270124986}
+  - component: {fileID: -2505343339626628100}
   m_Layer: 8
   m_Name: Skunk
   m_TagString: Skunk
@@ -203,12 +204,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.9
-  jumpForce: 1.4
   groundTilemap: {fileID: 0}
-  gravity: 6
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
   spawnPoint: {fileID: 0}
   playerInput: {fileID: 0}
   playerModel: {fileID: 0}
+--- !u!114 &-2505343339626628100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6243248192482893930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e46900647e4934c93cf87e28b24262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 1.4
+  gravity: 5
+  gravityScale: 0.2
+  playerInput: {fileID: 0}
+  rb: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
