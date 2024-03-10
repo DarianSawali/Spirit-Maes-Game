@@ -7,6 +7,9 @@ public class MovementManager : MonoBehaviour
 {
     private PlayerInput playerInput;
     private bool isPlayerActive = true;
+    private bool isSkunkActive = false;
+    private bool isPidgeonActive = false;
+    private bool isFishActive = false;
 
     private void Start()
     {
@@ -45,4 +48,21 @@ public class MovementManager : MonoBehaviour
         playerInput.actions.FindAction("SkunkJump").Disable();
         playerInput.actions.FindAction("Dispossess").Disable();
     }
+
+    public void EnablePidgeonInput(){
+
+    }
+
+    public void DisablePidgeonInput(){
+
+    }
+
+    public void EnableFishInput(){
+
+    }
+
+    public void DisableFishInput(){
+
+    }
+    
 }
