@@ -140,7 +140,6 @@ public class PlayerController : MonoBehaviour
     public void PossessAnimal(GameObject animal)
     {
         Debug.Log("Possessing animal");
-        CameraFollowVertical cameraFollowScript = Camera.main.GetComponent<CameraFollowVertical>();
 
         Skunk skunkComponent = targetAnimal.GetComponent<Skunk>();
         if (skunkComponent != null)
@@ -148,8 +147,6 @@ public class PlayerController : MonoBehaviour
             skunk.EnableSkunkInput();
             skunk.GetComponent<CapsuleCollider>().enabled = true;
             Debug.Log("Possessing Skunk");
-
-            cameraFollowScript.SetTarget(skunk.transform); // set camera to follow skunk
         }
 
         Pigeon pigeonComponent = targetAnimal.GetComponent<Pigeon>();
