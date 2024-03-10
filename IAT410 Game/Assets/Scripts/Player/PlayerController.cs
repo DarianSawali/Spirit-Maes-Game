@@ -7,9 +7,7 @@ using UnityEngine.Tilemaps;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 4f;
-    //public float jumpForce = 1.4f;
     public Tilemap groundTilemap;
-    //public float gravity = 6f;
     public LayerMask groundLayer;
     protected float groundedCheckDist = 0.1f;
     public Transform spawnPoint;
@@ -28,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     //protected bool controlsEnabled = true; // enable/disable player movement
 
-    public GameObject playerModel; // Assign your player model in the inspector
+    public GameObject playerModel; 
     private GameObject targetAnimal = null;
 
     public PlayerJump playerJump;
@@ -36,8 +34,6 @@ public class PlayerController : MonoBehaviour
 
     private bool canDig = false;
     public bool dug = false;
-    //public GameObject[] teleportTargets;
-    // public CamFollow cameraFollowScript;
 
     protected void Start()
     {
@@ -183,19 +179,19 @@ public class PlayerController : MonoBehaviour
     }
     // end of possessing mechanic
 
-    // public void OnDig()
-    // {
-    //     if (canDig && teleportTarget != null)
-    //     {
-    //         TeleportToDigLocation(teleportTarget.position);
-    //         Debug.Log("Dig");
-    //     }
-    // }
+    public void OnDig()
+    {
+        if (canDig && teleportTarget != null)
+        {
+            TeleportToDigLocation(teleportTarget.position);
+            Debug.Log("Dig");
+        }
+    }
 
-    // public void TeleportToDigLocation(Vector3 position)
-    // {
-    //     transform.position = position;
-    // }
+    public void TeleportToDigLocation(Vector3 position)
+    {
+        transform.position = position;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -211,7 +207,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("DigTrigger"))
         {
             canDig = true;
-            teleportTarget = other.GetComponent<DigTrigger>().digLocation;
+            teleportTarget = other.GetComponent<DigTrigger>().teleportLocation;
             Debug.Log("canDig");
         }
     }
@@ -229,6 +225,7 @@ public class PlayerController : MonoBehaviour
             canDig = false;
             teleportTarget = null;
         }
+
     }
 
 
