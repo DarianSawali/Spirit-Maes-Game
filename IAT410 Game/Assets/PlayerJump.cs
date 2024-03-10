@@ -30,7 +30,6 @@ public class PlayerJump : MonoBehaviour
         isGrounded = IsGrounded();
         if (!isGrounded)
         {
-            // rb.velocity += Vector3.down * gravity * Time.deltaTime;
             rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
         }
     }
@@ -59,4 +58,29 @@ public class PlayerJump : MonoBehaviour
         }
         return false;
     }
+
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.CompareTag("Water"))
+    //     {
+    //         rb.enabled = false;
+    //     }
+    // }
+
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (other.CompareTag("Water"))
+    //     {
+    //         rb.enabled = true;
+    //     }
+    // }
+
+    public void FallThroughWater()
+    {
+        int waterLayer = LayerMask.NameToLayer("Water");
+        rb.gameObject.layer = waterLayer;
+        rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
+    }
+
+    
 }

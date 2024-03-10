@@ -228,6 +228,18 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void FallThroughWater()
+    {
+        // Assuming "Water" is the layer index for water platforms
+        int waterLayer = LayerMask.NameToLayer("Water");
+
+        // Adjust the Rigidbody's layer to allow falling through water
+        rb.gameObject.layer = waterLayer;
+
+        // Apply downward force to simulate falling
+        rb.AddForce(Vector3.down * 10f, ForceMode.Impulse);
+    }
+
 
     // private bool IsGrounded()
     // {
