@@ -105,8 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74fdbfca839b42a4490a088200017593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  player: {fileID: 0}
   followSpeed: 2
-  zOffset: 0.25
+  zOffset: 0.75
   orthoZoomSpeed: 1
   targetOrthoSize: 1.5
