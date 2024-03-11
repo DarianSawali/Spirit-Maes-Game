@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private Skunk skunk;
     private Pigeon pigeon;
+    private Fish fish;
     protected bool isPlayerActive = true;
 
     protected Rigidbody rb;
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     //protected bool controlsEnabled = true; // enable/disable player movement
 
-    public GameObject playerModel;
+    public GameObject playerModel; 
     private GameObject targetAnimal = null;
 
     public PlayerJump playerJump;
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
         skunk = FindObjectOfType<Skunk>();
         pigeon = FindObjectOfType<Pigeon>();
+        fish = FindObjectOfType<Fish>();
 
         if (isPlayerActive)
         {
@@ -146,27 +148,37 @@ public class PlayerController : MonoBehaviour
         if (skunkComponent != null)
         {
             skunk.EnableSkunkInput();
-            // set animal's capsule collider to on when possessing
             skunk.GetComponent<CapsuleCollider>().enabled = true;
             Debug.Log("Possessing Skunk");
 
-            cameraFollowScript.SetTarget(skunk.transform); // set camera to follow skunk
+            cameraFollowScript.SetTarget(skunk.transform);
         }
 
         Pigeon pigeonComponent = targetAnimal.GetComponent<Pigeon>();
         if (pigeonComponent != null)
         {
             pigeon.EnablePigeonInput();
-            // set animal's capsule collider to on when possessing
             pigeon.GetComponent<CapsuleCollider>().enabled = true;
             Debug.Log("Possessing Pigeon");
-
+        
             cameraFollowScript.SetTarget(pigeon.transform); // set camera to follow pigeon
+        }
+
+        Fish fishComponent = targetAnimal.GetComponent<Fish>();
+        if (fishComponent != null)
+        {
+            fish.EnableFishInput();
+            fish.GetComponent<CapsuleCollider>().enabled = true;
+            Debug.Log("Possessing Fish");
+
+            cameraFollowScript.SetTarget(fish.transform);
         }
 
         isPlayerActive = false;
 
         playerModel.SetActive(false);
+
+        // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
     }
 
     public void DispossessAnimal()
@@ -186,20 +198,6 @@ public class PlayerController : MonoBehaviour
     }
     // end of possessing mechanic
 
-    public void OnDig()
-    {
-        if (canDig && teleportTarget != null)
-        {
-            TeleportToDigLocation(teleportTarget.position);
-            Debug.Log("Dig");
-        }
-    }
-
-    public void TeleportToDigLocation(Vector3 position)
-    {
-        transform.position = position;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Pigeon") || other.CompareTag("Skunk") || other.CompareTag("Fish"))
@@ -207,8 +205,7 @@ public class PlayerController : MonoBehaviour
             targetAnimal = other.gameObject;
             targetAnimal.GetComponent<CapsuleCollider>().enabled = false;
 
-            // Debug.Log(targetAnimal);
-            Debug.Log("trigger called");
+            Debug.Log("No collision");
         }
 
         if (other.CompareTag("DigTrigger"))
@@ -235,17 +232,21 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void FallThroughWater()
+    public void OnDig()
     {
-        // Assuming "Water" is the layer index for water platforms
-        int waterLayer = LayerMask.NameToLayer("Water");
-
-        // Adjust the Rigidbody's layer to allow falling through water
-        rb.gameObject.layer = waterLayer;
-
-        // Apply downward force to simulate falling
-        rb.AddForce(Vector3.down * 10f, ForceMode.Impulse);
+        if (canDig && teleportTarget != null)
+        {
+            TeleportToDigLocation(teleportTarget.position);
+            Debug.Log("Dig");
+        }
     }
+
+    public void TeleportToDigLocation(Vector3 position)
+    {
+        transform.position = position;
+    }
+
+    
 
 
     // private bool IsGrounded()

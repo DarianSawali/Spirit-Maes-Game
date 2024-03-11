@@ -15,13 +15,23 @@ public class Fish : MonoBehaviour
 
     protected Rigidbody rb;
 
+    protected bool isFishActive = false;
+
     public GameObject playerModel;
     private GameObject nearbyAnimal = null; // to turn on/off nearby animal collider
     private PlayerController player;
 
     void Start()
     {
-        
+        PlayerInput input = GetComponent<PlayerInput>();
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
+
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
+        DisableFishInput();
+
+        player = FindObjectOfType<PlayerController>();
     }
 
     protected void Update()
@@ -50,6 +60,37 @@ public class Fish : MonoBehaviour
 
         Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
         rb.velocity = movement;
+    }
+
+    public void OnDispossess(InputValue value)
+    {
+        Debug.Log("OnDispossess called");
+        PlayerInput input = GetComponent<PlayerInput>();
+        input.actions.FindAction("FishMove").Disable();
+        input.actions.FindAction("Dispossess").Disable();
+
+        playerModel.SetActive(true); 
+
+        player.DispossessAnimal();
+        isFishActive = false;
+    }
+
+    public void EnableFishInput()
+    {
+        PlayerInput input = GetComponent<PlayerInput>();
+        isFishActive = true;
+        input.actions.FindAction("PlayerMove").Disable();
+        input.actions.FindAction("FishMove").Enable();
+        input.actions.FindAction("Dispossess").Enable();
+    }
+
+    public void DisableFishInput()
+    {
+        PlayerInput input = GetComponent<PlayerInput>();
+        isFishActive = false;
+        input.actions.FindAction("PlayerMove").Enable();
+        input.actions.FindAction("FishMove").Disable();
+        input.actions.FindAction("Dispossess").Disable();
     }
 
 
