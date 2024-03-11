@@ -15,6 +15,13 @@ public class PidgeonJump : MonoBehaviour
 
     private PlayerController playerControl;
 
+    private Animator animator; // for jumping animation
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     protected void Start()
     {
         PlayerInput input = GetComponent<PlayerInput>();
@@ -27,6 +34,10 @@ public class PidgeonJump : MonoBehaviour
     protected void Update()
     {
         isGrounded = IsGrounded();
+
+        // Set the Animator's boolean to determine if the character is grounded
+        animator.SetBool("isGrounded", isGrounded);
+
         if (!isGrounded)
         {
             rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);

@@ -25,9 +25,7 @@ public class Skunk : MonoBehaviour
 
     private PlayerController player;
 
-
     // for animations
-    private Vector2 movement;
     private Animator animator;
 
     private void Awake()

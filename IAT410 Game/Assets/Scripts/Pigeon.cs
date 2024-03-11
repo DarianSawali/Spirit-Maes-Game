@@ -24,6 +24,14 @@ public class Pigeon : MonoBehaviour
 
     private PlayerController player;
 
+    // for animations
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     protected void Start()
     {
         PlayerInput input = GetComponent<PlayerInput>();
@@ -72,6 +80,18 @@ public class Pigeon : MonoBehaviour
 
         Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
         rb.velocity = movement;
+
+        if (horizontalMoveDirection.x != 0 || horizontalMoveDirection.z != 0)
+        {
+            animator.SetFloat("X", horizontalMoveDirection.x);
+            animator.SetFloat("Y", horizontalMoveDirection.z);
+
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
     }
 
     protected void FixedUpdate()
