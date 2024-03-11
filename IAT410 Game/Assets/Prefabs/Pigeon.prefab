@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1571249729676192884}
   - component: {fileID: 8366032019715385199}
   - component: {fileID: 5962851162943348258}
-  - component: {fileID: 9074559644301126793}
+  - component: {fileID: -3410533489744986153}
   - component: {fileID: -3065237953329670601}
   - component: {fileID: 6903377384770454532}
   m_Layer: 8
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &9074559644301126793
+--- !u!114 &-3410533489744986153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
