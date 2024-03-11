@@ -14,11 +14,14 @@ public class PidgeonJump : MonoBehaviour
     protected bool isGrounded;
 
     private PlayerController playerControl;
-    
-    protected void Start(){
+
+    protected void Start()
+    {
         PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+
+        PlayerController playerControl = GetComponent<PlayerController>();
     }
 
     protected void Update()

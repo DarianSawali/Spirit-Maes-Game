@@ -69,10 +69,9 @@ public class Pigeon : MonoBehaviour
         Vector3 horizontalMoveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
 
         horizontalMoveDirection.Normalize();
-
         float verticalVelocity = rb.velocity.y;
-        Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
-
+       
+       Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
         rb.velocity = movement;
     }
 
