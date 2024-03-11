@@ -44,8 +44,7 @@ public class Fish : MonoBehaviour
 
     protected void Update()
     {
-        // if skunk fell, respawn at respawn position
-
+        // if fish fell, respawn at respawn position
         if (transform.position.y < -2f)
         {
             transform.position = spawnPoint.position;
