@@ -113,8 +113,6 @@ public class Skunk : MonoBehaviour
         return false;
     }
 
-    // to handle collisions so the animal will be 'invincible' and not
-    // bounce off when the player bumps into it
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Pigeon"))
