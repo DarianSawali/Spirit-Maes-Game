@@ -14,8 +14,16 @@ public class SkunkJump : MonoBehaviour
     protected bool isGrounded;
 
     private PlayerController playerControl;
-    
-    protected void Start(){
+
+    private Animator animator; // for jumping animation
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    protected void Start()
+    {
         PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
@@ -38,6 +46,7 @@ public class SkunkJump : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             Debug.Log("Jump");
+            animator.SetBool("isJumping", true);
         }
     }
 
@@ -50,6 +59,7 @@ public class SkunkJump : MonoBehaviour
         {
             if (hit.collider.CompareTag("Ground"))
             {
+                animator.SetBool("isJumping", false);
                 // The player is considered grounded
                 return true;
             }
