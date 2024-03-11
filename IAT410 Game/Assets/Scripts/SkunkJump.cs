@@ -38,10 +38,6 @@ public class SkunkJump : MonoBehaviour
         {
             rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
         }
-        if (isGrounded)
-        {
-            animator.SetBool("isJumping", false);
-        }
     }
 
     public void OnJump()
@@ -49,9 +45,10 @@ public class SkunkJump : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            animator.SetTrigger("Jump");
             Debug.Log("Jump");
-            animator.SetBool("isJumping", true);
         }
+        // animator.SetBool("isJumping", false);
     }
 
     private bool IsGrounded()
