@@ -90,6 +90,12 @@ public class Skunk : MonoBehaviour
         {
             animator.SetFloat("X", horizontalMoveDirection.x);
             animator.SetFloat("Y", horizontalMoveDirection.z);
+
+            animator.SetBool("IsRunning", true);
+        }
+        else 
+        {
+            animator.setBool("IsRunning", false);
         }
     }
 
