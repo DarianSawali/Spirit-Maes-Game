@@ -89,7 +89,7 @@ public class Skunk : MonoBehaviour
         if (moveInput.x != 0 || moveInput.y != 0)
         {
             animator.SetFloat("X", moveInput.x);
-            animator.SetFloat("Z", moveInput.y);
+            animator.SetFloat("Y", moveInput.y);
         }
     }
 
