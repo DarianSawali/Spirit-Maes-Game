@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5962851162943348258}
   - component: {fileID: 9074559644301126793}
   - component: {fileID: -3065237953329670601}
+  - component: {fileID: 6903377384770454532}
   m_Layer: 8
   m_Name: Pigeon
   m_TagString: Pigeon
@@ -223,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f60bed4b6016054f9820ccbc3a53ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 2
+  jumpForce: 8.5
   gravity: 5
   gravityScale: 0.2
   playerInput: {fileID: 0}
@@ -231,3 +232,24 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!95 &6903377384770454532
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6243248192482893930}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2259c7043fc903946961a7532e16cea1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
