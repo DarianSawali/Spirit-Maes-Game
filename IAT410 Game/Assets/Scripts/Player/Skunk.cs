@@ -17,7 +17,6 @@ public class Skunk : MonoBehaviour
 
     protected Rigidbody rb;
     protected bool isGrounded;
-    //protected Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
 
     protected bool controlsEnabled = true;
 
@@ -31,7 +30,10 @@ public class Skunk : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+
+        // freeze rotations
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
         DisableSkunkInput();
 
         player = FindObjectOfType<PlayerController>();
@@ -47,14 +49,14 @@ public class Skunk : MonoBehaviour
 
 
         playerModel.SetActive(true); // Show the player model again
-       
+
         player.DispossessAnimal();
         isSkunkActive = false;
     }
 
     protected void Update()
     {
-        //transform.rotation = Quaternion.Euler(fixedEulerRotation);
+        // if skunk fell, respawn at respawn position
 
         if (transform.position.y < -2f)
         {
@@ -75,16 +77,10 @@ public class Skunk : MonoBehaviour
         rb.velocity = movement;
     }
 
-
     protected void FixedUpdate()
     {
         isGrounded = CheckGrounded();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-    }
-
-    protected void EnableJump()
-    {
-        playerInput.actions["SkunkJump"].Enable();
     }
 
     public void EnableSkunkInput()
@@ -116,6 +112,8 @@ public class Skunk : MonoBehaviour
         return false;
     }
 
+    // to handle collisions so the animal will be 'invincible' and not
+    // bounce off when the player bumps into it
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Pigeon") || other.CompareTag("Player") || other.CompareTag("Fish"))

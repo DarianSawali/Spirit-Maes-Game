@@ -7,19 +7,15 @@ using UnityEngine.Tilemaps;
 public class Pigeon : MonoBehaviour
 {
     public float moveSpeed = 0.9f;
-    public float jumpForce = 1.4f;
     public Tilemap groundTilemap;
-    public float gravity = 6f;
     public LayerMask groundLayer;
     protected float groundedCheckDist = 0.1f;
     public Transform spawnPoint;
 
     public PlayerInput playerInput;
-    protected bool isPigeonActive = false;
 
     protected Rigidbody rb;
     protected bool isGrounded;
-    //protected Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
 
     protected bool controlsEnabled = true;
 
@@ -33,7 +29,10 @@ public class Pigeon : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+
+        // freeze rotations
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
         DisablePigeonInput();
 
         player = FindObjectOfType<PlayerController>();
@@ -47,15 +46,16 @@ public class Pigeon : MonoBehaviour
         input.actions.FindAction("PigeonJump").Disable();
         input.actions.FindAction("Dispossess").Disable();
 
-        
+
         playerModel.SetActive(true); // Show the player model again
-        // player.EnablePlayerInput();
+
         player.DispossessAnimal();
-        // isSkunkActive = false;
+
     }
 
     protected void Update()
     {
+        // if pigeon fell, respawn at respawn position
         if (transform.position.y < -2f)
         {
             transform.position = spawnPoint.position;
@@ -75,35 +75,10 @@ public class Pigeon : MonoBehaviour
         rb.velocity = movement;
     }
 
-    // protected void OnSkunkJump() {
-    //     if(!isGrounded) return;
-    //     rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    // }
-
-    //     protected void Update()
-    // {
-    //     transform.rotation = Quaternion.Euler(fixedEulerRotation);
-
-    //     if (!isGrounded && rb.velocity.y < 0)
-    //     {
-    //         isGrounded = CheckGrounded();
-    //         rb.velocity += Vector3.down * gravity * Time.deltaTime;
-    //     }
-
-    //     if (transform.position.y < -2f)
-    //     {
-    //         transform.position = spawnPoint.position;
-    //     }
-    // }
-
-    // protected void FixedUpdate()
-    // {
-    //     isGrounded = CheckGrounded();
-    // }
-
-    protected void EnableJump()
+    protected void FixedUpdate()
     {
-        playerInput.actions["PigeonJump"].Enable();
+        isGrounded = CheckGrounded();
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
 
     public void EnablePigeonInput()
@@ -124,6 +99,34 @@ public class Pigeon : MonoBehaviour
         input.actions.FindAction("PigeonMove").Disable();
         input.actions.FindAction("PigeonJump").Disable();
         input.actions.FindAction("Dispossess").Disable();
+    }
+
+    protected bool CheckGrounded()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, groundedCheckDist, groundLayer))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    // to handle collisions so the animal will be 'invincible' and not
+    // bounce off when the player bumps into it
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Skunk") || other.CompareTag("Player") || other.CompareTag("Fish"))
+        {
+            Debug.Log("player is near");
+            //testing for invincibility when player approach
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Skunk") || other.CompareTag("Pigeon") || other.CompareTag("Fish"))
+        {
+            Debug.Log("player is not near");
+            //testing for invincibility when player approach
+        }
     }
 }
 
