@@ -24,7 +24,6 @@ public class Pigeon : MonoBehaviour
 
     private PlayerController player;
 
-
     protected void Start()
     {
         PlayerInput input = GetComponent<PlayerInput>();
@@ -70,8 +69,8 @@ public class Pigeon : MonoBehaviour
 
         horizontalMoveDirection.Normalize();
         float verticalVelocity = rb.velocity.y;
-       
-       Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
+
+        Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
         rb.velocity = movement;
     }
 

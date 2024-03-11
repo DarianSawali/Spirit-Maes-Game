@@ -26,6 +26,15 @@ public class Skunk : MonoBehaviour
     private PlayerController player;
 
 
+    // for animations
+    private Vector2 movement;
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     protected void Start()
     {
         PlayerInput input = GetComponent<PlayerInput>();
@@ -76,6 +85,12 @@ public class Skunk : MonoBehaviour
 
         Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
         rb.velocity = movement;
+
+        if (moveInput.x != 0 || moveInput.y != 0)
+        {
+            animator.SetFloat("X", moveInput.x);
+            animator.SetFloat("Z", moveInput.y);
+        }
     }
 
     protected void FixedUpdate()
