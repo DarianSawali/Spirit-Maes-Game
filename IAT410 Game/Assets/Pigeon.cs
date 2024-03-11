@@ -117,26 +117,26 @@ public class Pigeon : MonoBehaviour
     {
         if (other.CompareTag("Skunk")) 
         {
-            targetAnimal = other.gameObject;
-            targetAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            nearbyAnimal = other.gameObject;
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
         } 
         if (other.CompareTag("Fish"))
         {
-            targetAnimal = other.gameObject;
-            targetAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            nearbyAnimal = other.gameObject;
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Skunk")) 
         {
-            targetAnimal = other.gameObject;
-            targetAnimal.GetComponent<CapsuleCollider>().enabled = true;
+            nearbyAnimal = other.gameObject;
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
         } 
         if (other.CompareTag("Fish"))
         {
-            targetAnimal = other.gameObject;
-            targetAnimal.GetComponent<CapsuleCollider>().enabled = true;
+            nearbyAnimal = other.gameObject;
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
         }
     }
 }
