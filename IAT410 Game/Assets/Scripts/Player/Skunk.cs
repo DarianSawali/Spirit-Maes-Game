@@ -28,6 +28,8 @@ public class Skunk : MonoBehaviour
     // for animations
     private Animator animator;
 
+    private bool beingPossessed = false;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -55,6 +57,7 @@ public class Skunk : MonoBehaviour
         input.actions.FindAction("SkunkJump").Disable();
         input.actions.FindAction("Dispossess").Disable();
 
+        setSkunkPossessedFlagOff();
 
         playerModel.SetActive(true); // Show the player model again
 
@@ -91,7 +94,7 @@ public class Skunk : MonoBehaviour
 
             animator.SetBool("isRunning", true);
         }
-        else 
+        else
         {
             animator.SetBool("isRunning", false);
         }
@@ -137,12 +140,20 @@ public class Skunk : MonoBehaviour
         if (other.CompareTag("Pigeon"))
         {
             nearbyAnimal = other.gameObject;
-            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            Pigeon pigeonComponent = nearbyAnimal.GetComponent<Pigeon>();
+            if (!pigeonComponent.getPigeonPossessedStatus()) // if in possession, dont turn off
+            {
+                nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            }
         }
         if (other.CompareTag("Fish"))
         {
             nearbyAnimal = other.gameObject;
-            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            Fish fishComponent = nearbyAnimal.GetComponent<Fish>();
+            if (!fishComponent.getFishPossessedStatus())
+            {
+                nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -159,5 +170,25 @@ public class Skunk : MonoBehaviour
             nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
             nearbyAnimal = null;
         }
+    }
+
+    // to set beingPossessed flag
+    public void setSkunkPossessedFlagOn()
+    {
+        beingPossessed = true;
+    }
+
+    public void setSkunkPossessedFlagOff()
+    {
+        beingPossessed = false;
+    }
+
+    public bool getSkunkPossessedStatus()
+    {
+        if (beingPossessed)
+        {
+            return true;
+        }
+        return false;
     }
 }

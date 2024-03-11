@@ -17,8 +17,6 @@ public class Pigeon : MonoBehaviour
     protected Rigidbody rb;
     protected bool isGrounded;
 
-    protected bool controlsEnabled = true;
-
     public GameObject playerModel; // Assign your player model in the inspector
     private GameObject nearbyAnimal = null; // to turn on/off nearby animal collider
 
@@ -26,6 +24,8 @@ public class Pigeon : MonoBehaviour
 
     // for animations
     private Animator animator;
+
+    private bool beingPossessed = false;
 
     private void Awake()
     {
@@ -54,6 +54,7 @@ public class Pigeon : MonoBehaviour
         input.actions.FindAction("PigeonJump").Disable();
         input.actions.FindAction("Dispossess").Disable();
 
+        setPigeonPossessedFlagOff();
 
         playerModel.SetActive(true); // Show the player model again
 
@@ -136,12 +137,20 @@ public class Pigeon : MonoBehaviour
         if (other.CompareTag("Skunk"))
         {
             nearbyAnimal = other.gameObject;
-            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            Skunk skunkComponent = nearbyAnimal.GetComponent<Skunk>();
+            if (!skunkComponent.getSkunkPossessedStatus()) // if in possession, dont turn off
+            {
+                nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            }
         }
         if (other.CompareTag("Fish"))
         {
             nearbyAnimal = other.gameObject;
-            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            Fish fishComponent = nearbyAnimal.GetComponent<Fish>();
+            if (!fishComponent.getFishPossessedStatus())
+            {
+                nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -159,6 +168,26 @@ public class Pigeon : MonoBehaviour
             nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
             nearbyAnimal = null;
         }
+    }
+
+    // to set beingPossessed flag
+    public void setPigeonPossessedFlagOn()
+    {
+        beingPossessed = true;
+    }
+
+    public void setPigeonPossessedFlagOff()
+    {
+        beingPossessed = false;
+    }
+
+    public bool getPigeonPossessedStatus()
+    {
+        if (beingPossessed)
+        {
+            return true;
+        }
+        return false;
     }
 }
 

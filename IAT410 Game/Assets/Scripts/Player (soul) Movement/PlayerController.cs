@@ -151,6 +151,8 @@ public class PlayerController : MonoBehaviour
             skunk.GetComponent<CapsuleCollider>().enabled = true;
             Debug.Log("Possessing Skunk");
 
+            skunk.setSkunkPossessedFlagOn();
+
             cameraFollowScript.SetTarget(skunk.transform);
         }
 
@@ -160,6 +162,8 @@ public class PlayerController : MonoBehaviour
             pigeon.EnablePigeonInput();
             pigeon.GetComponent<CapsuleCollider>().enabled = true;
             Debug.Log("Possessing Pigeon");
+
+            pigeon.setPigeonPossessedFlagOn();
         
             cameraFollowScript.SetTarget(pigeon.transform); // set camera to follow pigeon
         }
@@ -170,6 +174,8 @@ public class PlayerController : MonoBehaviour
             fish.EnableFishInput();
             fish.GetComponent<CapsuleCollider>().enabled = true;
             Debug.Log("Possessing Fish");
+
+            fish.setFishPossessedFlagOn();
 
             cameraFollowScript.SetTarget(fish.transform);
         }

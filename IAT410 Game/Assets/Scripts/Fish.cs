@@ -24,6 +24,8 @@ public class Fish : MonoBehaviour
     // for animations
     private Animator animator;
 
+    private bool beingPossessed = false;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -90,6 +92,8 @@ public class Fish : MonoBehaviour
 
         playerModel.SetActive(true);
 
+        setFishPossessedFlagOff();
+
         player.DispossessAnimal();
         isFishActive = false;
     }
@@ -118,12 +122,20 @@ public class Fish : MonoBehaviour
         if (other.CompareTag("Pigeon"))
         {
             nearbyAnimal = other.gameObject;
-            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            Pigeon pigeonComponent = nearbyAnimal.GetComponent<Pigeon>();
+            if (!pigeonComponent.getPigeonPossessedStatus()) // if in possession, dont turn off
+            {
+                nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            }
         }
         if (other.CompareTag("Skunk"))
         {
             nearbyAnimal = other.gameObject;
-            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            Skunk skunkComponent = nearbyAnimal.GetComponent<Skunk>();
+            if (!skunkComponent.getSkunkPossessedStatus()) // if in possession, dont turn off
+            {
+                nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            }
         }
         if (other.CompareTag("Ground"))
         {
@@ -148,5 +160,25 @@ public class Fish : MonoBehaviour
         {
             moveSpeed = 1.4f;
         }
+    }
+
+    // to set beingPossessed flag
+    public void setFishPossessedFlagOn()
+    {
+        beingPossessed = true;
+    }
+
+    public void setFishPossessedFlagOff()
+    {
+        beingPossessed = false;
+    }
+
+    public bool getFishPossessedStatus()
+    {
+        if (beingPossessed)
+        {
+            return true;
+        }
+        return false;
     }
 }
