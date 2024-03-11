@@ -38,6 +38,10 @@ public class SkunkJump : MonoBehaviour
         {
             rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
         }
+        if (isGrounded)
+        {
+            animator.SetBool("isJumping", false);
+        }
     }
 
     public void OnJump()
@@ -59,7 +63,6 @@ public class SkunkJump : MonoBehaviour
         {
             if (hit.collider.CompareTag("Ground"))
             {
-                animator.SetBool("isJumping", false);
                 // The player is considered grounded
                 return true;
             }
