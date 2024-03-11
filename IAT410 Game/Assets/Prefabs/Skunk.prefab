@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5962851162943348258}
   - component: {fileID: 2334330955270124986}
   - component: {fileID: -2505343339626628100}
+  - component: {fileID: -3752344205760156987}
   m_Layer: 8
   m_Name: Skunk
   m_TagString: Skunk
@@ -231,3 +232,24 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!95 &-3752344205760156987
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6243248192482893930}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d8a5b189ab2693f47bbc6d8c6a734381, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
