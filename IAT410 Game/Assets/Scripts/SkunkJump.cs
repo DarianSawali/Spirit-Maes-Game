@@ -44,7 +44,7 @@ public class SkunkJump : MonoBehaviour
         }
     }
 
-    public void OnJump()
+    public void OnSkunkJump()
     {
         if (isGrounded)
         {

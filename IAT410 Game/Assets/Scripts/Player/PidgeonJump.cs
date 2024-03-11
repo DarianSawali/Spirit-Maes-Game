@@ -44,7 +44,7 @@ public class PidgeonJump : MonoBehaviour
         }
     }
 
-    public void OnJump()
+    public void OnPigeonJump()
     {
         if (isGrounded)
         {
