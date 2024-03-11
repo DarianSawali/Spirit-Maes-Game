@@ -20,6 +20,7 @@ public class Pigeon : MonoBehaviour
     protected bool controlsEnabled = true;
 
     public GameObject playerModel; // Assign your player model in the inspector
+    private GameObject nearbyAnimal = null; // to turn on/off nearby animal collider
 
     private PlayerController player;
 
@@ -114,18 +115,28 @@ public class Pigeon : MonoBehaviour
     // bounce off when the player bumps into it
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Skunk") || other.CompareTag("Player") || other.CompareTag("Fish"))
+        if (other.CompareTag("Skunk")) 
         {
-            Debug.Log("player is near");
-            //testing for invincibility when player approach
+            targetAnimal = other.gameObject;
+            targetAnimal.GetComponent<CapsuleCollider>().enabled = false;
+        } 
+        if (other.CompareTag("Fish"))
+        {
+            targetAnimal = other.gameObject;
+            targetAnimal.GetComponent<CapsuleCollider>().enabled = false;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Skunk") || other.CompareTag("Pigeon") || other.CompareTag("Fish"))
+        if (other.CompareTag("Skunk")) 
         {
-            Debug.Log("player is not near");
-            //testing for invincibility when player approach
+            targetAnimal = other.gameObject;
+            targetAnimal.GetComponent<CapsuleCollider>().enabled = true;
+        } 
+        if (other.CompareTag("Fish"))
+        {
+            targetAnimal = other.gameObject;
+            targetAnimal.GetComponent<CapsuleCollider>().enabled = true;
         }
     }
 }
