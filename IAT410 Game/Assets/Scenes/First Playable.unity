@@ -1702,14 +1702,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pigeon
       objectReference: {fileID: 0}
-    - target: {fileID: 7505716782721830266, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1536554012, guid: c2fddcc6b9b4abc4e9d465f890181560, type: 3}
-    - target: {fileID: 7505716782721830266, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8366032019715385199, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
       propertyPath: m_Mass
       value: 6

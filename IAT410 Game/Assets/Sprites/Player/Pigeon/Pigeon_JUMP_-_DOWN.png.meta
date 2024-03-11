@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cbd883e3a98d2a346a82695049b706aa
+guid: 16884d119d4d70e43a256d1427692479
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pigeon_JUMP_-_LEFT_0
+      name: Pigeon_JUMP_-_DOWN_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b51e071478d0f1409c888f0e49e1425
-      internalID: 2029681050
+      spriteID: c6355f5fb10d8f948a1ed52392031714
+      internalID: -1039732386
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pigeon_JUMP_-_LEFT_1
+      name: Pigeon_JUMP_-_DOWN_1
       rect:
         serializedVersion: 2
         x: 16
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f759b0e56a923e443b8567ce8e648976
-      internalID: -64879598
+      spriteID: 946e845c165849c4986813e842818aa1
+      internalID: 1102053325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pigeon_JUMP_-_LEFT_2
+      name: Pigeon_JUMP_-_DOWN_2
       rect:
         serializedVersion: 2
         x: 32
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5725480c8d03c84fa0b9bf2f006885e
-      internalID: -1835013001
+      spriteID: 49ebf86b8887dbc4b94a9795fef7d902
+      internalID: 1431571508
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pigeon_JUMP_-_LEFT_3
+      name: Pigeon_JUMP_-_DOWN_3
       rect:
         serializedVersion: 2
         x: 48
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10bb9e1b080e4ea4d84a0593b862e6dc
-      internalID: 1647552735
+      spriteID: bd846924b465ccd4bb333987d74b67ab
+      internalID: -1448523122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pigeon_JUMP_-_LEFT_4
+      name: Pigeon_JUMP_-_DOWN_4
       rect:
         serializedVersion: 2
         x: 64
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9a9b33bf401a554e8f8b206c5458fe8
-      internalID: 2070645923
+      spriteID: ac02fb473858a8641b6df0792a81dbe9
+      internalID: 102828910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pigeon_JUMP_-_LEFT_5
+      name: Pigeon_JUMP_-_DOWN_5
       rect:
         serializedVersion: 2
         x: 80
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 994da2994af922e4a995c1d8e5154bd6
-      internalID: -1418823979
+      spriteID: 313cf45f83e133640bcf1c4e459775dc
+      internalID: 367937091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pigeon_JUMP_-_LEFT_6
+      name: Pigeon_JUMP_-_DOWN_6
       rect:
         serializedVersion: 2
         x: 96
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57fc42167663a284d8aa9d2ba64e4a55
-      internalID: -1653421667
+      spriteID: d8e09620bd5d77c4c9a1d35f49de79ee
+      internalID: -17016374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pigeon_JUMP_-_LEFT_7
+      name: Pigeon_JUMP_-_DOWN_7
       rect:
         serializedVersion: 2
         x: 112
@@ -284,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4329445b05c6d31468f8d3906076315a
-      internalID: -674713988
+      spriteID: 22b07b504e3e3474e9960aa09c4a3525
+      internalID: -1112726351
       vertices: []
       indices: 
       edges: []
@@ -293,7 +293,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f6474cb19ca63754d93491a445b7acb1
+    spriteID: 5181ac3deda5fda48aa56dedeac334f5
     internalID: 0
     vertices: []
     indices: 
@@ -301,14 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pigeon_JUMP_-_LEFT_0: 2029681050
-      Pigeon_JUMP_-_LEFT_1: -64879598
-      Pigeon_JUMP_-_LEFT_2: -1835013001
-      Pigeon_JUMP_-_LEFT_3: 1647552735
-      Pigeon_JUMP_-_LEFT_4: 2070645923
-      Pigeon_JUMP_-_LEFT_5: -1418823979
-      Pigeon_JUMP_-_LEFT_6: -1653421667
-      Pigeon_JUMP_-_LEFT_7: -674713988
+      Pigeon_JUMP_-_DOWN_0: -1039732386
+      Pigeon_JUMP_-_DOWN_1: 1102053325
+      Pigeon_JUMP_-_DOWN_2: 1431571508
+      Pigeon_JUMP_-_DOWN_3: -1448523122
+      Pigeon_JUMP_-_DOWN_4: 102828910
+      Pigeon_JUMP_-_DOWN_5: 367937091
+      Pigeon_JUMP_-_DOWN_6: -17016374
+      Pigeon_JUMP_-_DOWN_7: -1112726351
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
