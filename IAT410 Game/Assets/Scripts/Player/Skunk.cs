@@ -86,10 +86,10 @@ public class Skunk : MonoBehaviour
         Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
         rb.velocity = movement;
 
-        if (moveInput.x != 0 || moveInput.y != 0)
+        if (horizontalMoveDirection.x != 0 || horizontalMoveDirection.z != 0)
         {
-            animator.SetFloat("X", moveInput.x);
-            animator.SetFloat("Y", moveInput.y);
+            animator.SetFloat("X", horizontalMoveDirection.x);
+            animator.SetFloat("Y", horizontalMoveDirection.z);
         }
     }
 
