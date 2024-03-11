@@ -17,11 +17,11 @@ public class Skunk : MonoBehaviour
 
     protected Rigidbody rb;
     protected bool isGrounded;
-    //protected Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
 
     protected bool controlsEnabled = true;
 
     public GameObject playerModel;
+    private GameObject nearbyAnimal = null; // to turn on/off nearby animal collider
 
     private PlayerController player;
 
@@ -31,7 +31,10 @@ public class Skunk : MonoBehaviour
         PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+
+        // freeze rotations
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
         DisableSkunkInput();
 
         player = FindObjectOfType<PlayerController>();
@@ -47,14 +50,14 @@ public class Skunk : MonoBehaviour
 
 
         playerModel.SetActive(true); // Show the player model again
-       
+
         player.DispossessAnimal();
         isSkunkActive = false;
     }
 
     protected void Update()
     {
-        //transform.rotation = Quaternion.Euler(fixedEulerRotation);
+        // if skunk fell, respawn at respawn position
 
         if (transform.position.y < -2f)
         {
@@ -75,16 +78,10 @@ public class Skunk : MonoBehaviour
         rb.velocity = movement;
     }
 
-
     protected void FixedUpdate()
     {
         isGrounded = CheckGrounded();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-    }
-
-    protected void EnableJump()
-    {
-        playerInput.actions["SkunkJump"].Enable();
     }
 
     public void EnableSkunkInput()
@@ -116,20 +113,34 @@ public class Skunk : MonoBehaviour
         return false;
     }
 
+    // to handle collisions so the animal will be 'invincible' and not
+    // bounce off when the player bumps into it
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Pigeon") || other.CompareTag("Player") || other.CompareTag("Fish"))
+        if (other.CompareTag("Pigeon"))
         {
-            Debug.Log("player is near");
-            //testing for invincibility when player approach
+            nearbyAnimal = other.gameObject;
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+        }
+        if (other.CompareTag("Fish"))
+        {
+            nearbyAnimal = other.gameObject;
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Pigeon") || other.CompareTag("Fish"))
+        if (other.CompareTag("Pigeon"))
         {
-            Debug.Log("player is not near");
-            //testing for invincibility when player approach
+            nearbyAnimal = other.gameObject;
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
+            nearbyAnimal = null;
+        }
+        if (other.CompareTag("Fish"))
+        {
+            nearbyAnimal = other.gameObject;
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
+            nearbyAnimal = null;
         }
     }
 }

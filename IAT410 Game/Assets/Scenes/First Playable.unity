@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414738, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1740,16 +1740,7 @@ PrefabInstance:
     - {fileID: 8706568977126580934, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6243248192482893930, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 2009000805}
-    - targetCorrespondingSourceObject: {fileID: 6243248192482893930, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2009000796}
-    - targetCorrespondingSourceObject: {fileID: 6243248192482893930, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2009000798}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
 --- !u!4 &2117230078 stripped
 Transform:

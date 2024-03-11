@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PidgeonJump : MonoBehaviour
 {
-    public float jumpForce = 1.4f;
+    public float jumpForce = 1.7f;
     public float gravity = 5f;
     public float gravityScale = 0.2f;
     public PlayerInput playerInput;
@@ -14,11 +14,14 @@ public class PidgeonJump : MonoBehaviour
     protected bool isGrounded;
 
     private PlayerController playerControl;
-    
-    protected void Start(){
+
+    protected void Start()
+    {
         PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+
+        PlayerController playerControl = GetComponent<PlayerController>();
     }
 
     protected void Update()
@@ -30,7 +33,7 @@ public class PidgeonJump : MonoBehaviour
         }
     }
 
-    public void OnPidgeonJump()
+    public void OnJump()
     {
         if (isGrounded)
         {

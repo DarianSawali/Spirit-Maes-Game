@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour
         if (skunkComponent != null)
         {
             skunk.EnableSkunkInput();
+            // set animal's capsule collider to on when possessing
             skunk.GetComponent<CapsuleCollider>().enabled = true;
             Debug.Log("Possessing Skunk");
 
@@ -156,14 +157,16 @@ public class PlayerController : MonoBehaviour
         if (pigeonComponent != null)
         {
             pigeon.EnablePigeonInput();
+            // set animal's capsule collider to on when possessing
+            pigeon.GetComponent<CapsuleCollider>().enabled = true;
             Debug.Log("Possessing Pigeon");
+
+            cameraFollowScript.SetTarget(pigeon.transform); // set camera to follow pigeon
         }
 
         isPlayerActive = false;
 
         playerModel.SetActive(false);
-
-        // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
     }
 
     public void DispossessAnimal()
