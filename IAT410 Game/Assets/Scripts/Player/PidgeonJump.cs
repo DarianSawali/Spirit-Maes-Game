@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PidgeonJump : MonoBehaviour
 {
-    public float jumpForce = 2f;
+    public float jumpForce = 1.4f;
     public float gravity = 5f;
     public float gravityScale = 0.2f;
     public PlayerInput playerInput;
