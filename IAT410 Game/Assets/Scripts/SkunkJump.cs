@@ -34,9 +34,13 @@ public class SkunkJump : MonoBehaviour
     protected void Update()
     {
         isGrounded = IsGrounded();
+
+        // Set the Animator's boolean to determine if the character is grounded
+        animator.SetBool("isGrounded", isGrounded);
+
         if (!isGrounded)
         {
-            rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
+            rb.AddForce(Vector3.down * gravityScale * gravity, ForceMode.Acceleration);
         }
     }
 
@@ -45,10 +49,8 @@ public class SkunkJump : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            animator.SetTrigger("Jump");
             Debug.Log("Jump");
         }
-        // animator.SetBool("isJumping", false);
     }
 
     private bool IsGrounded()
