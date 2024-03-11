@@ -21,6 +21,7 @@ public class Skunk : MonoBehaviour
     protected bool controlsEnabled = true;
 
     public GameObject playerModel;
+    private GameObject nearbyAnimal = null; // to turn on/off nearby animal collider
 
     private PlayerController player;
 
@@ -116,18 +117,30 @@ public class Skunk : MonoBehaviour
     // bounce off when the player bumps into it
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Pigeon") || other.CompareTag("Player") || other.CompareTag("Fish"))
+        if (other.CompareTag("Pigeon"))
         {
-            Debug.Log("player is near");
-            //testing for invincibility when player approach
+            nearbyAnimal = other.gameObject;
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+        }
+        if (other.CompareTag("Fish"))
+        {
+            nearbyAnimal = other.gameObject;
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Pigeon") || other.CompareTag("Fish"))
+        if (other.CompareTag("Pigeon"))
         {
-            Debug.Log("player is not near");
-            //testing for invincibility when player approach
+            nearbyAnimal = other.gameObject;
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
+            nearbyAnimal = null;
+        }
+        if (other.CompareTag("Fish"))
+        {
+            nearbyAnimal = other.gameObject;
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
+            nearbyAnimal = null;
         }
     }
 }

@@ -115,11 +115,11 @@ public class Pigeon : MonoBehaviour
     // bounce off when the player bumps into it
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Skunk")) 
+        if (other.CompareTag("Skunk"))
         {
             nearbyAnimal = other.gameObject;
             nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
-        } 
+        }
         if (other.CompareTag("Fish"))
         {
             nearbyAnimal = other.gameObject;
@@ -128,15 +128,18 @@ public class Pigeon : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Skunk")) 
+        if (other.CompareTag("Skunk"))
         {
             nearbyAnimal = other.gameObject;
             nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
-        } 
+            nearbyAnimal = null;
+
+        }
         if (other.CompareTag("Fish"))
         {
             nearbyAnimal = other.gameObject;
             nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
+            nearbyAnimal = null;
         }
     }
 }
