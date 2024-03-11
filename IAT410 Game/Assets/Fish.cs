@@ -106,6 +106,9 @@ public class Fish : MonoBehaviour
             nearbyAnimal = other.gameObject;
             nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
         }
+        if(other.CompareTag("Ground")){
+            moveSpeed = 0.5f;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
