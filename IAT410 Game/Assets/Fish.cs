@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class Fish : MonoBehaviour
 {
-    public float moveSpeed = 4f;
+    public float moveSpeed = 1.4f;
     public Tilemap groundTilemap;
     public LayerMask groundLayer;
     protected float groundedCheckDist = 0.1f;
@@ -123,6 +123,9 @@ public class Fish : MonoBehaviour
             nearbyAnimal = other.gameObject;
             nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
             nearbyAnimal = null;
+        }
+        if(other.CompareTag("Ground")){
+            moveSpeed = 1.4f;
         }
     }
 }
