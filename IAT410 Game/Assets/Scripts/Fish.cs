@@ -21,6 +21,14 @@ public class Fish : MonoBehaviour
     private GameObject nearbyAnimal = null; // to turn on/off nearby animal collider
     private PlayerController player;
 
+    // for animations
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     void Start()
     {
         PlayerInput input = GetComponent<PlayerInput>();
@@ -60,6 +68,18 @@ public class Fish : MonoBehaviour
 
         Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
         rb.velocity = movement;
+
+        if (horizontalMoveDirection.x != 0 || horizontalMoveDirection.z != 0)
+        {
+            animator.SetFloat("X", horizontalMoveDirection.x);
+            animator.SetFloat("Y", horizontalMoveDirection.z);
+
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
     }
 
     public void OnDispossess(InputValue value)
@@ -69,7 +89,7 @@ public class Fish : MonoBehaviour
         input.actions.FindAction("FishMove").Disable();
         input.actions.FindAction("Dispossess").Disable();
 
-        playerModel.SetActive(true); 
+        playerModel.SetActive(true);
 
         player.DispossessAnimal();
         isFishActive = false;
@@ -106,7 +126,8 @@ public class Fish : MonoBehaviour
             nearbyAnimal = other.gameObject;
             nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
         }
-        if(other.CompareTag("Ground")){
+        if (other.CompareTag("Ground"))
+        {
             moveSpeed = 0.5f;
         }
     }
@@ -124,7 +145,8 @@ public class Fish : MonoBehaviour
             nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
             nearbyAnimal = null;
         }
-        if(other.CompareTag("Ground")){
+        if (other.CompareTag("Ground"))
+        {
             moveSpeed = 1.4f;
         }
     }
