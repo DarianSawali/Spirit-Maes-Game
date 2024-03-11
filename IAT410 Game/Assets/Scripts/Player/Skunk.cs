@@ -95,7 +95,7 @@ public class Skunk : MonoBehaviour
         }
         else 
         {
-            animator.setBool("isRunning", false);
+            animator.SetBool("isRunning", false);
         }
     }
 
