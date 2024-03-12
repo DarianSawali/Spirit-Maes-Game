@@ -12,6 +12,7 @@ public class PidgeonJump : MonoBehaviour
     public Rigidbody rb;
     public LayerMask groundLayer;
     protected bool isGrounded;
+    private bool isJumping = false;
 
     private PlayerController playerControl;
 
@@ -35,7 +36,7 @@ public class PidgeonJump : MonoBehaviour
     {
         isGrounded = IsGrounded();
 
-        if (!isGrounded && transform.position.y < -0.015f)
+        if (!isGrounded && !isJumping)
         {
             animator.SetBool("isFalling", true);
         }
@@ -57,6 +58,7 @@ public class PidgeonJump : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isJumping = true;
             Debug.Log("Jump");
         }
     }
@@ -71,6 +73,7 @@ public class PidgeonJump : MonoBehaviour
             if (hit.collider.CompareTag("Ground"))
             {
                 // The player is considered grounded
+                isJumping = false;
                 return true;
             }
         }
