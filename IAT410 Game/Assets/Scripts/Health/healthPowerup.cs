@@ -12,6 +12,7 @@ public class healthPowerup : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Debug.Log("powerup hit");
             health.addHealth();
             Destroy(gameObject);
         }
