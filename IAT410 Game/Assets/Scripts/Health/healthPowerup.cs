@@ -8,7 +8,7 @@ public class healthPowerup : MonoBehaviour
     public HealthManager health;
 
     // Start is called before the first frame update
-    private void onTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
