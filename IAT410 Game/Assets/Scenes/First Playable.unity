@@ -1872,6 +1872,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fish
       objectReference: {fileID: 0}
+    - target: {fileID: 6922127243896704147, guid: 7c71b72f235bacf4eb246e35f155cc3d, type: 3}
+      propertyPath: platform
+      value: 
+      objectReference: {fileID: 2271932727528237142}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5924378967492369724, guid: 7c71b72f235bacf4eb246e35f155cc3d, type: 3}
@@ -1881,6 +1885,11 @@ PrefabInstance:
 --- !u!1 &2271932727528237133 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4004658441953011929, guid: 7c71b72f235bacf4eb246e35f155cc3d, type: 3}
+  m_PrefabInstance: {fileID: 2271932727528237132}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2271932727528237142 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 356614832287616598, guid: 7c71b72f235bacf4eb246e35f155cc3d, type: 3}
   m_PrefabInstance: {fileID: 2271932727528237132}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5733316691490534870
