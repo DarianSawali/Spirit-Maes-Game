@@ -10,14 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8360197559950887081}
   - component: {fileID: 764711995786646276}
-  - component: {fileID: 8004787831886874068}
   - component: {fileID: 6476367803990510079}
+  - component: {fileID: 8004787831886874068}
   - component: {fileID: 2343311440662383403}
   - component: {fileID: 64008893429639213}
-  - component: {fileID: 4518308507743224595}
   - component: {fileID: 1075305359106098934}
   - component: {fileID: 9129379680357332781}
-  - component: {fileID: 5718071451780015323}
   m_Layer: 8
   m_Name: Player (soul)
   m_TagString: Player
@@ -78,9 +76,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -324837321
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 110360483, guid: f176289f40ffe56498f2828885cd53b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -92,6 +90,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6476367803990510079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5527680605241751099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ead6478b93c8744b2b70a343c812cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0.9
+  groundTilemap: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  spawnPoint: {fileID: 0}
+  playerModel: {fileID: 5527680605241751099}
+  playerJump: {fileID: 0}
+  dug: 0
 --- !u!114 &8004787831886874068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,27 +141,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &6476367803990510079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5527680605241751099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29ead6478b93c8744b2b70a343c812cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1.4
-  groundTilemap: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  spawnPoint: {fileID: 0}
-  playerModel: {fileID: 5527680605241751099}
-  playerJump: {fileID: 0}
-  dug: 0
 --- !u!136 &2343311440662383403
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -174,7 +172,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5527680605241751099}
   serializedVersion: 4
-  m_Mass: 7
+  m_Mass: 6
   m_Drag: 0
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -193,20 +191,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &4518308507743224595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5527680605241751099}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c65b33a556e8ba442a8325c88fe60bdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerModel: {fileID: 5527680605241751099}
-  playerInput: {fileID: 0}
 --- !u!95 &1075305359106098934
 Animator:
   serializedVersion: 5
@@ -240,27 +224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe1ad4b8760b184681c246bbb93fc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 4
-  gravity: 1
+  jumpForce: 9
+  gravity: 2
   gravityScale: 1
   playerInput: {fileID: 0}
-  rb: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!114 &5718071451780015323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5527680605241751099}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 000a530eb9310cc4c810bba6861f66da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravity: 6
   rb: {fileID: 0}
   groundLayer:
     serializedVersion: 2
