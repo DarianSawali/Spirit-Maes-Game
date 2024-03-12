@@ -64,7 +64,7 @@ public class Pigeon : MonoBehaviour
 
     protected void Update()
     {
-        if (transform.position.y < 0.1f) {
+        if (transform.position.y < 0.015f) {
             animator.SetBool("isFalling", true);
         }
 
