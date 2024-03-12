@@ -11,12 +11,6 @@ public class VideoController : MonoBehaviour
     void Start()
     {
         videoPlayer.loopPointReached += OnVideoFinished;
-        
-        // if(SceneManager.GetActiveScene().buildIndex == sceneCount){
-            
-        // } else {
-        //     videoPlayer.loopPointReached += OnVideoFinished;
-        // }
     }
 
     void OnVideoFinished(VideoPlayer vp)
@@ -24,7 +18,7 @@ public class VideoController : MonoBehaviour
         int sceneCount = SceneManager.sceneCountInBuildSettings - 1;
         if(SceneManager.GetActiveScene().buildIndex == sceneCount){
             SceneManager.LoadScene(0);
-        } else if(SceneManager.GetActiveScene().buildIndex == 2){
+        } else{
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
