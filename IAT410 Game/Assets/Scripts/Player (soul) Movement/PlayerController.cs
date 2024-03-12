@@ -242,7 +242,12 @@ public class PlayerController : MonoBehaviour
     //     return false;
     // }
 
+    // Rigidbody animalRigidbody = targetAnimal.GetComponent<Rigidbody>();
+            // animalRigidbody.constraints |= RigidbodyConstraints.FreezePositionY;
 
+
+            // Rigidbody animalRigidbody = targetAnimal.GetComponent<Rigidbody>();
+            // animalRigidbody.constraints &= ~RigidbodyConstraints.FreezePositionY;
 
     // private void OnCollisionEnter(Collision collision)
     // {
