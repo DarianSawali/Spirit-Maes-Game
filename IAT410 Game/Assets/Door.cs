@@ -48,7 +48,7 @@ public class Door : MonoBehaviour
         {
             if(doorCollider.isTrigger){
                 Debug.Log("door test working");
-                SceneManager.LoadScene(sceneToLoad);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             } else {
                 Debug.Log("door closed");
             }
