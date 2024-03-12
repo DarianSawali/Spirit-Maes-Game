@@ -15,7 +15,7 @@ public class HealthManager : MonoBehaviour
     public GameObject Heart3;
 
     public int health;
-    public int maxHealth = 5;
+    public int maxHealth = 3;
 
     // Start is called before the first frame update
     void Start()
