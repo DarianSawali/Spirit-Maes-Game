@@ -17,6 +17,7 @@ public class PidgeonJump : MonoBehaviour
     private PlayerController playerControl;
 
     private Animator animator; // for jumping animation
+    public Transform platform; // Assign the reference to the platform in the inspector
 
     private void Awake()
     {
@@ -39,8 +40,17 @@ public class PidgeonJump : MonoBehaviour
         // Update the animator with whether or not the pigeon is grounded.
         animator.SetBool("isGrounded", isGrounded);
 
-        // Update the animator with the vertical speed
-        animator.SetFloat("VerticalSpeed", rb.velocity.y);
+        // Check if the pigeon is below the platform to trigger the falling animation
+        if (!isGrounded && transform.position.y < platform.position.y)
+        {
+            // Pigeon is falling below the platform
+            animator.SetBool("isFalling", true);
+        }
+        else
+        {
+            // Pigeon is not falling below the platform
+            animator.SetBool("isFalling", false);
+        }
 
         // Apply gravity if not grounded
         if (!isGrounded)

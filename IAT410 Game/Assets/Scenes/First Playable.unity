@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414738, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -257,6 +257,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9809d053e71792b41a90bb265c2dc1cf, type: 3}
+--- !u!4 &109780611 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2797181364084259792, guid: 82cc96f364d795d49bc601c3e365041e, type: 3}
+  m_PrefabInstance: {fileID: 9036997491674606217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &183620604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1684,6 +1689,10 @@ PrefabInstance:
       propertyPath: gravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -3065237953329670601, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
+      propertyPath: platform
+      value: 
+      objectReference: {fileID: 109780611}
     - target: {fileID: -3065237953329670601, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
       propertyPath: jumpForce
       value: 10
