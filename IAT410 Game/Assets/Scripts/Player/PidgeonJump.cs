@@ -37,7 +37,7 @@ public class PidgeonJump : MonoBehaviour
 
         if (!isGrounded && transform.position.y < -0.015f)
         {
-            animator.setBool("isFalling", true);
+            animator.SetBool("isFalling", true);
         }
 
         else

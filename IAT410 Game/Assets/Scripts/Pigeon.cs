@@ -68,7 +68,7 @@ public class Pigeon : MonoBehaviour
         if (transform.position.y < -2f)
         {
             transform.position = spawnPoint.position;
-            animator.setBool("isFalling", false);
+            animator.SetBool("isFalling", false);
         }
     }
 
