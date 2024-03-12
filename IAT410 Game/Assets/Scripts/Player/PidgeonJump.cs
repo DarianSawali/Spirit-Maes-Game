@@ -35,21 +35,15 @@ public class PidgeonJump : MonoBehaviour
     protected void Update()
     {
         isGrounded = IsGrounded();
+        // Set the Animator's boolean to determine if the character is grounded
+        animator.SetBool("isGrounded", isGrounded);
 
-        if (!isGrounded && !isJumping)
-        {
-            animator.SetBool("isFalling", true);
-        }
+        bool isFalling = !isGrounded && rb.velocity.y < 0;
+        animator.SetBool("isFalling", isFalling);
 
-        else
+        if (!isGrounded && !isJumping) // Only apply gravity if in the air and not jumping
         {
-            // Set the Animator's boolean to determine if the character is grounded
-            animator.SetBool("isGrounded", isGrounded);
-        }
-
-        if (!isGrounded)
-        {
-            rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
+            rb.AddForce(Vector3.down * gravityScale * gravity, ForceMode.Acceleration);
         }
     }
 
