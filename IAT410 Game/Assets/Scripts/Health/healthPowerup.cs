@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class healthPowerup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public HealthManager health;
+
+    // Start is called before the first frame update
+    private void onTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.tag == "Player")
+        {
+            health.addHealth();
+            Destroy(gameObject);
+        }
     }
 }
