@@ -59,6 +59,15 @@ public class SkunkJump : MonoBehaviour
         }
     }
 
+    public void OnSkunkJump()
+    {
+        if (isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            Debug.Log("Jump");
+        }
+    }
+
     private bool IsGrounded()
     {
         float raycastDistance = 0.1f; // Adjust this distance based on your player's size
