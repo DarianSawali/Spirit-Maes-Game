@@ -13,6 +13,7 @@ public class HealthManager : MonoBehaviour
     public GameObject Heart1;
     public GameObject Heart2;
     public GameObject Heart3;
+    public GameObject Heart4;
 
     public int health;
     public int maxHealth = 3;
@@ -30,11 +31,11 @@ public class HealthManager : MonoBehaviour
         // testing purposes
         // if (Input.GetKeyDown(KeyCode.U))
         // {
-        //     health--;
+        //     decreaseHealth();
         // }
         // if (Input.GetKeyDown(KeyCode.I))
         // {
-        //     health++;
+        //     addHealth();
         // }
 
         switch (health)
@@ -44,6 +45,7 @@ public class HealthManager : MonoBehaviour
                     Heart1.gameObject.SetActive(false);
                     Heart2.gameObject.SetActive(false);
                     Heart3.gameObject.SetActive(false);
+                    Heart4.gameObject.SetActive(false);
                     break;
                 }
             case 1:
@@ -51,6 +53,7 @@ public class HealthManager : MonoBehaviour
                     Heart1.gameObject.SetActive(true);
                     Heart2.gameObject.SetActive(false);
                     Heart3.gameObject.SetActive(false);
+                    Heart4.gameObject.SetActive(false);
                     break;
                 }
             case 2:
@@ -58,6 +61,7 @@ public class HealthManager : MonoBehaviour
                     Heart1.gameObject.SetActive(true);
                     Heart2.gameObject.SetActive(true);
                     Heart3.gameObject.SetActive(false);
+                    Heart4.gameObject.SetActive(false);
                     break;
                 }
             case 3:
@@ -65,15 +69,34 @@ public class HealthManager : MonoBehaviour
                     Heart1.gameObject.SetActive(true);
                     Heart2.gameObject.SetActive(true);
                     Heart3.gameObject.SetActive(true);
+                    Heart4.gameObject.SetActive(false);
+                    break;
+                }
+            case 4:
+                {
+                    Heart1.gameObject.SetActive(true);
+                    Heart2.gameObject.SetActive(true);
+                    Heart3.gameObject.SetActive(true);
+                    Heart4.gameObject.SetActive(true);
                     break;
                 }
         }
     }
 
-    public void decreaseHealth() {
+    public void decreaseHealth()
+    {
         health--;
-        if (health <= 0) {
-            
+        if (health <= 0)
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
+    public void addHealth()
+    {
+        if (health <= maxHealth)
+        {
+            health++;
         }
     }
 
