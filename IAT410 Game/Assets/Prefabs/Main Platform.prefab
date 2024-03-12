@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6053261194181549405}
   m_Layer: 7
   m_Name: Main Platform
-  m_TagString: Water
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
