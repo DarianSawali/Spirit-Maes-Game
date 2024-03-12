@@ -146,6 +146,7 @@ public class Fish : MonoBehaviour
             moveSpeed = 0.9f;
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Pigeon"))
@@ -166,6 +167,15 @@ public class Fish : MonoBehaviour
         }
         if (other.CompareTag("Water"))
         {
+            moveSpeed = 0.1f;
+        }
+    }
+
+    public void OnTriggerStay(Collider other){
+        if (other.CompareTag("Water")){
+            moveSpeed = 0.9f;
+        }
+        if (other.CompareTag("Ground")){
             moveSpeed = 0.1f;
         }
     }
