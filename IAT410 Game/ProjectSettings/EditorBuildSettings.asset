@@ -26,5 +26,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalRoom.unity
     guid: 4110cefaf7b62f7448d6457a7e9fb34a
+  - enabled: 1
+    path: Assets/Scenes/EndingCutscene.unity
+    guid: 092299671d3be6f499f73c8661f0df19
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0063bd1a4a880f048a7b364a94414e13, type: 2}

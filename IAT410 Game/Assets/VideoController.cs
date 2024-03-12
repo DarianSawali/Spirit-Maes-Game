@@ -11,10 +11,21 @@ public class VideoController : MonoBehaviour
     void Start()
     {
         videoPlayer.loopPointReached += OnVideoFinished;
+        
+        // if(SceneManager.GetActiveScene().buildIndex == sceneCount){
+            
+        // } else {
+        //     videoPlayer.loopPointReached += OnVideoFinished;
+        // }
     }
 
     void OnVideoFinished(VideoPlayer vp)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        int sceneCount = SceneManager.sceneCountInBuildSettings - 1;
+        if(SceneManager.GetActiveScene().buildIndex == sceneCount){
+            SceneManager.LoadScene(0);
+        } else if(SceneManager.GetActiveScene().buildIndex == 2){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
