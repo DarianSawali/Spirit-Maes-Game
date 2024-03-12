@@ -79,7 +79,10 @@ public class Skunk : MonoBehaviour
         if (transform.position.y < -2f)
         {
             transform.position = spawnPoint.position;
-            health.decreaseHealth();
+            if (beingPossessed)
+            {
+                health.decreaseHealth();
+            }
         }
 
     }
