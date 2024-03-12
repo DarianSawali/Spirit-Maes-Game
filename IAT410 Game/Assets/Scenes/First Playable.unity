@@ -1864,6 +1864,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 356614832287616598, guid: 7c71b72f235bacf4eb246e35f155cc3d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4004658441953011929, guid: 7c71b72f235bacf4eb246e35f155cc3d, type: 3}
       propertyPath: m_Name
       value: Fish

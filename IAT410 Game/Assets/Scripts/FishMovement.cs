@@ -11,6 +11,14 @@ public class FishMovement : MonoBehaviour
     public Rigidbody rb;
     public LayerMask groundLayer;
     protected bool isGrounded;
+
+    public Transform platform; // Assign the reference to the platform in the inspector
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     void Start()
     {
         PlayerInput input = GetComponent<PlayerInput>();
@@ -23,6 +31,22 @@ public class FishMovement : MonoBehaviour
     protected void Update()
     {
         isGrounded = IsGrounded();
+
+        // Update the animator with whether or not the pigeon is grounded.
+        animator.SetBool("isGrounded", isGrounded);
+
+        // Check if the pigeon is below the platform to trigger the falling animation
+        if (!isGrounded && transform.position.y < platform.position.y)
+        {
+            // Pigeon is falling below the platform
+            animator.SetBool("isFalling", true);
+        }
+        else
+        {
+            // Pigeon is not falling below the platform
+            animator.SetBool("isFalling", false);
+        }
+
         if (!isGrounded)
         {
             rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
