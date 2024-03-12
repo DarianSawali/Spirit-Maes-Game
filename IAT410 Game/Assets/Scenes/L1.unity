@@ -3662,6 +3662,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1613495587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -3479888208896598352, guid: 04d7f817a9d38ac489bd91df8cb4ec60, type: 3}
+  m_PrefabInstance: {fileID: 1439699149}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35aa97991e0b8ae4ab24bafdca9a7144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1618272393 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2184815793264756745, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
@@ -4308,6 +4319,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4169471957858850331, guid: 29663e1b628124642bc4de10c2fe135d, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 1613495587}
     - target: {fileID: 4169471957858850331, guid: 29663e1b628124642bc4de10c2fe135d, type: 3}
       propertyPath: spawnPoint
       value: 

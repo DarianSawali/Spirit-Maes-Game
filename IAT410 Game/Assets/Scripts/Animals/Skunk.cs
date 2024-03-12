@@ -34,7 +34,7 @@ public class Skunk : MonoBehaviour
 
     private bool canDig = false;
 
-    private HealthManager health; // reduce health when falling
+    public HealthManager health; // reduce health when falling
 
     private void Awake()
     {
@@ -53,8 +53,6 @@ public class Skunk : MonoBehaviour
         DisableSkunkInput();
 
         player = FindObjectOfType<PlayerController>();
-
-        health = GetComponent<HealthManager>();
     }
 
     public void OnDispossess(InputValue value)
