@@ -33,9 +33,6 @@ public class FishMovement : MonoBehaviour
     {
         isGrounded = IsGrounded();
 
-        // Update the animator with whether or not the pigeon is grounded.
-        animator.SetBool("isGrounded", isGrounded);
-
         // Check if the pigeon is below the platform to trigger the falling animation
         if (!isGrounded && transform.position.y < platform.position.y)
         {
