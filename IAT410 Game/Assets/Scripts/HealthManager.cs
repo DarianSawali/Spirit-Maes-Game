@@ -27,14 +27,15 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            health--;
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            health++;
-        }
+        // testing purposes
+        // if (Input.GetKeyDown(KeyCode.U))
+        // {
+        //     health--;
+        // }
+        // if (Input.GetKeyDown(KeyCode.I))
+        // {
+        //     health++;
+        // }
 
         switch (health)
         {
@@ -66,6 +67,13 @@ public class HealthManager : MonoBehaviour
                     Heart3.gameObject.SetActive(true);
                     break;
                 }
+        }
+    }
+
+    public void decreaseHealth() {
+        health--;
+        if (health <= 0) {
+            
         }
     }
 
