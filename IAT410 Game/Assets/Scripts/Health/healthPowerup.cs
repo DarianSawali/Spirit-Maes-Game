@@ -8,11 +8,11 @@ public class healthPowerup : MonoBehaviour
     public HealthManager health;
 
     // Start is called before the first frame update
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            Debug.Log("powerup hit");
+            Debug.Log("health up");
             health.addHealth();
             Destroy(gameObject);
         }
