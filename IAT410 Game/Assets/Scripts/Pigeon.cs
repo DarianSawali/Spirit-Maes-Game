@@ -64,10 +64,15 @@ public class Pigeon : MonoBehaviour
 
     protected void Update()
     {
+        if (transform.position.y < 0.1f) {
+            animator.SetBool("isFalling", true);
+        }
+
         // if pigeon fell, respawn at respawn position
         if (transform.position.y < -2f)
         {
             transform.position = spawnPoint.position;
+            animator.SetBool("isFalling", false);
         }
     }
 
