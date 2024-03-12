@@ -35,8 +35,16 @@ public class PidgeonJump : MonoBehaviour
     {
         isGrounded = IsGrounded();
 
-        // Set the Animator's boolean to determine if the character is grounded
-        animator.SetBool("isGrounded", isGrounded);
+        if (!isGrounded && transform.position.y < -0.015f)
+        {
+            animator.setBool("isFalling", true);
+        }
+
+        else
+        {
+            // Set the Animator's boolean to determine if the character is grounded
+            animator.SetBool("isGrounded", isGrounded);
+        }
 
         if (!isGrounded)
         {
