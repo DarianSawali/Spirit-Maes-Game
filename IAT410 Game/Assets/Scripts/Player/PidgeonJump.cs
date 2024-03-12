@@ -12,10 +12,12 @@ public class PidgeonJump : MonoBehaviour
     public Rigidbody rb;
     public LayerMask groundLayer;
     protected bool isGrounded;
+    private bool isJumping = false;
 
     private PlayerController playerControl;
 
     private Animator animator; // for jumping animation
+    public Transform platform; // Assign the reference to the platform in the inspector
 
     private void Awake()
     {
@@ -35,12 +37,25 @@ public class PidgeonJump : MonoBehaviour
     {
         isGrounded = IsGrounded();
 
-        // Set the Animator's boolean to determine if the character is grounded
+        // Update the animator with whether or not the pigeon is grounded.
         animator.SetBool("isGrounded", isGrounded);
 
+        // Check if the pigeon is below the platform to trigger the falling animation
+        if (!isGrounded && transform.position.y < platform.position.y)
+        {
+            // Pigeon is falling below the platform
+            animator.SetBool("isFalling", true);
+        }
+        else
+        {
+            // Pigeon is not falling below the platform
+            animator.SetBool("isFalling", false);
+        }
+
+        // Apply gravity if not grounded
         if (!isGrounded)
         {
-            rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
+            rb.AddForce(Vector3.down * gravityScale * gravity, ForceMode.Acceleration);
         }
     }
 
@@ -49,6 +64,8 @@ public class PidgeonJump : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            // Reset the vertical speed when jumping
+            animator.SetFloat("VerticalSpeed", 0f);
             Debug.Log("Jump");
         }
     }
@@ -63,6 +80,7 @@ public class PidgeonJump : MonoBehaviour
             if (hit.collider.CompareTag("Ground"))
             {
                 // The player is considered grounded
+                isJumping = false;
                 return true;
             }
         }
