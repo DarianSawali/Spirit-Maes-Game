@@ -15,7 +15,9 @@ public class ButtonTrigger : MonoBehaviour
         {
             door.ButtonPressed();
             isPressed = true;
-            TileSwitch();
+            if(isPressed){
+                TileSwitch();
+            }
             Debug.Log("Button Pressed");
         }
     }

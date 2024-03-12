@@ -113,7 +113,7 @@ CapsuleCollider:
   m_Radius: 0.04
   m_Height: 0.12
   m_Direction: 2
-  m_Center: {x: 0, y: -0.02, z: -0.02}
+  m_Center: {x: 0, y: -0.02, z: 0.02}
 --- !u!135 &2775146767472765723
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6243248192482893930}
   serializedVersion: 4
-  m_Mass: 7
+  m_Mass: 6
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -224,14 +224,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e46900647e4934c93cf87e28b24262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 1.4
-  gravity: 5
-  gravityScale: 0.2
+  jumpForce: 9
+  gravity: 2
+  gravityScale: 1
   playerInput: {fileID: 0}
   rb: {fileID: 0}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!95 &-3752344205760156987
 Animator:
   serializedVersion: 5

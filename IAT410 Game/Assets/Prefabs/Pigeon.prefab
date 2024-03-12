@@ -113,7 +113,7 @@ CapsuleCollider:
   m_Radius: 0.04
   m_Height: 0.12
   m_Direction: 2
-  m_Center: {x: 0, y: -0.02, z: -0.02}
+  m_Center: {x: 0, y: -0.02, z: 0.02}
 --- !u!135 &-1571249729676192884
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -224,8 +224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f60bed4b6016054f9820ccbc3a53ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 7
-  gravity: 1
+  jumpForce: 12
+  gravity: 2
   gravityScale: 1
   playerInput: {fileID: 0}
   rb: {fileID: 0}

@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class Fish : MonoBehaviour
 {
-    public float moveSpeed = 1.4f;
+    public float moveSpeed = 0.9f;
     public Tilemap groundTilemap;
     public LayerMask groundLayer;
     protected float groundedCheckDist = 0.1f;
@@ -139,7 +139,11 @@ public class Fish : MonoBehaviour
         }
         if (other.CompareTag("Ground"))
         {
-            moveSpeed = 0.5f;
+            moveSpeed = 0.1f;
+        }
+        if (other.CompareTag("Water"))
+        {
+            moveSpeed = 0.9f;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -158,7 +162,11 @@ public class Fish : MonoBehaviour
         }
         if (other.CompareTag("Ground"))
         {
-            moveSpeed = 1.4f;
+            moveSpeed = 0.9f;
+        }
+        if (other.CompareTag("Water"))
+        {
+            moveSpeed = 0.1f;
         }
     }
 

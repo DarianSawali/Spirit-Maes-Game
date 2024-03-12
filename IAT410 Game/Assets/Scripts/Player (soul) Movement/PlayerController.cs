@@ -31,9 +31,7 @@ public class PlayerController : MonoBehaviour
     private GameObject targetAnimal = null;
 
     public PlayerJump playerJump;
-    private Transform teleportTarget;
-
-    private bool canDig = false;
+    
     public bool dug = false;
 
     protected void Start()
@@ -214,12 +212,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("No collision");
         }
 
-        if (other.CompareTag("DigTrigger"))
-        {
-            canDig = true;
-            teleportTarget = other.GetComponent<DigTrigger>().teleportLocation;
-            Debug.Log("canDig");
-        }
+        
     }
     private void OnTriggerExit(Collider other)
     {
@@ -227,32 +220,10 @@ public class PlayerController : MonoBehaviour
         {
             targetAnimal.GetComponent<CapsuleCollider>().enabled = true;
             targetAnimal = null;
-        }
-
-        DigTrigger digTrigger = other.GetComponent<DigTrigger>();
-        if (other.CompareTag("DigTrigger"))
-        {
-            canDig = false;
-            teleportTarget = null;
-        }
-
-    }
-
-    public void OnDig()
-    {
-        if (canDig && teleportTarget != null)
-        {
-            TeleportToDigLocation(teleportTarget.position);
-            Debug.Log("Dig");
+        
         }
     }
 
-    public void TeleportToDigLocation(Vector3 position)
-    {
-        transform.position = position;
-    }
-
-    
 
 
     // private bool IsGrounded()

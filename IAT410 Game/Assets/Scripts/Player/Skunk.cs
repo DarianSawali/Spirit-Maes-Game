@@ -30,7 +30,11 @@ public class Skunk : MonoBehaviour
 
     private bool beingPossessed = false;
 
-    private void Awake()
+    private Transform teleportTarget;
+
+    private bool canDig = false;
+
+private void Awake()
     {
         animator = GetComponent<Animator>();
     }
@@ -56,8 +60,9 @@ public class Skunk : MonoBehaviour
         input.actions.FindAction("SkunkMove").Disable();
         input.actions.FindAction("SkunkJump").Disable();
         input.actions.FindAction("Dispossess").Disable();
+        input.actions.FindAction("Dig").Disable();
 
-        setSkunkPossessedFlagOff();
+setSkunkPossessedFlagOff();
 
         playerModel.SetActive(true); // Show the player model again
 
@@ -102,7 +107,6 @@ public class Skunk : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        isGrounded = CheckGrounded();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
 
@@ -114,6 +118,7 @@ public class Skunk : MonoBehaviour
         input.actions.FindAction("SkunkMove").Enable();
         input.actions.FindAction("SkunkJump").Enable();
         input.actions.FindAction("Dispossess").Enable();
+        input.actions.FindAction("Dig").Enable();
     }
 
     public void DisableSkunkInput()
@@ -124,6 +129,21 @@ public class Skunk : MonoBehaviour
         input.actions.FindAction("SkunkMove").Disable();
         input.actions.FindAction("SkunkJump").Disable();
         input.actions.FindAction("Dispossess").Disable();
+        input.actions.FindAction("Dig").Disable();
+    }
+
+    public void OnDig()
+    {
+        if (canDig && teleportTarget != null)
+        {
+            TeleportToDigLocation(teleportTarget.position);
+            Debug.Log("Dig");
+        }
+    }
+
+    public void TeleportToDigLocation(Vector3 position)
+    {
+        transform.position = position;
     }
 
     protected bool CheckGrounded()
@@ -143,8 +163,8 @@ public class Skunk : MonoBehaviour
             Pigeon pigeonComponent = nearbyAnimal.GetComponent<Pigeon>();
             if (!pigeonComponent.getPigeonPossessedStatus()) // if in possession, dont turn off
             {
-                nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
-            }
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+}
         }
         if (other.CompareTag("Fish"))
         {
@@ -152,8 +172,15 @@ public class Skunk : MonoBehaviour
             Fish fishComponent = nearbyAnimal.GetComponent<Fish>();
             if (!fishComponent.getFishPossessedStatus())
             {
-                nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
-            }
+            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+}
+        }
+
+        if (other.CompareTag("DigTrigger"))
+        {
+            canDig = true;
+            teleportTarget = other.GetComponent<DigTrigger>().teleportLocation;
+            Debug.Log("canDig");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -169,6 +196,12 @@ public class Skunk : MonoBehaviour
             nearbyAnimal = other.gameObject;
             nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
             nearbyAnimal = null;
+        }
+        DigTrigger digTrigger = other.GetComponent<DigTrigger>();
+        if (other.CompareTag("DigTrigger"))
+        {
+            canDig = false;
+            teleportTarget = null;
         }
     }
 
