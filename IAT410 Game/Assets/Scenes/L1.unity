@@ -1642,6 +1642,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1121182737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2580096799649279633, guid: f4a1bf19a7451034787474e6025effca, type: 3}
+  m_PrefabInstance: {fileID: 2727765581433513699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1128302011 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3837440686767044918, guid: 82cc96f364d795d49bc601c3e365041e, type: 3}
@@ -4035,6 +4040,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: End Gate
       objectReference: {fileID: 0}
+    - target: {fileID: 3441214690494621520, guid: f4a1bf19a7451034787474e6025effca, type: 3}
+      propertyPath: newSprite
+      value: 
+      objectReference: {fileID: 1576591061, guid: db9a2be91f1e0de4ab602bf2eed4313a, type: 3}
+    - target: {fileID: 3441214690494621520, guid: f4a1bf19a7451034787474e6025effca, type: 3}
+      propertyPath: objectToSwitch
+      value: 
+      objectReference: {fileID: 1121182737}
     - target: {fileID: 8084393088940109557, guid: f4a1bf19a7451034787474e6025effca, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.32

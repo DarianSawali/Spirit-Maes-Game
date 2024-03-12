@@ -22,16 +22,12 @@ public class ButtonTrigger : MonoBehaviour
         }
     }
 
-    // private void Update(){
-    //     if(isPressed){
-    //         TileSwitch();
-    //     }
-    // }
-
     public void TileSwitch(){
         TilemapSwitch tilemapSwitch = GetComponent<TilemapSwitch>();
         tilemapSwitch.SwitchTilemaps();
     }
+
+    
 
     // private bool isPressed = false;
     // public bool IsPressed { get { return isPressed; } }

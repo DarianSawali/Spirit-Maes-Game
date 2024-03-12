@@ -12,6 +12,10 @@ public class Door : MonoBehaviour
 
     public string sceneToLoad;
 
+    public GameObject objectToSwitch;
+
+    public Sprite newSprite;
+
     // Function called when a button is pressed
     public void ButtonPressed()
     {
@@ -21,6 +25,7 @@ public class Door : MonoBehaviour
         if (buttonCount >= totalButtonCount)
         {
             UnlockDoor();
+            SwitchSprite();
         }
     }
 
@@ -49,4 +54,26 @@ public class Door : MonoBehaviour
             }
         }
     }
+
+    public void SwitchSprite()
+    {
+        if (objectToSwitch != null)
+        {
+            SpriteRenderer spriteRenderer = objectToSwitch.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.sprite = newSprite;
+            }
+            else
+            {
+                Debug.LogError("Sprite Renderer component not found on the object.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Object to switch is not assigned.");
+        }
+    }
+
+    
 }
