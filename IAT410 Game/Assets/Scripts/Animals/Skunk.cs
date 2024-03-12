@@ -34,7 +34,9 @@ public class Skunk : MonoBehaviour
 
     private bool canDig = false;
 
-private void Awake()
+    private HealthManager health; // reduce health when falling
+
+    private void Awake()
     {
         animator = GetComponent<Animator>();
     }
@@ -51,6 +53,8 @@ private void Awake()
         DisableSkunkInput();
 
         player = FindObjectOfType<PlayerController>();
+
+        health = GetComponent<HealthManager>();
     }
 
     public void OnDispossess(InputValue value)
@@ -62,7 +66,7 @@ private void Awake()
         input.actions.FindAction("Dispossess").Disable();
         input.actions.FindAction("Dig").Disable();
 
-setSkunkPossessedFlagOff();
+        setSkunkPossessedFlagOff();
 
         playerModel.SetActive(true); // Show the player model again
 
@@ -77,6 +81,7 @@ setSkunkPossessedFlagOff();
         if (transform.position.y < -2f)
         {
             transform.position = spawnPoint.position;
+            health.decreaseHealth();
         }
 
     }
@@ -163,8 +168,8 @@ setSkunkPossessedFlagOff();
             Pigeon pigeonComponent = nearbyAnimal.GetComponent<Pigeon>();
             if (!pigeonComponent.getPigeonPossessedStatus()) // if in possession, dont turn off
             {
-            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
-}
+                nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            }
         }
         if (other.CompareTag("Fish"))
         {
@@ -172,8 +177,8 @@ setSkunkPossessedFlagOff();
             Fish fishComponent = nearbyAnimal.GetComponent<Fish>();
             if (!fishComponent.getFishPossessedStatus())
             {
-            nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
-}
+                nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
+            }
         }
 
         if (other.CompareTag("DigTrigger"))
