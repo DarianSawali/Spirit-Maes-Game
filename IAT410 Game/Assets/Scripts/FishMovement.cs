@@ -12,6 +12,7 @@ public class FishMovement : MonoBehaviour
     public LayerMask groundLayer;
     protected bool isGrounded;
 
+    private Animator animator; // for jumping animation
     public Transform platform; // Assign the reference to the platform in the inspector
 
     private void Awake()
