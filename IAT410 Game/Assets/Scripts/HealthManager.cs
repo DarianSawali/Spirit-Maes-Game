@@ -20,7 +20,7 @@ public class HealthManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int health = maxHealth;
+        health = maxHealth;
         Animator animator = GetComponent<Animator>();
     }
 
