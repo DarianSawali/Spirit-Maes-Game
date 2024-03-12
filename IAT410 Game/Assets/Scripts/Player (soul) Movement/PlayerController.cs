@@ -23,9 +23,6 @@ public class PlayerController : MonoBehaviour
 
     protected Rigidbody rb;
     protected bool isGrounded;
-    //protected Vector3 fixedEulerRotation = new Vector3(45f, 0f, 0f);
-
-    //protected bool controlsEnabled = true; // enable/disable player movement
 
     public GameObject playerModel; 
     private GameObject targetAnimal = null;
@@ -33,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public PlayerJump playerJump;
     
     public bool dug = false;
+
+    public HealthManager health; // if player fall down, decrease health
 
     protected void Start()
     {
@@ -104,6 +103,7 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y < -2f)
         {
             transform.position = spawnPoint.position;
+            health.decreaseHealth();
         }
 
         if (isPlayerActive)
