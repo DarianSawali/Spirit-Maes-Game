@@ -35,13 +35,15 @@ public class PidgeonJump : MonoBehaviour
     protected void Update()
     {
         isGrounded = IsGrounded();
-        // Set the Animator's boolean to determine if the character is grounded
+
+        // Update the animator with whether or not the pigeon is grounded.
         animator.SetBool("isGrounded", isGrounded);
 
-        bool isFalling = !isGrounded && rb.velocity.y < 0;
-        animator.SetBool("isFalling", isFalling);
+        // Update the animator with the vertical speed
+        animator.SetFloat("VerticalSpeed", rb.velocity.y);
 
-        if (!isGrounded && !isJumping) // Only apply gravity if in the air and not jumping
+        // Apply gravity if not grounded
+        if (!isGrounded)
         {
             rb.AddForce(Vector3.down * gravityScale * gravity, ForceMode.Acceleration);
         }
@@ -52,7 +54,8 @@ public class PidgeonJump : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isJumping = true;
+            // Reset the vertical speed when jumping
+            animator.SetFloat("VerticalSpeed", 0f);
             Debug.Log("Jump");
         }
     }
