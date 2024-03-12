@@ -17,6 +17,8 @@ public class SkunkJump : MonoBehaviour
 
     private Animator animator; // for jumping animation
 
+    public Transform platform; // Assign the reference to the platform in the inspector
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -35,21 +37,25 @@ public class SkunkJump : MonoBehaviour
     {
         isGrounded = IsGrounded();
 
-        // Set the Animator's boolean to determine if the character is grounded
+        // Update the animator with whether or not the pigeon is grounded.
         animator.SetBool("isGrounded", isGrounded);
 
+        // Check if the pigeon is below the platform to trigger the falling animation
+        if (!isGrounded && transform.position.y < platform.position.y)
+        {
+            // Pigeon is falling below the platform
+            animator.SetBool("isFalling", true);
+        }
+        else
+        {
+            // Pigeon is not falling below the platform
+            animator.SetBool("isFalling", false);
+        }
+
+        // Apply gravity if not grounded
         if (!isGrounded)
         {
             rb.AddForce(Vector3.down * gravityScale * gravity, ForceMode.Acceleration);
-        }
-    }
-
-    public void OnSkunkJump()
-    {
-        if (isGrounded)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            Debug.Log("Jump");
         }
     }
 
