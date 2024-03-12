@@ -28,7 +28,7 @@ public class Pigeon : MonoBehaviour
     // to determine collision on/off
     private bool beingPossessed = false;
 
-    private HealthManager health; // reduce health when falling
+    public HealthManager health; // reduce health when falling
 
     private void Awake()
     {
@@ -47,8 +47,6 @@ public class Pigeon : MonoBehaviour
         DisablePigeonInput();
 
         player = FindObjectOfType<PlayerController>();
-
-        health = GetComponent<HealthManager>();
     }
 
     public void OnDispossess(InputValue value)

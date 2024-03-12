@@ -26,6 +26,8 @@ public class Fish : MonoBehaviour
 
     private bool beingPossessed = false;
 
+    public HealthManager health; // reduce health when falling
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -50,6 +52,7 @@ public class Fish : MonoBehaviour
         if (transform.position.y < -2f)
         {
             transform.position = spawnPoint.position;
+            health.decreaseHealth();
         }
 
     }
@@ -171,11 +174,14 @@ public class Fish : MonoBehaviour
         }
     }
 
-    public void OnTriggerStay(Collider other){
-        if (other.CompareTag("Water")){
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Water"))
+        {
             moveSpeed = 0.9f;
         }
-        if (other.CompareTag("Ground")){
+        if (other.CompareTag("Ground"))
+        {
             moveSpeed = 0.1f;
         }
     }
