@@ -24,7 +24,6 @@ public class TutorialManager : MonoBehaviour
         if (popUpIndex < popUps.Length)
         {
             popUps[popUpIndex].SetActive(true);
-            Debug.Log("popup spawning");
         }
 
         if (popUpIndex == 0) // wasd movements
