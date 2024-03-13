@@ -1491,6 +1491,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2378615141376788548, guid: 0479bc21d86803a48b2d54baa652adb7, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.0627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378615141376788548, guid: 0479bc21d86803a48b2d54baa652adb7, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.06666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378615141376788548, guid: 0479bc21d86803a48b2d54baa652adb7, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.047058824
+      objectReference: {fileID: 0}
     - target: {fileID: 5358308071386568946, guid: 0479bc21d86803a48b2d54baa652adb7, type: 3}
       propertyPath: m_Name
       value: Vertical Camera
