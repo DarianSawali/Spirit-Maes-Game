@@ -51,6 +51,21 @@ public class TutorialManager : MonoBehaviour
                 popUpIndex++; // Move to the next pop-up
             }
         }
-        // Implement other tutorial steps by increasing the popUpIndex and checking its value
+
+        if (popUpIndex == 1)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                popUpIndex++;
+            }
+        }
+        
+        if (popUpIndex == 2)
+        {
+            if (Input.GetKeyDown("space"))
+            {
+                popUpIndex++;
+            }
+        }
     }
 }
