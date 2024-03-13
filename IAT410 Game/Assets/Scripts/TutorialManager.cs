@@ -75,5 +75,13 @@ public class TutorialManager : MonoBehaviour
                 popUpIndex++;
             }
         }
+
+        if (popUpIndex == 4)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                popUpIndex++;
+            }
+        }
     }
 }
