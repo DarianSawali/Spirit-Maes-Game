@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
     private Animator animator; // reference to animator
     protected bool isGrounded; // to handle falling
 
+    public Transform platform; // Assign the reference to the platform in the inspector
+
+
     protected void Start()
     {
         PlayerInput input = GetComponent<PlayerInput>();
