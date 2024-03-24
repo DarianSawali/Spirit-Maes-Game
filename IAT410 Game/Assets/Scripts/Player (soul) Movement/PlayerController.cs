@@ -235,14 +235,22 @@ public class PlayerController : MonoBehaviour
     // Method to check if the player is grounded
     private bool IsGrounded()
     {
-        Vector3 origin = transform.position + Vector3.up * 0.1f; // Slightly above the player's feet
-        float distance = groundedCheckDist + 0.1f; // Check slightly further than just the player's bottom
+        Vector3 origin = transform.position + Vector3.up * 0.1f; // Start the ray slightly above the player's feet
+        float distance = groundedCheckDist + 0.1f; // Extend the check slightly beyond the exact bottom of the player
         RaycastHit hit;
+
+        Debug.DrawRay(origin, Vector3.down * distance, Color.red); // Visualize the ray in the Scene view
 
         if (Physics.Raycast(origin, Vector3.down, out hit, distance, groundLayer))
         {
+            Debug.Log("Grounded on: " + hit.collider.name); // Log what the raycast hits
             return true; // Grounded
         }
+        else
+        {
+            Debug.Log("Not Grounded"); // Log when not grounded
+        }
+
         return false; // Not grounded
     }
 
