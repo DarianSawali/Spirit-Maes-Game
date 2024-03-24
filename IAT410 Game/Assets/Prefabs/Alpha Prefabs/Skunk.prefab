@@ -212,6 +212,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   playerInput: {fileID: 0}
   playerModel: {fileID: 2377779688185171951}
+  hasDug: 0
+  health: {fileID: 0}
 --- !u!114 &5900139527862981583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e46900647e4934c93cf87e28b24262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 9
+  jumpForce: 3.5
   gravity: 2
   gravityScale: 1
   playerInput: {fileID: 0}
@@ -232,6 +234,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  platform: {fileID: 0}
 --- !u!95 &3856242159564379829
 Animator:
   serializedVersion: 5
