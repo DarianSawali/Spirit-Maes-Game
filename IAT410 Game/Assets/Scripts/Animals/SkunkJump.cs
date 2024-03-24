@@ -75,7 +75,7 @@ public class SkunkJump : MonoBehaviour
 
         if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance))
         {
-            if (hit.collider.CompareTag("Ground"))
+            if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("DigTrigger"))
             {
                 // The player is considered grounded
                 return true;
