@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class SkunkJump : MonoBehaviour
 {
-    public float jumpForce = 1.4f;
-    public float gravity = 5f;
-    public float gravityScale = 0.2f;
+    public float jumpForce = 3.5f;
+    public float gravity = 2f;
+    public float gravityScale = 1f;
     public PlayerInput playerInput;
     public Rigidbody rb;
     public LayerMask groundLayer;
