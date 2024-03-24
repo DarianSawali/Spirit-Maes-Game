@@ -56,7 +56,7 @@ public class SkunkJump : MonoBehaviour
 
     private bool IsGrounded()
     {
-        float raycastDistance = 0.05f; // Adjust this distance based on your character's size
+        float raycastDistance = 0.1f; // Adjust this distance based on your character's size
                                       // Define points for raycasting: center, left edge, right edge, top, and bottom
         Vector3 center = transform.position;
         Vector3 left = center - (transform.right * 0.1f); // Adjust based on character width
