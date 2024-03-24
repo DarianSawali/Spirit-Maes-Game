@@ -106,7 +106,16 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = IsGrounded();
 
-        animator.SetBool("isFalling", isGrounded); // if falling, falling animation on
+        if (!isGrounded && transform.position.y < platform.position.y)
+        {
+            // Pigeon is falling below the platform
+            animator.SetBool("isFalling", true);
+        }
+        else
+        {
+            // Pigeon is not falling below the platform
+            animator.SetBool("isFalling", false);
+        }
 
         if (transform.position.y < -2f)
         {
@@ -246,7 +255,6 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(origin, Vector3.down, out hit, distance, groundLayer))
         {
-            Debug.Log("Grounded on: " + hit.collider.name); // Log what the raycast hits
             return true; // Grounded
         }
         else
