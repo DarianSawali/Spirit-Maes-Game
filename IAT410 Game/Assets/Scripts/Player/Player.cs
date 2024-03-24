@@ -46,7 +46,6 @@ public class Player : MonoBehaviour
         {
             // Disable SkunkMove action, enable PlayerMove action, enable possession
             input.actions.FindAction("PlayerMove").Enable();
-            input.actions.FindAction("SkunkMove").Disable();
             input.actions.FindAction("Possess").Enable();
         }
     }
@@ -191,8 +190,6 @@ public class Player : MonoBehaviour
         playerModel.SetActive(true); // Show the player model again
 
         targetAnimal = null; // Clear the target animal
-
-        // cameraFollowScript.SetTarget(player.transform); // Make the camera follow the player again
 
     }
 

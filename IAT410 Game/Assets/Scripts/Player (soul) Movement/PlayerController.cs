@@ -24,11 +24,11 @@ public class PlayerController : MonoBehaviour
     protected Rigidbody rb;
     protected bool isGrounded;
 
-    public GameObject playerModel; 
+    public GameObject playerModel;
     private GameObject targetAnimal = null;
 
     public PlayerJump playerJump;
-    
+
     public bool dug = false;
 
     public HealthManager health; // if player fall down, decrease health
@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Possessing Pigeon");
 
             pigeon.setPigeonPossessedFlagOn();
-        
+
             cameraFollowScript.SetTarget(pigeon.transform); // set camera to follow pigeon
         }
 
@@ -191,7 +191,10 @@ public class PlayerController : MonoBehaviour
 
         playerModel.SetActive(true); // Show the player model again
         EnablePlayerInput();
-        transform.position = targetAnimal.transform.position;
+
+        transform.position = new Vector3(targetAnimal.transform.position.x, targetAnimal.transform.position.y , (targetAnimal.transform.position.z - 0.001f));
+
+        // transform.position = targetAnimal.transform.position;
 
         targetAnimal = null; // Clear the target animal
 
@@ -212,7 +215,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("No collision");
         }
 
-        
+
     }
     private void OnTriggerExit(Collider other)
     {
@@ -220,7 +223,7 @@ public class PlayerController : MonoBehaviour
         {
             targetAnimal.GetComponent<CapsuleCollider>().enabled = true;
             targetAnimal = null;
-        
+
         }
     }
 
@@ -243,11 +246,11 @@ public class PlayerController : MonoBehaviour
     // }
 
     // Rigidbody animalRigidbody = targetAnimal.GetComponent<Rigidbody>();
-            // animalRigidbody.constraints |= RigidbodyConstraints.FreezePositionY;
+    // animalRigidbody.constraints |= RigidbodyConstraints.FreezePositionY;
 
 
-            // Rigidbody animalRigidbody = targetAnimal.GetComponent<Rigidbody>();
-            // animalRigidbody.constraints &= ~RigidbodyConstraints.FreezePositionY;
+    // Rigidbody animalRigidbody = targetAnimal.GetComponent<Rigidbody>();
+    // animalRigidbody.constraints &= ~RigidbodyConstraints.FreezePositionY;
 
     // private void OnCollisionEnter(Collision collision)
     // {
