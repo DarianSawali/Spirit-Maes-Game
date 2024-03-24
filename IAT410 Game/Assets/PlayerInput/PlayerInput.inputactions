@@ -60,6 +60,24 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "PigeonDig",
+                    "type": "Button",
+                    "id": "6e47b67c-5e46-47dd-8269-f32929b8b14b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlayerDig",
+                    "type": "Button",
+                    "id": "e2dfd583-0a9b-4e61-9b80-3a425706c6f7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "6b15cd93-b607-47e9-8048-ee7367a9c84e",
@@ -911,6 +929,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "FishMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85a8d8b2-b876-4332-abf3-803c642fc704",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PigeonDig",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "914a799c-52bd-43cb-81b2-dc7e4818092d",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PlayerDig",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
