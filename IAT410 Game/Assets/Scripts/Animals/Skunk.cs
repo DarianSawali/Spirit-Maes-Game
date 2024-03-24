@@ -33,6 +33,7 @@ public class Skunk : MonoBehaviour
     private Transform teleportTarget;
 
     private bool canDig = false;
+    public bool hasDug = false;
 
     public HealthManager health; // reduce health when falling
 
@@ -84,6 +85,7 @@ public class Skunk : MonoBehaviour
                 health.decreaseHealth();
             }
         }
+
 
     }
 
@@ -140,12 +142,28 @@ public class Skunk : MonoBehaviour
 
     public void OnDig()
     {
-        if (canDig && teleportTarget != null)
+        if (canDig && teleportTarget != null && !hasDug) // Check if the skunk can dig and hasn't dug yet
+        {
+            //DigHole();
+            GlobalStateManager.SkunkDugHole = true;
+            hasDug = true; // Set the flag to true after first successful dig
+            Debug.Log("Digging hole for the first time");
+        } 
+        else if (canDig && teleportTarget != null && hasDug) // Check if the skunk can dig and has already dug
         {
             TeleportToDigLocation(teleportTarget.position);
-            Debug.Log("Dig");
+            Debug.Log("Teleporting after dig");
         }
     }
+
+    // public void OnDig()
+    // {
+    //     if (canDig && teleportTarget != null && hasDug)
+    //     {
+    //         TeleportToDigLocation(teleportTarget.position);
+    //         Debug.Log("Dig");
+    //     }
+    // }
 
     public void TeleportToDigLocation(Vector3 position)
     {
@@ -167,7 +185,7 @@ public class Skunk : MonoBehaviour
         {
             nearbyAnimal = other.gameObject;
             Pigeon pigeonComponent = nearbyAnimal.GetComponent<Pigeon>();
-            if (!pigeonComponent.getPigeonPossessedStatus()) // if in possession, dont turn off
+            if (!pigeonComponent.getPigeonPossessedStatus()) 
             {
                 nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
             }
@@ -184,9 +202,11 @@ public class Skunk : MonoBehaviour
 
         if (other.CompareTag("DigTrigger"))
         {
+            PlayerInput input = GetComponent<PlayerInput>();
             canDig = true;
             teleportTarget = other.GetComponent<DigTrigger>().teleportLocation;
             Debug.Log("canDig");
+
         }
     }
     private void OnTriggerExit(Collider other)
