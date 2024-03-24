@@ -8,7 +8,7 @@ public class HealthManager : MonoBehaviour
     Animator animator;
     public GameObject Player;
 
-    PlayerMovement player;
+    Player player;
 
     public GameObject Heart1;
     public GameObject Heart2;
@@ -28,15 +28,15 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // testing purposes
-        // if (Input.GetKeyDown(KeyCode.U))
-        // {
-        //     decreaseHealth();
-        // }
-        // if (Input.GetKeyDown(KeyCode.I))
-        // {
-        //     addHealth();
-        // }
+        //testing purposes
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            decreaseHealth();
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            addHealth();
+        }
 
         switch (health)
         {
