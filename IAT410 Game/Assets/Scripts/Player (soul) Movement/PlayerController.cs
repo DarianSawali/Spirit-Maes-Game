@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     protected bool isPlayerActive = true;
 
     protected Rigidbody rb;
-    protected bool isGrounded;
 
     public GameObject playerModel;
     private GameObject targetAnimal = null;
@@ -33,6 +32,9 @@ public class PlayerController : MonoBehaviour
 
     public HealthManager health; // if player fall down, decrease health
 
+    private Animator animator; // reference to animator
+    protected bool isGrounded; // to handle falling
+
     protected void Start()
     {
         PlayerInput input = GetComponent<PlayerInput>();
@@ -40,11 +42,12 @@ public class PlayerController : MonoBehaviour
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         input.actions.FindAction("SkunkJump").Disable();
-        //playerInput.Disable();
 
         skunk = FindObjectOfType<Skunk>();
         pigeon = FindObjectOfType<Pigeon>();
         fish = FindObjectOfType<Fish>();
+
+        animator = GetComponent<animator>(); // get animator component
 
         if (isPlayerActive)
         {
@@ -98,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
     protected void Update()
     {
-        //transform.rotation = Quaternion.Euler(fixedEulerRotation);
+        isGrounded = isGrounded();
 
         if (transform.position.y < -2f)
         {
@@ -192,7 +195,7 @@ public class PlayerController : MonoBehaviour
         playerModel.SetActive(true); // Show the player model again
         EnablePlayerInput();
 
-        transform.position = new Vector3(targetAnimal.transform.position.x, targetAnimal.transform.position.y , (targetAnimal.transform.position.z - 0.001f));
+        transform.position = new Vector3(targetAnimal.transform.position.x, targetAnimal.transform.position.y, (targetAnimal.transform.position.z - 0.001f));
 
         // transform.position = targetAnimal.transform.position;
 
@@ -277,46 +280,6 @@ public class PlayerController : MonoBehaviour
     //     }
     // }
 
-
-    // protected void OnPossess(InputValue value)
-    // {
-    //     Debug.Log("OnPossess called");
-    //     if (targetAnimal != null && !isPossessing)
-    //     {
-    //         PossessAnimal(targetAnimal);
-    //         isPlayerActive = false;
-    //         isPossessing = true;
-    //         // cameraFollowScript.SetTarget(skunk.transform); // Make the camera follow the skunk
-    //         // CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
-    //         // cameraManager.SetCameraTarget(skunk.transform);
-
-    //     }
-    // }
-
-    // public void OnDispossess(InputValue value)
-    // {
-    //     Debug.Log("OnDispossess called");
-    //     if (isPossessing)
-    //     {
-    //         DispossessAnimal();
-    //         isPossessing = false;
-    //         isPlayerActive = true;
-    //     }
-    // }
-
-    // public void PossessAnimal(GameObject animal)
-    // {
-    //     Debug.Log("Possessing animal");
-
-    //     playerModel.SetActive(false);
-    //     DisablePlayerInput();
-    //     skunk.EnableSkunkInput();
-
-    //     // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
-
-    // }
-
-
     // protected void FixedUpdate()
     // {
     //     isGrounded = CheckGrounded();
@@ -348,77 +311,4 @@ public class PlayerController : MonoBehaviour
 //         return true;
 //     }
 //     return false;
-// }
-
-
-
-// public void OnJump(InputValue value)
-// {
-//     if (!controlsEnabled || !isGrounded) return;
-
-//     rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-// }
-
-// private void OnCollisionEnter(Collision collision)
-// {
-//     if (collision.gameObject.CompareTag("Tilemap"))
-//     {
-//         isGrounded = true;
-//     }
-// }
-
-// private void OnCollisionStay(Collision collision)
-// {
-//     if (collision.gameObject.CompareTag("Tilemap"))
-//     {
-//         isGrounded = true;
-//     }
-// }
-
-// private void OnCollisionExit(Collision collision)
-// {
-//     if (collision.gameObject.CompareTag("Tilemap"))
-//     {
-//         // Player is no longer colliding with tilemap
-//         isGrounded = false;
-//     }
-// }
-
-// public bool CheckGrounded()
-// {
-//     // RaycastHit hit;
-//     // Vector3 raycastOrigin = transform.position + Vector3.up * 0.1f; // Offset slightly above player's position
-//     // if (Physics.Raycast(raycastOrigin, Vector3.down, out hit, groundedCheckDist, groundLayer))
-//     // {
-//     //     Debug.Log("Hit ground: " + hit.collider.gameObject.name);
-//     //     return true;
-//     // }
-//     return false;
-// }
-
-// public bool CheckGrounded()
-// {
-
-//     return rb.velocity.y == 0;
-//     // RaycastHit hit;
-
-//     // if (Physics.Raycast(transform.position, Vector3.down, out hit, groundedCheckDist, groundLayer))
-//     // {
-//     //     if (hit.collider.CompareTag("Ground"))
-//     //     {
-//     //         return true;
-//     //     }
-//     // }
-
-//     // return false;
-// }
-
-
-//rb.velocity += Vector3.down * gravity * Time.deltaTime;
-
-// if (!isGrounded)
-// {
-//     isGrounded = CheckGrounded();
-//     Debug.Log("not ground");
-//     //rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 // }
