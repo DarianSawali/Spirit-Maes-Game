@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         pigeon = FindObjectOfType<Pigeon>();
         fish = FindObjectOfType<Fish>();
 
-        animator = GetComponent<animator>(); // get animator component
+        animator = GetComponent<Animator>(); // get animator component
 
         if (isPlayerActive)
         {
@@ -101,7 +101,9 @@ public class PlayerController : MonoBehaviour
 
     protected void Update()
     {
-        isGrounded = isGrounded();
+        isGrounded = IsGrounded();
+
+        animator.SetBool("isFalling", isGrounded); // if falling, falling animation on
 
         if (transform.position.y < -2f)
         {
@@ -230,27 +232,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Method to check if the player is grounded
+    private bool IsGrounded()
+    {
+        Vector3 origin = transform.position + Vector3.up * 0.1f; // Slightly above the player's feet
+        float distance = groundedCheckDist + 0.1f; // Check slightly further than just the player's bottom
+        RaycastHit hit;
 
-
-    // private bool IsGrounded()
-    // {
-    //     float raycastDistance = 0.1f; // Adjust this distance based on your player's size
-    //     RaycastHit hit;
-
-    //     if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance))
-    //     {
-    //         if (hit.collider.CompareTag("Ground"))
-    //         {
-    //             // The player is considered grounded
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
-
-    // Rigidbody animalRigidbody = targetAnimal.GetComponent<Rigidbody>();
-    // animalRigidbody.constraints |= RigidbodyConstraints.FreezePositionY;
-
+        if (Physics.Raycast(origin, Vector3.down, out hit, distance, groundLayer))
+        {
+            return true; // Grounded
+        }
+        return false; // Not grounded
+    }
 
     // Rigidbody animalRigidbody = targetAnimal.GetComponent<Rigidbody>();
     // animalRigidbody.constraints &= ~RigidbodyConstraints.FreezePositionY;
