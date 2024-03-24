@@ -54,7 +54,7 @@ public class SkunkJump : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
+    private bool IsGrounded() // to check if skunk is grounded
     {
         float raycastDistance = 0.1f; // Adjust this distance based on your character's size
                                       // Define points for raycasting: center, left edge, right edge, top, and bottom

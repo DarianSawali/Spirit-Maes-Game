@@ -51,18 +51,44 @@ public class FishMovement : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
+    private bool IsGrounded() // check if fish is grounded
     {
-        float raycastDistance = 0.1f;
-        RaycastHit hit;
+        float raycastDistance = 0.1f; // Adjust this distance based on your character's size
+                                      // Define points for raycasting: center, left edge, right edge, top, and bottom
+        Vector3 center = transform.position;
+        Vector3 left = center - (transform.right * 0.5f); // Adjust based on character width
+        Vector3 right = center + (transform.right * 0.5f); // Adjust based on character width
+        Vector3 top = center + (transform.up * 0.5f); // Adjust based on character height
+        Vector3 bottom = center - (transform.up * 0.5f); // Adjust based on character height
 
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance))
+        // Combine all points in an array for easier iteration
+        Vector3[] points = new Vector3[] { center, left, right, top, bottom };
+
+        foreach (var point in points)
         {
-            if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Water"))
+            RaycastHit hit;
+            // Cast a ray downwards from each point
+            if (Physics.Raycast(point, Vector3.down, out hit, raycastDistance, groundLayer))
             {
-                return true;
+                if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("DigTrigger") || hit.collider.CompareTag("Water"))
+                {
+                    return true; // Grounded if any ray hits a ground object
+                }
+            }
+            // Additionally, for top and bottom points, cast rays in the character's forward direction
+            // This is useful if your character moves in all four directions and you need to check for ground ahead or behind
+            if (point == top || point == bottom)
+            {
+                if (Physics.Raycast(point, transform.forward, out hit, raycastDistance, groundLayer) ||
+                    Physics.Raycast(point, -transform.forward, out hit, raycastDistance, groundLayer))
+                {
+                    if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("DigTrigger") || hit.collider.CompareTag("Water"))
+                    {
+                        return true; // Grounded if forward or backward ray hits a ground object
+                    }
+                }
             }
         }
-        return false;
+        return false; // Not grounded if none of the rays hit a ground object
     }
 }
