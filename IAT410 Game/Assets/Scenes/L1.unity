@@ -4694,7 +4694,7 @@ PrefabInstance:
       objectReference: {fileID: 1133889221}
     - target: {fileID: 5900139527862981583, guid: 29663e1b628124642bc4de10c2fe135d, type: 3}
       propertyPath: jumpForce
-      value: 3.5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

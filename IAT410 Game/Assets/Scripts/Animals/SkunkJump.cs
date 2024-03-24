@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class SkunkJump : MonoBehaviour
 {
-    public float jumpForce = 3.5f;
-    public float gravity = 2f;
-    public float gravityScale = 1f;
+    public float jumpForce = 1.7f;
+    public float gravity = 5f;
+    public float gravityScale = 0.2f;
     public PlayerInput playerInput;
     public Rigidbody rb;
     public LayerMask groundLayer;
@@ -54,9 +54,9 @@ public class SkunkJump : MonoBehaviour
         }
     }
 
-    private bool IsGrounded() // to check if skunk is grounded
+    private bool IsGrounded()
     {
-        float raycastDistance = 0.1f; // Adjust this distance based on your character's size
+        float raycastDistance = 0.05f; // Adjust this distance based on your character's size
                                       // Define points for raycasting: center, left edge, right edge, top, and bottom
         Vector3 center = transform.position;
         Vector3 left = center - (transform.right * 0.1f); // Adjust based on character width
