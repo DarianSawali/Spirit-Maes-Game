@@ -59,10 +59,10 @@ public class SkunkJump : MonoBehaviour
         float raycastDistance = 0.1f; // Adjust this distance based on your character's size
                                       // Define points for raycasting: center, left edge, right edge, top, and bottom
         Vector3 center = transform.position;
-        Vector3 left = center - (transform.right * 0.5f); // Adjust based on character width
-        Vector3 right = center + (transform.right * 0.5f); // Adjust based on character width
-        Vector3 top = center + (transform.up * 0.5f); // Adjust based on character height
-        Vector3 bottom = center - (transform.up * 0.5f); // Adjust based on character height
+        Vector3 left = center - (transform.right * 0.1f); // Adjust based on character width
+        Vector3 right = center + (transform.right * 0.1f); // Adjust based on character width
+        Vector3 top = center + (transform.up * 0.1f); // Adjust based on character height
+        Vector3 bottom = center - (transform.up * 0.1f); // Adjust based on character height
 
         // Combine all points in an array for easier iteration
         Vector3[] points = new Vector3[] { center, left, right, top, bottom };
