@@ -13,9 +13,7 @@ public class SkunkJump : MonoBehaviour
     public LayerMask groundLayer;
     protected bool isGrounded;
 
-    private PlayerController playerControl;
-
-    private Animator animator; // for jumping animation
+    private Animator animator; // For jumping animation
 
     public Transform platform; // Assign the reference to the platform in the inspector
 
@@ -26,31 +24,19 @@ public class SkunkJump : MonoBehaviour
 
     protected void Start()
     {
-        PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
-
-        PlayerController playerControl = GetComponent<PlayerController>();
     }
 
     protected void Update()
     {
         isGrounded = IsGrounded();
 
-        // Update the animator with whether or not the pigeon is grounded.
+        // Update the animator with whether or not the skunk is grounded.
         animator.SetBool("isGrounded", isGrounded);
 
-        // Check if the pigeon is below the platform to trigger the falling animation
-        if (!isGrounded && transform.position.y < platform.position.y)
-        {
-            // Pigeon is falling below the platform
-            animator.SetBool("isFalling", true);
-        }
-        else
-        {
-            // Pigeon is not falling below the platform
-            animator.SetBool("isFalling", false);
-        }
+        // Trigger the falling animation if not grounded and below the platform
+        animator.SetBool("isFalling", !isGrounded && transform.position.y < platform.position.y);
 
         // Apply gravity if not grounded
         if (!isGrounded)
@@ -71,16 +57,24 @@ public class SkunkJump : MonoBehaviour
     private bool IsGrounded()
     {
         float raycastDistance = 0.1f; // Adjust this distance based on your player's size
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance))
+        Vector3[] points = new Vector3[]
         {
-            if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("DigTrigger"))
+            transform.position, // Center
+            transform.position - (transform.right * 0.5f), // Left
+            transform.position + (transform.right * 0.5f)  // Right
+        };
+
+        foreach (var point in points)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(point, Vector3.down, out hit, raycastDistance, groundLayer))
             {
-                // The player is considered grounded
-                return true;
+                if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("DigTrigger"))
+                {
+                    return true; // Grounded if any ray hits the ground or dig trigger
+                }
             }
         }
-        return false;
+        return false; // Not grounded if none of the rays hit the ground
     }
 }
