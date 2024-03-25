@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour
     public void PossessAnimal(GameObject animal)
     {
         Debug.Log("Possessing animal");
-        CameraFollowVertical cameraFollowScript = Camera.main.GetComponent<CameraFollowVertical>();
+        CameraFollowVertical cameraFollowScript = Camera.main.GetComponent<CameraFollowVertical>(); // get camera
 
         Skunk skunkComponent = targetAnimal.GetComponent<Skunk>();
         if (skunkComponent != null)
@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour
 
             skunk.setSkunkPossessedFlagOn();
 
-            cameraFollowScript.SetTarget(skunk.transform);
+            cameraFollowScript.SetTarget(skunk.transform); // set camera to follow skunk
         }
 
         Pigeon pigeonComponent = targetAnimal.GetComponent<Pigeon>();
@@ -198,8 +198,6 @@ public class PlayerController : MonoBehaviour
         isPlayerActive = false;
 
         playerModel.SetActive(false);
-
-        // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
     }
 
     public void DispossessAnimal()
@@ -209,9 +207,8 @@ public class PlayerController : MonoBehaviour
         playerModel.SetActive(true); // Show the player model again
         EnablePlayerInput();
 
-        transform.position = new Vector3(targetAnimal.transform.position.x, targetAnimal.transform.position.y, (targetAnimal.transform.position.z - 0.001f));
-
-        // transform.position = targetAnimal.transform.position;
+        transform.position = new Vector3(targetAnimal.transform.position.x, targetAnimal.transform.position.y, (targetAnimal.transform.position.z - 0.005f));
+        // upon dispossessing, player will spawn in front of the dispossessed animal
 
         targetAnimal = null; // Clear the target animal
 
@@ -259,7 +256,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not Grounded"); // Log when not grounded
+            // Debug.Log("Not Grounded"); // Log when not grounded
         }
 
         return false; // Not grounded
