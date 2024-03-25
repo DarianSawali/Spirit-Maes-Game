@@ -154,7 +154,7 @@ public class Skunk : MonoBehaviour
             GlobalStateManager.SkunkDugHole = true;
             hasDug = true; // Set the flag to true after first successful dig
             Debug.Log("Digging hole for the first time");
-        } 
+        }
         else if (canDig && teleportTarget != null && hasDug) // Check if the skunk can dig and has already dug
         {
             TeleportToDigLocation(teleportTarget.position);
@@ -191,7 +191,7 @@ public class Skunk : MonoBehaviour
         {
             nearbyAnimal = other.gameObject;
             Pigeon pigeonComponent = nearbyAnimal.GetComponent<Pigeon>();
-            if (!pigeonComponent.getPigeonPossessedStatus()) 
+            if (!pigeonComponent.getPigeonPossessedStatus())
             {
                 nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
             }
@@ -241,7 +241,8 @@ public class Skunk : MonoBehaviour
     public void setSkunkPossessedFlagOn()
     {
         beingPossessed = true;
-        spriteRenderer.color = new Color(1f, 0.5f, 0.5f, 0.5f);;
+        Color possessedColor = HexToColor("#404D9A");
+        spriteRenderer.color = possessedColor;
     }
 
     public void setSkunkPossessedFlagOff()
@@ -258,4 +259,24 @@ public class Skunk : MonoBehaviour
         }
         return false;
     }
+
+    // setup hexadecimal colour to rgb
+    private static Color HexToColor(string hex)
+    {
+        hex = hex.Replace("0x", ""); // In case the string is formatted as 0xFFFFFF
+        hex = hex.Replace("#", ""); // In case the string is formatted as #FFFFFF
+        byte a = 255; // assume fully visible unless specified in hex
+        byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+        byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+        byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+
+        // Check if alpha is specified in hex
+        if (hex.Length == 8)
+        {
+            a = byte.Parse(hex.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+        }
+
+        return new Color(r / 255f, g / 255f, b / 255f, a / 255f);
+    }
+
 }
