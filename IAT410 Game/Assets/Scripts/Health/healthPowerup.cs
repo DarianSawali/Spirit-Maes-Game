@@ -21,6 +21,7 @@ public class healthPowerup : MonoBehaviour
             Pigeon pigeonComponent = other.GetComponent<Pigeon>();
             if (!pigeonComponent.getPigeonPossessedStatus()) // if in possession, health up
             {
+                Debug.Log("health up");
                 health.addHealth();
             }
         }
