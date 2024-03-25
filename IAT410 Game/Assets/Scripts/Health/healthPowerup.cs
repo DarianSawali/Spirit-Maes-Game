@@ -20,7 +20,7 @@ public class healthPowerup : MonoBehaviour
         if (other.CompareTag("Pigeon"))
         {
             Pigeon pigeonComponent = other.GetComponent<Pigeon>();
-            if (!pigeonComponent.getPigeonPossessedStatus()) // if in possession, health up
+            if (pigeonComponent.getPigeonPossessedStatus()) // if in possession, health up
             {
                 Debug.Log("health up");
                 health.addHealth();
@@ -31,7 +31,7 @@ public class healthPowerup : MonoBehaviour
         if (other.CompareTag("Skunk"))
         {
             Skunk skunkComponent = other.GetComponent<Skunk>();
-            if (!skunkComponent.getSkunkPossessedStatus()) // if in possession, health up
+            if (skunkComponent.getSkunkPossessedStatus()) // if in possession, health up
             {
                 health.addHealth();
                 Destroy(gameObject); // remove powerup
@@ -41,7 +41,7 @@ public class healthPowerup : MonoBehaviour
         if (other.CompareTag("Fish"))
         {
             Fish fishComponent = other.GetComponent<Fish>();
-            if (!fishComponent.getFishPossessedStatus()) // if in possession, health up
+            if (fishComponent.getFishPossessedStatus()) // if in possession, health up
             {
                 health.addHealth();
                 Destroy(gameObject); // remove powerup
