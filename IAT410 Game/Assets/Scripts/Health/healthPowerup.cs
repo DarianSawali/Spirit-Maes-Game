@@ -14,7 +14,34 @@ public class healthPowerup : MonoBehaviour
         {
             Debug.Log("health up");
             health.addHealth();
-            Destroy(gameObject);
         }
+
+        if (other.CompareTag("Pigeon"))
+        {
+            Pigeon pigeonComponent = other.GetComponent<Pigeon>();
+            if (!pigeonComponent.getPigeonPossessedStatus()) // if in possession, health up
+            {
+                health.addHealth();
+            }
+        }
+
+        if (other.CompareTag("Skunk"))
+        {
+            Skunk skunkComponent = other.GetComponent<Skunk>();
+            if (!skunkComponent.getSkunkPossessedStatus()) // if in possession, health up
+            {
+                health.addHealth();
+            }
+        }
+
+        if (other.CompareTag("Fish"))
+        {
+            Fish fishComponent = other.GetComponent<Fish>();
+            if (!fishComponent.getFishPossessedStatus()) // if in possession, health up
+            {
+                health.addHealth();
+            }
+        }
+
+        Destroy(gameObject); // remove powerup
     }
-}
