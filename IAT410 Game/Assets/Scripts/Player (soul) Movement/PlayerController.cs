@@ -256,7 +256,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not Grounded"); // Log when not grounded
+            // Debug.Log("Not Grounded"); // Log when not grounded
         }
 
         return false; // Not grounded
