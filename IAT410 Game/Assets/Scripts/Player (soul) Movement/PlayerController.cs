@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
         playerModel.SetActive(true); // Show the player model again
         EnablePlayerInput();
 
-        transform.position = new Vector3(targetAnimal.transform.position.x, targetAnimal.transform.position.y, (targetAnimal.transform.position.z - 0.001f));
+        transform.position = new Vector3(targetAnimal.transform.position.x, targetAnimal.transform.position.y, (targetAnimal.transform.position.z - 0.005f));
 
         // transform.position = targetAnimal.transform.position;
 
