@@ -37,6 +37,10 @@ public class Skunk : MonoBehaviour
 
     public HealthManager health; // reduce health when falling
 
+    // for colour changing
+    Color originalColor;
+    SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -54,6 +58,9 @@ public class Skunk : MonoBehaviour
         DisableSkunkInput();
 
         player = FindObjectOfType<PlayerController>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
     }
 
     public void OnDispossess(InputValue value)
@@ -85,7 +92,6 @@ public class Skunk : MonoBehaviour
                 health.decreaseHealth();
             }
         }
-
 
     }
 
@@ -235,11 +241,13 @@ public class Skunk : MonoBehaviour
     public void setSkunkPossessedFlagOn()
     {
         beingPossessed = true;
+        spriteRenderer.color = Color.blue;
     }
 
     public void setSkunkPossessedFlagOff()
     {
         beingPossessed = false;
+        spriteRenderer.color = originalColor;
     }
 
     public bool getSkunkPossessedStatus()
