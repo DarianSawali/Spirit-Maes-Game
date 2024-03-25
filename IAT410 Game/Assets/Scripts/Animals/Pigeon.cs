@@ -30,6 +30,10 @@ public class Pigeon : MonoBehaviour
 
     public HealthManager health; // reduce health when falling
 
+    // for colour changing
+    Color originalColor;
+    SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -47,6 +51,10 @@ public class Pigeon : MonoBehaviour
         DisablePigeonInput();
 
         player = FindObjectOfType<PlayerController>();
+
+        // sprite renderer colour
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
     }
 
     public void OnDispossess(InputValue value)
@@ -181,11 +189,14 @@ public class Pigeon : MonoBehaviour
     public void setPigeonPossessedFlagOn()
     {
         beingPossessed = true;
+        Color possessedColor = HexToColor("#94DFFF");
+        spriteRenderer.color = possessedColor;
     }
 
     public void setPigeonPossessedFlagOff()
     {
         beingPossessed = false;
+        spriteRenderer.color = originalColor;
     }
 
     public bool getPigeonPossessedStatus()
@@ -195,6 +206,25 @@ public class Pigeon : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    // setup hexadecimal colour to rgb
+    private static Color HexToColor(string hex)
+    {
+        hex = hex.Replace("0x", ""); // In case the string is formatted as 0xFFFFFF
+        hex = hex.Replace("#", ""); // In case the string is formatted as #FFFFFF
+        byte a = 255; // assume fully visible unless specified in hex
+        byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+        byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+        byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+
+        // Check if alpha is specified in hex
+        if (hex.Length == 8)
+        {
+            a = byte.Parse(hex.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+        }
+
+        return new Color(r / 255f, g / 255f, b / 255f, a / 255f);
     }
 }
 

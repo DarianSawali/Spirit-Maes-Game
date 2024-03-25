@@ -59,6 +59,7 @@ public class Skunk : MonoBehaviour
 
         player = FindObjectOfType<PlayerController>();
 
+        // sprite renderer colour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
     }
