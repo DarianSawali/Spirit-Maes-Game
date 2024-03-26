@@ -65,6 +65,10 @@ public class CameraFollowVertical : MonoBehaviour
             {
                 AdjustXAxis(); // Adjust the camera's x position
             }
+            else
+            {
+                RevertXAxis();
+            }
         }
     }
 
