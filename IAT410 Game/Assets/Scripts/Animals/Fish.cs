@@ -202,12 +202,16 @@ public class Fish : MonoBehaviour
         beingPossessed = true;
         Color possessedColor = HexToColor("#94DFFF");
         spriteRenderer.color = possessedColor;
+
+        animator.SetBool("isPossessed", true);
     }
 
     public void setFishPossessedFlagOff()
     {
         beingPossessed = false;
-        spriteRenderer.color = originalColor;
+        // spriteRenderer.color = originalColor;
+
+        animator.SetBool("isPossessed", false);
     }
 
     public bool getFishPossessedStatus()
