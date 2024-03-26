@@ -189,14 +189,18 @@ public class Pigeon : MonoBehaviour
     public void setPigeonPossessedFlagOn()
     {
         beingPossessed = true;
-        Color possessedColor = HexToColor("#94DFFF");
-        spriteRenderer.color = possessedColor;
+        // Color possessedColor = HexToColor("#94DFFF");
+        // spriteRenderer.color = possessedColor;
+
+        animator.SetBool("isPossessed", true);
     }
 
     public void setPigeonPossessedFlagOff()
     {
         beingPossessed = false;
-        spriteRenderer.color = originalColor;
+        // spriteRenderer.color = originalColor;
+
+        animator.SetBool("isPossessed", false);
     }
 
     public bool getPigeonPossessedStatus()

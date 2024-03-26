@@ -242,14 +242,18 @@ public class Skunk : MonoBehaviour
     public void setSkunkPossessedFlagOn()
     {
         beingPossessed = true;
-        Color possessedColor = HexToColor("#94DFFF");
-        spriteRenderer.color = possessedColor;
+        // Color possessedColor = HexToColor("#94DFFF");
+        // spriteRenderer.color = possessedColor;
+
+        animator.SetBool("isPossessed", true);
     }
 
     public void setSkunkPossessedFlagOff()
     {
         beingPossessed = false;
-        spriteRenderer.color = originalColor;
+        // spriteRenderer.color = originalColor;
+
+        animator.SetBool("isPossessed", false);
     }
 
     public bool getSkunkPossessedStatus()
