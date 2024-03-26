@@ -13,12 +13,14 @@ public class ButtonTrigger : MonoBehaviour
     {
         if (other.CompareTag("Animal") || other.CompareTag("Player") || other.CompareTag("Skunk") || other.CompareTag("Pigeon") || other.CompareTag("Fish"))
         {
-            door.ButtonPressed();
-            isPressed = true;
-            if(isPressed){
+            if (!isPressed)
+            {
+                isPressed = true;
+                door.ButtonPressed();
                 TileSwitch();
+
+                Debug.Log("Button Pressed");
             }
-            Debug.Log("Button Pressed");
         }
     }
 
@@ -27,7 +29,7 @@ public class ButtonTrigger : MonoBehaviour
         tilemapSwitch.SwitchTilemaps();
     }
 
-    
+}
 
     // private bool isPressed = false;
     // public bool IsPressed { get { return isPressed; } }
@@ -45,4 +47,4 @@ public class ButtonTrigger : MonoBehaviour
     //     }
 
     // }
-}
+
