@@ -9,7 +9,7 @@ public class ArrowSpawner : MonoBehaviour
 
     public Quaternion spawnRotation;
 
-    public float spawnRate = 2f; // Time between spawns
+    public float spawnRate = 0.5f; // Time between spawns
     private float timeSinceSpawned = 0f;
 
     public float arrowSpeed = 10f; // Speed of the spawned arrows
@@ -24,11 +24,13 @@ public class ArrowSpawner : MonoBehaviour
 
     void Update()
     {
-        timeSinceSpawned += timeSinceSpawned.deltaTime
-        
-        if (timeSinceSpawned >= spawnTime)
+        timeSinceSpawned += Time.deltaTime;
+
+        if (timeSinceSpawned >= spawnRate)
         {
+            Debug.Log("Trying to spawn an arrow.");
             Instantiate(arrowPrefab, spawnLocation.position, spawnRotation);
+            timeSinceSpawned = 0;
         }
     }
 
