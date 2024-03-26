@@ -12,9 +12,13 @@ public class CameraFollowVertical : MonoBehaviour
 
     private Camera cam; // Reference to the Camera component
 
+    private Vector3 initialPosition; // Variable to store the initial position of the camera
+
     private void Start()
     {
         cam = Camera.main; // Cache the main camera
+
+        initialPosition = transform.position; // Save the initial position of the camera
     }
 
     private void LateUpdate()
@@ -60,14 +64,15 @@ public class CameraFollowVertical : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 7)
         {
-            Debug.Log("Level 4.5");
             if (target.position.x < -2f)
             {
-                AdjustXAxis(); // Adjust the camera's x position
+                // Move the camera to the new position when player's x position is less than -2
+                transform.position = new Vector3(-3f, transform.position.y, transform.position.z);
             }
-            else
+            else if (target.position.x > -2f)
             {
-                RevertXAxis();
+                // Reset the camera to the initial position when player's x position is greater than -2
+                transform.position = new Vector3(initialPosition.x, transform.position.y, transform.position.z);
             }
         }
     }
