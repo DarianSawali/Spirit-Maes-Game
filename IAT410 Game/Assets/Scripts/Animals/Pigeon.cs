@@ -167,6 +167,12 @@ public class Pigeon : MonoBehaviour
                 nearbyAnimal.GetComponent<CapsuleCollider>().enabled = false;
             }
         }
+
+        if (other.CompareTag("Player")) // indicate if pigeon can be possessed
+        {
+            Color possessionColor = HexToColor("#94DFFF");
+            spriteRenderer.color = possessionColor;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -182,6 +188,11 @@ public class Pigeon : MonoBehaviour
             nearbyAnimal = other.gameObject;
             nearbyAnimal.GetComponent<CapsuleCollider>().enabled = true;
             nearbyAnimal = null;
+        }
+
+        if (other.CompareTag("Player")) // return pigeon to original colour
+        {
+            spriteRenderer.color = originalColor;
         }
     }
 

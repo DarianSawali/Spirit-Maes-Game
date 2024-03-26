@@ -158,6 +158,12 @@ public class Fish : MonoBehaviour
         {
             moveSpeed = 0.9f;
         }
+
+        if (other.CompareTag("Player")) // indicate if fish can be possessed
+        {
+            Color possessionColor = HexToColor("#94DFFF");
+            spriteRenderer.color = possessionColor;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -181,6 +187,11 @@ public class Fish : MonoBehaviour
         if (other.CompareTag("Water"))
         {
             moveSpeed = 0.1f;
+        }
+
+        if (other.CompareTag("Player")) // return fish to original colour
+        {
+            spriteRenderer.color = originalColor;
         }
     }
 

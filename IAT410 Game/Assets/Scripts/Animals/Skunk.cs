@@ -215,6 +215,12 @@ public class Skunk : MonoBehaviour
             Debug.Log("canDig");
 
         }
+
+        if (other.CompareTag("Player")) // indicate if skunk can be possessed
+        {
+            Color possessionColor = HexToColor("#94DFFF");
+            spriteRenderer.color = possessionColor;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -236,14 +242,17 @@ public class Skunk : MonoBehaviour
             canDig = false;
             teleportTarget = null;
         }
+
+        if (other.CompareTag("Player")) // return skunk to original colour
+        {
+            spriteRenderer.color = originalColor;
+        }
     }
 
     // to set beingPossessed flag
     public void setSkunkPossessedFlagOn()
     {
         beingPossessed = true;
-        // Color possessedColor = HexToColor("#94DFFF");
-        // spriteRenderer.color = possessedColor;
 
         animator.SetBool("isPossessed", true);
     }
@@ -251,7 +260,6 @@ public class Skunk : MonoBehaviour
     public void setSkunkPossessedFlagOff()
     {
         beingPossessed = false;
-        // spriteRenderer.color = originalColor;
 
         animator.SetBool("isPossessed", false);
     }
