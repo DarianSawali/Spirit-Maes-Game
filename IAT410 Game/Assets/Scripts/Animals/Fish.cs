@@ -211,8 +211,6 @@ public class Fish : MonoBehaviour
     public void setFishPossessedFlagOn()
     {
         beingPossessed = true;
-        // Color possessedColor = HexToColor("#94DFFF");
-        // spriteRenderer.color = possessedColor;
 
         animator.SetBool("isPossessed", true);
     }
@@ -220,7 +218,6 @@ public class Fish : MonoBehaviour
     public void setFishPossessedFlagOff()
     {
         beingPossessed = false;
-        // spriteRenderer.color = originalColor;
 
         animator.SetBool("isPossessed", false);
     }
