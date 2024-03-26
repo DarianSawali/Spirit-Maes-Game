@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class LevelReset : MonoBehaviour
 {
@@ -43,6 +44,10 @@ public class LevelReset : MonoBehaviour
         {
             fishStartPosition = fish.transform.position;
         }
+
+        Debug.Log("saved");
+        Debug.Log(playerStartPosition);
+        Debug.Log(fishStartPosition);
     }
 
     public void ResetLevel()
@@ -71,5 +76,25 @@ public class LevelReset : MonoBehaviour
         {
             fish.transform.position = fishStartPosition;
         }
+
+        Debug.Log("reset");
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            ResetLevel();
+        }
+    }
+
+    public void OnReset()
+    {
+        Debug.Log("reset pressed");
+        // if (value.isPressed)
+        // {
+        //     ResetLevel();
+        //     Debug.Log("reset pressed");
+        // }
     }
 }

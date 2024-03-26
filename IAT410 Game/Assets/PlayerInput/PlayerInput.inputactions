@@ -132,6 +132,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "db1a31a5-b47b-49f9-869a-0681834abe18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "SMove",
                     "type": "PassThrough",
                     "id": "286195fc-d054-442f-be5f-172ec011ed8d",
@@ -953,6 +962,17 @@
                     "action": "PlayerDig",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e0d2195-8a2a-43d4-95e4-4652459471d8",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1046,6 +1066,15 @@
                     "type": "PassThrough",
                     "id": "4ce7caaa-dd6a-4dd3-8186-d61a87b51fa6",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ResetL",
+                    "type": "Button",
+                    "id": "72aaa7ff-e522-4fe6-9dcf-1deb30585f41",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -1467,6 +1496,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6c52633-fb4f-4173-968c-b68df258a7f1",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetL",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

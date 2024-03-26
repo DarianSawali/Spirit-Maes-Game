@@ -7,7 +7,8 @@ public class DigTrigger : MonoBehaviour
 {
     public DigLocation digLocation;
     private bool canDig = false;
-    private bool dug = false; 
+    private bool hasBeenDug = false;
+    public bool HasBeenDug => hasBeenDug;
 
     public Transform teleportLocation;
     
@@ -24,6 +25,10 @@ public class DigTrigger : MonoBehaviour
             // tilemapSwitch.SwitchTilemaps();
             //Debug.Log("Dig");
         }
+    }
+
+    public void DigHole(){
+        hasBeenDug = true;
     }
 
     private void OnTriggerExit(Collider other)
