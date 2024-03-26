@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraFollowVertical : MonoBehaviour
 {
@@ -40,4 +41,31 @@ public class CameraFollowVertical : MonoBehaviour
     {
         targetOrthoSize = newTargetSize;
     }
+
+    public void AdjustXAxis()
+    {
+        // Create a new Vector3 with the desired x value and current y and z values
+        Vector3 newPosition = new Vector3(-3.5f, transform.position.y, transform.position.z);
+        transform.position = newPosition; // Assign the new position back to the camera
+    }
+
+    public void RevertXAxis()
+    {
+        // Create a new Vector3 with the desired x value and current y and z values
+        Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        transform.position = newPosition; // Assign the new position back to the camera
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 7)
+        {
+            Debug.Log("Level 4.5");
+            if (target.position.x < -2f)
+            {
+                AdjustXAxis(); // Adjust the camera's x position
+            }
+        }
+    }
+
 }
