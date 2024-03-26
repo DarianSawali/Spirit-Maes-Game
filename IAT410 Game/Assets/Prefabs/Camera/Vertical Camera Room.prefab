@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7055461917639729685}
   - component: {fileID: 2378615141376788548}
   - component: {fileID: 7940815134151770195}
-  - component: {fileID: 7480672156626774055}
+  - component: {fileID: 472072195880901804}
   m_Layer: 1
   m_Name: Vertical Camera Room
   m_TagString: MainCamera
@@ -93,7 +93,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5358308071386568946}
   m_Enabled: 1
---- !u!114 &7480672156626774055
+--- !u!114 &472072195880901804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,11 +102,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5358308071386568946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74fdbfca839b42a4490a088200017593, type: 3}
+  m_Script: {fileID: 11500000, guid: f3f2687b208c3b54fb13f56072dd35fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  followSpeed: 2
-  zOffset: 0.25
-  orthoZoomSpeed: 1
-  targetOrthoSize: 1.5

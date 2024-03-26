@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraFollowVertical : MonoBehaviour
+public class CameraRooms : MonoBehaviour
 {
     public Transform player; // Assign your player transform here.
     public float followSpeed = 2f;
