@@ -149,14 +149,14 @@ public class Skunk : MonoBehaviour
 
     public void OnDig()
     {
-        if (canDig && teleportTarget != null && !hasDug) // Check if the skunk can dig and hasn't dug yet
-        {
-            //DigHole();
-            GlobalStateManager.SkunkDugHole = true;
-            hasDug = true; // Set the flag to true after first successful dig
-            Debug.Log("Digging hole for the first time");
-        }
-        else if (canDig && teleportTarget != null && hasDug) // Check if the skunk can dig and has already dug
+        // if (canDig && teleportTarget != null && !hasDug) // Check if the skunk can dig and hasn't dug yet
+        // {
+        //     //DigHole();
+        //     GlobalStateManager.SkunkDugHole = true;
+        //     hasDug = true; // Set the flag to true after first successful dig
+        //     Debug.Log("Digging hole for the first time");
+        // }
+        if (canDig && teleportTarget != null) // Check if the skunk can dig and has already dug
         {
             TeleportToDigLocation(teleportTarget.position);
             Debug.Log("Teleporting after dig");
