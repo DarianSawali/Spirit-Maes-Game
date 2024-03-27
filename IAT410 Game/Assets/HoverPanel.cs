@@ -9,15 +9,15 @@ public class HoverPanel : MonoBehaviour
     public Animator transition;
 
     public void Easy(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(2);
     }
 
     public void Medium(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(6);
     }
 
     public void Hard(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(9);
     }
 
     public void OnFadeComplete(){
