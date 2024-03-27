@@ -67,7 +67,8 @@ public class CameraFollowVertical : MonoBehaviour
             if (target.position.x < -2f)
             {
                 // Move the camera to the new position when player's x position is less than -2
-                transform.position = new Vector3(-3f, transform.position.y, transform.position.z);
+                transform.position = new Vector3(-4f, transform.position.y, transform.position.z);
+                Debug.Log("Move camera");
             }
             else if (target.position.x > -2f)
             {
