@@ -46,6 +46,7 @@ public class Arrow : MonoBehaviour
             // {
             //     health.decreaseHealth();
             // }
+            // health.decreaseHealth();
 
             Destroy(gameObject); // Destroy the arrow after hitting the player
         }
