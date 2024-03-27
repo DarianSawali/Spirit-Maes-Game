@@ -50,5 +50,32 @@ public class Arrow : MonoBehaviour
 
             Destroy(gameObject); // Destroy the arrow after hitting the player
         }
+
+        if (other.CompareTag("Pigeon"))
+        {
+            Pigeon pigeonComponent = other.GetComponent<Pigeon>();
+            if (pigeonComponent.getPigeonPossessedStatus()) // if in possession, health up
+            {
+                Destroy(gameObject); // remove powerup
+            }
+        }
+
+        if (other.CompareTag("Skunk"))
+        {
+            Skunk skunkComponent = other.GetComponent<Skunk>();
+            if (skunkComponent.getSkunkPossessedStatus()) // if in possession, health up
+            {
+                Destroy(gameObject); // remove powerup
+            }
+        }
+
+        if (other.CompareTag("Fish"))
+        {
+            Fish fishComponent = other.GetComponent<Fish>();
+            if (fishComponent.getFishPossessedStatus()) // if in possession, health up
+            {
+                Destroy(gameObject); // remove powerup
+            }
+        }
     }
 }
