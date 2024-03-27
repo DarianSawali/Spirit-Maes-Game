@@ -37,17 +37,17 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // if (other.CompareTag("Player"))
-        // {
-        //     // Handle player hit
-        //     // You can check here if the player is in soul form or possessing an animal
-        //     PlayerController playerController = other.GetComponent<PlayerController>();
-        //     if (playerController != null)
-        //     {
-        //         health.decreaseHealth();
-        //     }
+        if (other.CompareTag("Player"))
+        {
+            // Handle player hit
+            // You can check here if the player is in soul form or possessing an animal
+            // PlayerController playerController = other.GetComponent<PlayerController>();
+            // if (playerController != null)
+            // {
+            //     health.decreaseHealth();
+            // }
 
-        //     Destroy(gameObject); // Destroy the arrow after hitting the player
-        // }
+            Destroy(gameObject); // Destroy the arrow after hitting the player
+        }
     }
 }
