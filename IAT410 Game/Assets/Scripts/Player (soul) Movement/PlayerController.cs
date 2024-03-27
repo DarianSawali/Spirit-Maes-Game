@@ -229,7 +229,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log("No collision");
         }
 
-
+        if (other.CompareTag("Arrow")) // decrease health if hit by arrow
+        {
+            health.decreaseHealth();
+        }
     }
     private void OnTriggerExit(Collider other)
     {

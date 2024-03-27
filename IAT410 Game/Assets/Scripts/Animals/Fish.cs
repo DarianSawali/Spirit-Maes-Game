@@ -164,6 +164,11 @@ public class Fish : MonoBehaviour
             Color possessionColor = HexToColor("#94DFFF");
             spriteRenderer.color = possessionColor;
         }
+
+        if (getFishPossessedStatus() && other.CompareTag("Arrow")) // if being possessed and hit by arrow, decrease health
+        {
+            health.decreaseHealth();
+        }
     }
 
     private void OnTriggerExit(Collider other)

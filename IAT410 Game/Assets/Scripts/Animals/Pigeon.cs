@@ -194,6 +194,11 @@ public class Pigeon : MonoBehaviour
         {
             spriteRenderer.color = originalColor;
         }
+
+        if (getPigeonPossessedStatus() && other.CompareTag("Arrow")) // if being possessed and hit by arrow, decrease health
+        {
+            health.decreaseHealth();
+        }
     }
 
     // to set beingPossessed flag
