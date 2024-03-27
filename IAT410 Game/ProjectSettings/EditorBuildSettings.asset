@@ -15,11 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/L1.unity
     guid: bdb77f0873957684f838d8ef30e52d88
   - enabled: 0
-    path: Assets/Scenes/RewardRoom.unity
-    guid: 9827a6717cf4f4a47ae95e82a1f41de5
-  - enabled: 0
     path: Assets/Scenes/L2.unity
     guid: f40e8e30fe2633949ae168d0ca1a2212
+  - enabled: 0
+    path: Assets/Scenes/RewardRoom.unity
+    guid: 9827a6717cf4f4a47ae95e82a1f41de5
   - enabled: 0
     path: Assets/Scenes/L3.unity
     guid: c9f9b79e2a83dd5498447deebc7f68bf
