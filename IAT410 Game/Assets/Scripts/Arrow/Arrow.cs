@@ -8,13 +8,22 @@ public class Arrow : MonoBehaviour
 
     public HealthManager health;
 
+    public float timeToLive = 1f;
+    private float timeSinceSpawned = 0f;
+
     protected Vector3 fixedEulerRotation = new Vector3(90f, 0f, 0f);
 
     void Update()
     {
         transform.rotation = Quaternion.Euler(fixedEulerRotation);
         
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector3.left * speed * Time.deltaTime);
+
+        timeSinceSpawned += Time.deltaTime;
+        if (timeSinceSpawned > timeToLive)
+        {
+            Destroy(gameObject);
+        }
 
         // // Check if the arrow is off-screen
         // Vector3 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
