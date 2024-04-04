@@ -212,6 +212,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   playerInput: {fileID: 0}
   playerModel: {fileID: 0}
+  hasDug: 0
+  health: {fileID: 0}
 --- !u!114 &-2505343339626628100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,13 +227,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 9
-  gravity: 2
+  gravity: 1
   gravityScale: 1
   playerInput: {fileID: 0}
   rb: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  platform: {fileID: 0}
 --- !u!95 &-3752344205760156987
 Animator:
   serializedVersion: 5
