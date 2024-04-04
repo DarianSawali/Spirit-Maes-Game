@@ -10,6 +10,9 @@ public class AudioManager : MonoBehaviour
     private AudioSource musicSource;
     private AudioSource sfxSource;
 
+    private bool isBackgroundMusicPaused = false;
+    private float pausedBackgroundMusicTime = 0f;
+
     public float backgroundMusicVolume = 0.5f;
     public float soundEffectVolume = 1.0f;
 
@@ -32,6 +35,26 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = clip;
             musicSource.loop = true;
             musicSource.Play();
+        }
+    }
+
+    public void PauseBackgroundMusic()
+    {
+        if (!isBackgroundMusicPaused)
+        {
+            pausedBackgroundMusicTime = musicSource.time;
+            musicSource.Pause();
+            isBackgroundMusicPaused = true;
+        }
+    }
+
+    public void ResumeBackgroundMusic()
+    {
+        if (isBackgroundMusicPaused)
+        {
+            musicSource.Play();
+            musicSource.time = pausedBackgroundMusicTime;
+            isBackgroundMusicPaused = false;
         }
     }
 
