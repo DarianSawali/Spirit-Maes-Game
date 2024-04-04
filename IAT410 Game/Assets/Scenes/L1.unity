@@ -1810,6 +1810,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2334330955270124986, guid: 6f681602dd093e147992e822c6261a1b, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 1613495587}
+    - target: {fileID: 2334330955270124986, guid: 6f681602dd093e147992e822c6261a1b, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1826066034}
@@ -3172,6 +3176,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3410533489744986153, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 1613495587}
     - target: {fileID: -3410533489744986153, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
       propertyPath: spawnPoint
       value: 
