@@ -225,9 +225,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f60bed4b6016054f9820ccbc3a53ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 14
-  gravity: 2
-  gravityScale: 1
+  jumpForce: 145
+  gravity: 10
+  gravityScale: 8
   playerInput: {fileID: 0}
   rb: {fileID: 0}
   groundLayer:
