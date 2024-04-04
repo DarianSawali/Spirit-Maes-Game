@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
     public Animator transition;
     //private SceneTransition sceneTransition;
     //private SceneTransition sceneTransition;
