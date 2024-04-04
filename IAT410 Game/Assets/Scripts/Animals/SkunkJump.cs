@@ -41,7 +41,9 @@ public class SkunkJump : MonoBehaviour
         // Apply gravity if not grounded
         if (!isGrounded)
         {
-            rb.AddForce(Vector3.down * gravityScale * gravity, ForceMode.Acceleration);
+            // rb.AddForce(Vector3.down * gravityScale * gravity, ForceMode.Acceleration);
+            rb.AddForce(Vector3.down * gravityScale * gravity * Time.deltaTime, ForceMode.Acceleration);
+            Debug.Log("Land");
         }
     }
 
@@ -49,7 +51,8 @@ public class SkunkJump : MonoBehaviour
     {
         if (isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            // rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpForce * Time.deltaTime, ForceMode.Impulse);
             Debug.Log("Jump");
         }
     }
