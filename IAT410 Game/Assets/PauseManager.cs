@@ -38,15 +38,24 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         Time.timeScale = 0f; // Pause the game
         audioManager.PauseBackgroundMusic();
     }
 
-    void ResumeGame()
+    public void ResumeGame()
     {
         Time.timeScale = 1f; // Unpause the game
         audioManager.ResumeBackgroundMusic();
+    }
+
+    public void ToggleResume()
+    {
+        isPaused = false; 
+        Time.timeScale = 1f; // Unpause the game
+        audioManager.ResumeBackgroundMusic();
+        pauseCanvas.SetActive(false); // Hide pause menu
+        gameplayCanvas.SetActive(true); // Show gameplay elements
     }
 }
