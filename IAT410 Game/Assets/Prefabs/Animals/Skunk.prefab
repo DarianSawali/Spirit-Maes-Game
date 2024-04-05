@@ -214,6 +214,8 @@ MonoBehaviour:
   playerModel: {fileID: 0}
   hasDug: 0
   health: {fileID: 0}
+  audioManager: {fileID: 0}
+  digSound: {fileID: 8300000, guid: 43b261a3388010a4a9f49a7779d5cab6, type: 3}
 --- !u!114 &-2505343339626628100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +237,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   platform: {fileID: 0}
+  audioManager: {fileID: 0}
+  jump: {fileID: 8300000, guid: 8e6d6dbe49cd2194e9364fb995d88f23, type: 3}
 --- !u!95 &-3752344205760156987
 Animator:
   serializedVersion: 5

@@ -17,6 +17,9 @@ public class SkunkJump : MonoBehaviour
 
     public Transform platform; // Assign the reference to the platform in the inspector
 
+    public AudioManager audioManager; 
+    public AudioClip jump;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -52,6 +55,7 @@ public class SkunkJump : MonoBehaviour
         if (isGrounded)
         {
             // rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            audioManager.PlaySoundEffect(jump);
             rb.AddForce(Vector3.up * jumpForce * Time.deltaTime, ForceMode.Impulse);
             Debug.Log("Jump");
         }
@@ -59,13 +63,13 @@ public class SkunkJump : MonoBehaviour
 
     private bool IsGrounded()
     {
-        float raycastDistance = 0.1f; // Adjust this distance based on your character's size
-                                      // Define points for raycasting: center, left edge, right edge, top, and bottom
+        float raycastDistance = 0.1f; 
+
         Vector3 center = transform.position;
-        Vector3 left = center - (transform.right * 0.1f); // Adjust based on character width
-        Vector3 right = center + (transform.right * 0.1f); // Adjust based on character width
-        Vector3 top = center + (transform.up * 0.1f); // Adjust based on character height
-        Vector3 bottom = center - (transform.up * 0.1f); // Adjust based on character height
+        Vector3 left = center - (transform.right * 0.1f); 
+        Vector3 right = center + (transform.right * 0.1f); 
+        Vector3 top = center + (transform.up * 0.1f); 
+        Vector3 bottom = center - (transform.up * 0.1f); 
 
         // Combine all points in an array for easier iteration
         Vector3[] points = new Vector3[] { center, left, right, top, bottom };
@@ -81,8 +85,8 @@ public class SkunkJump : MonoBehaviour
                     return true; // Grounded if any ray hits a ground object
                 }
             }
-            // Additionally, for top and bottom points, cast rays in the character's forward direction
-            // This is useful if your character moves in all four directions and you need to check for ground ahead or behind
+           
+           
             if (point == top || point == bottom)
             {
                 if (Physics.Raycast(point, transform.forward, out hit, raycastDistance, groundLayer) ||

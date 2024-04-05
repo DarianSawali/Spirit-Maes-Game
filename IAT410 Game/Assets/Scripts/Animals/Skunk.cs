@@ -41,6 +41,10 @@ public class Skunk : MonoBehaviour
     Color originalColor;
     SpriteRenderer spriteRenderer;
 
+    public AudioManager audioManager; 
+    public AudioClip digSound;
+
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -149,15 +153,9 @@ public class Skunk : MonoBehaviour
 
     public void OnDig()
     {
-        // if (canDig && teleportTarget != null && !hasDug) // Check if the skunk can dig and hasn't dug yet
-        // {
-        //     //DigHole();
-        //     GlobalStateManager.SkunkDugHole = true;
-        //     hasDug = true; // Set the flag to true after first successful dig
-        //     Debug.Log("Digging hole for the first time");
-        // }
         if (canDig && teleportTarget != null) // Check if the skunk can dig and has already dug
         {
+            audioManager.PlaySoundEffect(digSound);
             TeleportToDigLocation(teleportTarget.position);
             Debug.Log("Teleporting after dig");
         }

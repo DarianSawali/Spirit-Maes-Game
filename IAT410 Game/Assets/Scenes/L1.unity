@@ -1810,6 +1810,10 @@ PrefabInstance:
       value: 110
       objectReference: {fileID: 0}
     - target: {fileID: -2505343339626628100, guid: 6f681602dd093e147992e822c6261a1b, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1680851913}
+    - target: {fileID: -2505343339626628100, guid: 6f681602dd093e147992e822c6261a1b, type: 3}
       propertyPath: gravityScale
       value: 8
       objectReference: {fileID: 0}
@@ -1825,6 +1829,10 @@ PrefabInstance:
       propertyPath: playerModel
       value: 
       objectReference: {fileID: 974641153}
+    - target: {fileID: 2334330955270124986, guid: 6f681602dd093e147992e822c6261a1b, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1680851913}
     - target: {fileID: 6125432252964898421, guid: 6f681602dd093e147992e822c6261a1b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.24
@@ -3204,6 +3212,10 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 145
       objectReference: {fileID: 0}
+    - target: {fileID: -3065237953329670601, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1680851913}
     - target: {fileID: -3065237953329670601, guid: 00b7925cbf0189a43b0b87716b21f2a5, type: 3}
       propertyPath: gravityScale
       value: 8
@@ -4641,6 +4653,10 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 7643020139594885565}
+    - target: {fileID: 8225305010727129825, guid: 3f231f5f13563e2419f15836ad7ee01a, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1680851913}
     - target: {fileID: 8761237544840610653, guid: 3f231f5f13563e2419f15836ad7ee01a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.24
@@ -5063,6 +5079,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8194980054624917327, guid: 39726a7cbca0fee4b8e3cb4c73da7595, type: 3}
+      propertyPath: backgroundMusicVolume
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5482,6 +5502,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 8422883058544375089}
+    - target: {fileID: 8997958603842220954, guid: 82d6c3ffdc24ca44e9e04830da8ded71, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1680851913}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

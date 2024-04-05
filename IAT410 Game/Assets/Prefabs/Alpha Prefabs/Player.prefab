@@ -111,6 +111,11 @@ MonoBehaviour:
   playerModel: {fileID: 4152616268137499590}
   playerJump: {fileID: 0}
   dug: 0
+  health: {fileID: 0}
+  platform: {fileID: 0}
+  audioManager: {fileID: 0}
+  possess: {fileID: 8300000, guid: 28096783318c2304abc2130e8cbd457a, type: 3}
+  dispossess: {fileID: 8300000, guid: 56af26ef4ae05af45a09a805e421f07c, type: 3}
 --- !u!114 &6506658845060363743
 MonoBehaviour:
   m_ObjectHideFlags: 0

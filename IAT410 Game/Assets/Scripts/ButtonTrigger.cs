@@ -9,6 +9,9 @@ public class ButtonTrigger : MonoBehaviour
     private TilemapSwitch tilemapSwitch;
     public bool isPressed = false;
 
+    public AudioManager audioManager; 
+    public AudioClip click;
+    public AudioClip ping;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Animal") || other.CompareTag("Player") || other.CompareTag("Skunk") || other.CompareTag("Pigeon") || other.CompareTag("Fish"))
@@ -16,8 +19,11 @@ public class ButtonTrigger : MonoBehaviour
             if (!isPressed)
             {
                 isPressed = true;
+                audioManager.PlaySoundEffect(click);
                 door.ButtonPressed();
                 TileSwitch();
+
+                audioManager.PlaySoundEffect(ping);
 
                 Debug.Log("Button Pressed");
             }

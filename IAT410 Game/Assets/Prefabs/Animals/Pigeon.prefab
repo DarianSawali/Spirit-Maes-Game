@@ -234,6 +234,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   platform: {fileID: 0}
+  audioManager: {fileID: 0}
+  jump: {fileID: 8300000, guid: 3acf08772f41c16479f049132ecbaade, type: 3}
 --- !u!95 &6903377384770454532
 Animator:
   serializedVersion: 5

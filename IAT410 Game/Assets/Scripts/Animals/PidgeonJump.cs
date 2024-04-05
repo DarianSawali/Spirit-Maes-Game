@@ -16,8 +16,11 @@ public class PidgeonJump : MonoBehaviour
 
     private PlayerController playerControl;
 
-    private Animator animator; // for jumping animation
-    public Transform platform; // Assign the reference to the platform in the inspector
+    private Animator animator; 
+    public Transform platform; 
+
+    public AudioManager audioManager; 
+    public AudioClip jump;
 
     private void Awake()
     {
@@ -66,6 +69,7 @@ public class PidgeonJump : MonoBehaviour
         if (isGrounded)
         {
             // rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            audioManager.PlaySoundEffect(jump);
             rb.AddForce(Vector3.up * jumpForce * Time.deltaTime, ForceMode.Impulse);
             // Reset the vertical speed when jumping
             animator.SetFloat("VerticalSpeed", 0f);

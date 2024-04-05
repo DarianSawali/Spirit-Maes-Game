@@ -37,6 +37,10 @@ public class PlayerController : MonoBehaviour
 
     public Transform platform; // Assign the reference to the platform in the inspector
 
+    public AudioManager audioManager; 
+    public AudioClip possess;
+    public AudioClip dispossess;
+
 
     protected void Start()
     {
@@ -140,6 +144,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("OnPossess called");
         if (targetAnimal != null && isPlayerActive)
         {
+            audioManager.PlaySoundEffect(possess);
             PossessAnimal(targetAnimal);
             // cameraFollowScript.SetTarget(skunk.transform); // Make the camera follow the skunk
             // CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
@@ -151,6 +156,7 @@ public class PlayerController : MonoBehaviour
     public void OnDispossess(InputValue value)
     {
         Debug.Log("OnDispossess called");
+        
         DispossessAnimal();
     }
 
@@ -203,6 +209,7 @@ public class PlayerController : MonoBehaviour
     public void DispossessAnimal()
     {
         Debug.Log("Dispossessing animal");
+        audioManager.PlaySoundEffect(dispossess);
 
         playerModel.SetActive(true); // Show the player model again
         EnablePlayerInput();
