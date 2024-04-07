@@ -15,7 +15,8 @@ TagManager:
   - Water
   - ArrowLeft
   - ArrowRight
-  - Arrow
+  - ArrowDown
+  - ArrowUp
   layers:
   - Default
   - TransparentFX

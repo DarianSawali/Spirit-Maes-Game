@@ -11,24 +11,36 @@ public class Arrow : MonoBehaviour
     public float timeToLive = 1f;
     private float timeSinceSpawned = 0f;
 
-    protected Vector3 fixedEulerRotation = new Vector3(90f, 0f, 0f);
+    protected Vector3 fixedEulerRotation;
 
     // Direction of the arrow's movement
     private Vector3 direction;
 
     void Start()
     {
-        transform.rotation = Quaternion.Euler(fixedEulerRotation);
-
         // Check the tag to set the direction
         if (gameObject.tag == "ArrowRight")
         {
             direction = Vector3.right;
+            fixedEulerRotation = new Vector3(90f, 0f, 0f);
         }
         else if (gameObject.tag == "ArrowLeft")
         {
             direction = Vector3.left;
+            fixedEulerRotation = new Vector3(90f, 0f, 0f);
         }
+        else if (gameObject.tag == "ArrowUp")
+        {
+            direction = Vector3.up;
+            fixedEulerRotation = new Vector3(90f, 0f, 0f);
+        }
+        else if (gameObject.tag == "ArrowDown")
+        {
+            direction = Vector3.down;
+            fixedEulerRotation = new Vector3(90f, 0f, 0f);
+        }
+
+        transform.rotation = Quaternion.Euler(fixedEulerRotation);
     }
 
     void Update()
