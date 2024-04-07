@@ -34,10 +34,12 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator; // reference to animator
     protected bool isGrounded; // to handle falling
+    protected bool isDamaged = false; // handle damage animation
+    private float damageDuration = 30; // damage animation duration
 
     public Transform platform; // Assign the reference to the platform in the inspector
 
-    public AudioManager audioManager; 
+    public AudioManager audioManager;
     public AudioClip possess;
     public AudioClip dispossess;
 
@@ -125,6 +127,18 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = spawnPoint.position;
             health.decreaseHealth();
+            isDamaged = true;
+            animator.SetBool("Damage", true);
+        }
+        if (isDamaged) // to handle damage animation duration
+        {
+            damageDuration -= Time.deltaTime;
+            if (damageDuration <= 0)
+            {
+                animator.SetBool("Damage", false);
+                isDamaged = false;
+                damageDuration = 30;
+            }
         }
 
         if (isPlayerActive)
@@ -156,7 +170,7 @@ public class PlayerController : MonoBehaviour
     public void OnDispossess(InputValue value)
     {
         Debug.Log("OnDispossess called");
-        
+
         DispossessAnimal();
     }
 
