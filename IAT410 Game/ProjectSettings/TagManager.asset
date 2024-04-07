@@ -13,6 +13,8 @@ TagManager:
   - Fish
   - Animal
   - Water
+  - ArrowLeft
+  - ArrowRight
   - Arrow
   layers:
   - Default
