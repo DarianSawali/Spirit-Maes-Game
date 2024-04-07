@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class Skunk : MonoBehaviour
 {
@@ -96,6 +97,16 @@ public class Skunk : MonoBehaviour
             {
                 health.decreaseHealth();
             }
+        }
+
+        // make skunk dance when in reward room 1
+        if (SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            animator.SetBool("isDancing", true);
+        }
+        else
+        {
+            animator.SetBool("isDancing", false);
         }
 
     }
