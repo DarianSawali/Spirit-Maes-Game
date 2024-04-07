@@ -165,7 +165,8 @@ public class Fish : MonoBehaviour
             spriteRenderer.color = possessionColor;
         }
 
-        if (getFishPossessedStatus() && other.CompareTag("Arrow")) // if being possessed and hit by arrow, decrease health
+        if (getFishPossessedStatus() && (other.CompareTag("ArrowLeft") || other.CompareTag("ArrowRight")
+        || other.CompareTag("ArrowUp") || other.CompareTag("ArrowDown"))) // if being possessed and hit by arrow, decrease health
         {
             health.decreaseHealth();
         }

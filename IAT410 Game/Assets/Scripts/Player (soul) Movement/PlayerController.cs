@@ -250,7 +250,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("No collision");
         }
 
-        if (other.CompareTag("Arrow")) // decrease health if hit by arrow
+        if (other.CompareTag("ArrowLeft") || other.CompareTag("ArrowRight")
+        || other.CompareTag("ArrowUp") || other.CompareTag("ArrowDown")) // decrease health if hit by arrow
         {
             health.decreaseHealth();
         }

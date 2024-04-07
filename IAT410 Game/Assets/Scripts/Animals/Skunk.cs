@@ -246,7 +246,8 @@ public class Skunk : MonoBehaviour
             spriteRenderer.color = possessionColor;
         }
 
-        if (getSkunkPossessedStatus() && other.CompareTag("Arrow")) // if being possessed and hit by arrow, decrease health
+        if (getSkunkPossessedStatus() && (other.CompareTag("ArrowLeft") || other.CompareTag("ArrowRight")
+        || other.CompareTag("ArrowUp") || other.CompareTag("ArrowDown"))) // if being possessed and hit by arrow, decrease health
         {
             health.decreaseHealth();
         }
