@@ -42,7 +42,10 @@ public class Skunk : MonoBehaviour
     Color originalColor;
     SpriteRenderer spriteRenderer;
 
-    public AudioManager audioManager; 
+    protected bool isDamaged = false; // handle damage animation
+    private float damageDuration = 1f; // damage animation duration
+
+    public AudioManager audioManager;
     public AudioClip digSound;
 
 
@@ -96,6 +99,18 @@ public class Skunk : MonoBehaviour
             if (beingPossessed)
             {
                 health.decreaseHealth();
+                isDamaged = true;
+                animator.SetBool("Damaged", true);
+            }
+        }
+        if (isDamaged) // to handle damage animation duration
+        {
+            damageDuration -= Time.deltaTime;
+            if (damageDuration <= 0)
+            {
+                animator.SetBool("Damaged", false);
+                isDamaged = false;
+                damageDuration = 1f;
             }
         }
 

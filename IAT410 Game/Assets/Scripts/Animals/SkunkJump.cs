@@ -17,7 +17,10 @@ public class SkunkJump : MonoBehaviour
 
     public Transform platform; // Assign the reference to the platform in the inspector
 
-    public AudioManager audioManager; 
+    protected bool isDamaged = false; // handle damage animation
+    private float damageDuration = 1f; // damage animation duration
+
+    public AudioManager audioManager;
     public AudioClip jump;
 
     private void Awake()
@@ -63,13 +66,13 @@ public class SkunkJump : MonoBehaviour
 
     private bool IsGrounded()
     {
-        float raycastDistance = 0.1f; 
+        float raycastDistance = 0.1f;
 
         Vector3 center = transform.position;
-        Vector3 left = center - (transform.right * 0.1f); 
-        Vector3 right = center + (transform.right * 0.1f); 
-        Vector3 top = center + (transform.up * 0.1f); 
-        Vector3 bottom = center - (transform.up * 0.1f); 
+        Vector3 left = center - (transform.right * 0.1f);
+        Vector3 right = center + (transform.right * 0.1f);
+        Vector3 top = center + (transform.up * 0.1f);
+        Vector3 bottom = center - (transform.up * 0.1f);
 
         // Combine all points in an array for easier iteration
         Vector3[] points = new Vector3[] { center, left, right, top, bottom };
@@ -85,8 +88,8 @@ public class SkunkJump : MonoBehaviour
                     return true; // Grounded if any ray hits a ground object
                 }
             }
-           
-           
+
+
             if (point == top || point == bottom)
             {
                 if (Physics.Raycast(point, transform.forward, out hit, raycastDistance, groundLayer) ||
