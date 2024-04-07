@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class Pigeon : MonoBehaviour
 {
@@ -83,6 +84,16 @@ public class Pigeon : MonoBehaviour
             {
                 health.decreaseHealth();
             }
+        }
+
+        // make pigeon dance when in reward room 1
+        if (SceneManager.GetActiveScene().buildIndex == 8)
+        {
+            animator.SetBool("isDancing", true);
+        }
+        else
+        {
+            animator.SetBool("isDancing", false);
         }
     }
 
