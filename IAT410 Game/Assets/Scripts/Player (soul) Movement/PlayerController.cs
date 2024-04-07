@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator; // reference to animator
     protected bool isGrounded; // to handle falling
     protected bool isDamaged = false; // handle damage animation
-    private float damageDuration = 10; // damage animation duration
+    private float damageDuration = 3; // damage animation duration
 
     public Transform platform; // Assign the reference to the platform in the inspector
 
@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("Damaged", false);
                 isDamaged = false;
-                damageDuration = 10;
+                damageDuration = 3;
             }
         }
 
