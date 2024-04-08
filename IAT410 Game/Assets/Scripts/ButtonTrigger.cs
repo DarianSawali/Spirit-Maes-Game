@@ -31,7 +31,7 @@ public class ButtonTrigger : MonoBehaviour
 
                 audioManager.PlaySoundEffect(ping);
 
-                if (panCounter < 1) ;
+                if (panCounter < 1)
                 {
                     cameraScript.PanToGate();
                     panCounter++;
