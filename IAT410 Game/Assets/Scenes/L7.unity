@@ -11389,6 +11389,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 353277054555032106, guid: 180de02645ec9e7499505e3ccdf0300a, type: 3}
+      propertyPath: gate
+      value: 
+      objectReference: {fileID: 1942016362}
+    - target: {fileID: 353277054555032106, guid: 180de02645ec9e7499505e3ccdf0300a, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 144255430}
@@ -12569,6 +12573,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4a1bf19a7451034787474e6025effca, type: 3}
+--- !u!4 &1942016362 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3027250430717485694, guid: f4a1bf19a7451034787474e6025effca, type: 3}
+  m_PrefabInstance: {fileID: 1942016361}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2003389275
 PrefabInstance:
   m_ObjectHideFlags: 0
