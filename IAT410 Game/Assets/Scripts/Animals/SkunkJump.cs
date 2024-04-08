@@ -49,7 +49,7 @@ public class SkunkJump : MonoBehaviour
         {
             // rb.AddForce(Vector3.down * gravityScale * gravity, ForceMode.Acceleration);
             rb.AddForce(Vector3.down * gravityScale * gravity * Time.deltaTime, ForceMode.Acceleration);
-            Debug.Log("Land");
+            // Debug.Log("Land");
         }
     }
 
