@@ -1136,6 +1136,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7480672156626774055, guid: 0479bc21d86803a48b2d54baa652adb7, type: 3}
+      propertyPath: gate
+      value: 
+      objectReference: {fileID: 2072585187}
+    - target: {fileID: 7480672156626774055, guid: 0479bc21d86803a48b2d54baa652adb7, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 953909337}
@@ -3487,6 +3491,11 @@ MonoBehaviour:
 --- !u!1 &2072585186 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3242178051385798805, guid: 1a9e0ab3cc2edb24d88a4bda76f46e3f, type: 3}
+  m_PrefabInstance: {fileID: 2072585184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2072585187 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9216179565094680673, guid: 1a9e0ab3cc2edb24d88a4bda76f46e3f, type: 3}
   m_PrefabInstance: {fileID: 2072585184}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2088807766

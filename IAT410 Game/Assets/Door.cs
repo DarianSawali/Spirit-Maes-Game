@@ -16,6 +16,8 @@ public class Door : MonoBehaviour
 
     public Sprite newSprite;
 
+    public ButtonTrigger button;
+
     // Function called when a button is pressed
     public void ButtonPressed()
     {
@@ -49,6 +51,7 @@ public class Door : MonoBehaviour
             if(doorCollider.isTrigger){
                 Debug.Log("door test working");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                button.resetPanCounter();
             } else {
                 Debug.Log("door closed");
             }
