@@ -9,7 +9,9 @@ public class ButtonTrigger : MonoBehaviour
     private TilemapSwitch tilemapSwitch;
     public bool isPressed = false;
 
-    public AudioManager audioManager; 
+    public CameraFollowVertical cameraScript; // call camera
+
+    public AudioManager audioManager;
     public AudioClip click;
     public AudioClip ping;
     private void OnTriggerEnter(Collider other)
@@ -25,32 +27,35 @@ public class ButtonTrigger : MonoBehaviour
 
                 audioManager.PlaySoundEffect(ping);
 
+                cameraScript.PanToGate();
+
                 Debug.Log("Button Pressed");
             }
         }
     }
 
-    public void TileSwitch(){
+    public void TileSwitch()
+    {
         TilemapSwitch tilemapSwitch = GetComponent<TilemapSwitch>();
         tilemapSwitch.SwitchTilemaps();
     }
 
 }
 
-    // private bool isPressed = false;
-    // public bool IsPressed { get { return isPressed; } }
+// private bool isPressed = false;
+// public bool IsPressed { get { return isPressed; } }
 
-    // public Door door;
+// public Door door;
 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag("Animal") || other.CompareTag("Player") || other.CompareTag("Skunk") || other.CompareTag("Pidgeon") || other.CompareTag("Fish"))
-    //     {
-    //         TilemapSwitch tilemapSwitch = GetComponent<TilemapSwitch>();
-    //         tilemapSwitch.SwitchTilemaps();
-    //         isPressed = true;
-    //         Debug.Log("Button Pressed");
-    //     }
+// private void OnTriggerEnter(Collider other)
+// {
+//     if (other.CompareTag("Animal") || other.CompareTag("Player") || other.CompareTag("Skunk") || other.CompareTag("Pidgeon") || other.CompareTag("Fish"))
+//     {
+//         TilemapSwitch tilemapSwitch = GetComponent<TilemapSwitch>();
+//         tilemapSwitch.SwitchTilemaps();
+//         isPressed = true;
+//         Debug.Log("Button Pressed");
+//     }
 
-    // }
+// }
 
