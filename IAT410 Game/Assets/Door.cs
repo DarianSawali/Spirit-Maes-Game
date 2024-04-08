@@ -22,13 +22,17 @@ public class Door : MonoBehaviour
 
     private ButtonTrigger button;
 
-    protected void Start() 
+    protected void Start()
     {
         button = FindObjectOfType<ButtonTrigger>();
     }
 
     public void ButtonPressed()
     {
+        if (buttonCount < 1)
+        {
+            cameraScript.PanToGate();
+        }
         buttonCount++;
 
         // Check if all buttons are pressed
@@ -81,20 +85,23 @@ public class Door : MonoBehaviour
         buttonCount = 0;
     }
 
-    private void OnTriggerEnter(Collider other){
+    private void OnTriggerEnter(Collider other)
+    {
         if (other.CompareTag("Animal") || other.CompareTag("Player") || other.CompareTag("Skunk") || other.CompareTag("Pigeon") || other.CompareTag("Fish"))
         {
-            if(doorCollider.isTrigger){
+            if (doorCollider.isTrigger)
+            {
                 Debug.Log("door test working");
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                button.resetPanCounter();
-            } else {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
+            }
+            else
+            {
                 Debug.Log("door closed");
             }
         }
     }
 
- public void SwitchSprite()
+    public void SwitchSprite()
     {
         if (objectToSwitch != null)
         {
@@ -114,5 +121,5 @@ public class Door : MonoBehaviour
         }
     }
 
-    
+
 }
