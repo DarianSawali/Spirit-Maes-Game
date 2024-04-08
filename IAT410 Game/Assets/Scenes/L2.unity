@@ -2774,7 +2774,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4690305951158345119, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
       propertyPath: m_Name
-      value: HealthCanvas
+      value: HUDCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 6979140653492202240, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
       propertyPath: m_Pivot.x
