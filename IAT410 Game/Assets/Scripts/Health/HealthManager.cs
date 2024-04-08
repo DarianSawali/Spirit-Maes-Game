@@ -101,7 +101,7 @@ public class HealthManager : MonoBehaviour
     }
 
     public void ResetHealth(){
-        health = 3;
+        health = maxHealth;
     }
 
 }
