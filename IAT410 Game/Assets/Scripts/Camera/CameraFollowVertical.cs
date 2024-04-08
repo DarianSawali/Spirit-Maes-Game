@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class CameraFollowVertical : MonoBehaviour
 {
     public Transform target; // Assign the initial target, e.g., the player, here
+
     public float followSpeed = 2f;
     public float zOffset = 0.75f; // Set this to whatever Z-offset you want from the player
 
@@ -14,6 +16,11 @@ public class CameraFollowVertical : MonoBehaviour
 
     private Vector3 initialPosition; // Variable to store the initial position of the camera
 
+    public Transform gate; // Assign the gate's transform here
+    public float panSpeed = 5f; // Speed for panning to gate
+    public float panTime = 2f; // Time to keep the camera on the gate
+    private bool isPanningToGate = false;
+
     private void Start()
     {
         cam = Camera.main; // Cache the main camera
@@ -23,9 +30,12 @@ public class CameraFollowVertical : MonoBehaviour
 
     private void LateUpdate()
     {
-        // Follow player's Z-axis position
-        Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, target.position.z + zOffset);
-        transform.position = Vector3.Lerp(transform.position, newPosition, followSpeed * Time.deltaTime);
+        if (!isPanningToGate)
+        {
+            // Follow player's Z-axis position
+            Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, target.position.z + zOffset);
+            transform.position = Vector3.Lerp(transform.position, newPosition, followSpeed * Time.deltaTime);
+        }
 
         // Adjust camera orthographic size to zoom in or out
         if (cam.orthographic)
@@ -78,4 +88,26 @@ public class CameraFollowVertical : MonoBehaviour
         }
     }
 
+    // This method is called when the player presses the button
+    public void PanToGate()
+    {
+        StartCoroutine(PanToGateCoroutine());
+    }
+
+    private IEnumerator PanToGateCoroutine()
+    {
+        isPanningToGate = true;
+
+        // Lerp towards the gate
+        float startTime = Time.time;
+        while (Time.time - startTime < panTime)
+        {
+            Vector3 gatePosition = new Vector3(gate.position.x, gate.position.y, initialPosition.z);
+            transform.position = Vector3.Lerp(transform.position, gatePosition, panSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        // Return to following the player after panning
+        isPanningToGate = false;
+    }
 }
