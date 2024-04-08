@@ -103,7 +103,7 @@ public class CameraFollowVertical : MonoBehaviour
     {
         isPanningToGate = true;
 
-        Vector3 gatePosition = new Vector3(gate.position.x, gate.position.y, gate.position.z);
+        Vector3 gatePosition = new Vector3(gate.position.x, transform.position.y, gate.position.z);
         transform.position = Vector3.Lerp(transform.position, gatePosition, panSpeed * Time.deltaTime);
     }
 }
