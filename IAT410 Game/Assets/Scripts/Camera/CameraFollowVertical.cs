@@ -18,8 +18,8 @@ public class CameraFollowVertical : MonoBehaviour
 
     public Transform gate; // Assign the gate's transform here
     public float panSpeed = 5f; // Speed for panning to gate
-    public float panDuration = 5f; // Time to keep the camera on the gate
-    private bool isPanningToGate = false;
+    public float panDuration = 2f; // Time to keep the camera on the gate
+    private bool isPanning = false;
 
     private void Start()
     {
@@ -30,19 +30,8 @@ public class CameraFollowVertical : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (isPanningToGate)
+        if (!isPanning)
         {
-            panDuration -= Time.deltaTime;
-
-            if (panDuration <= 0)
-            {
-                isPanningToGate = false;
-                panDuration = 5f;
-            }
-        }
-        else
-        {
-            // Follow player's Z-axis position
             Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, target.position.z + zOffset);
             transform.position = Vector3.Lerp(transform.position, newPosition, followSpeed * Time.deltaTime);
         }
@@ -98,12 +87,42 @@ public class CameraFollowVertical : MonoBehaviour
         }
     }
 
-    // This method is called when the player presses the button
+    // This method is called to start the panning process
     public void PanToGate()
     {
-        isPanningToGate = true;
+        if (!isPanning)
+        {
+            StartCoroutine(PanToGateRoutine());
+        }
+    }
 
+    private IEnumerator PanToGateRoutine()
+    {
+        // Save the current position as the return position
+        Vector3 returnPosition = transform.position;
+
+        // Lerp towards the gate
         Vector3 gatePosition = new Vector3(gate.position.x, transform.position.y, gate.position.z);
-        transform.position = Vector3.Lerp(transform.position, gatePosition, panSpeed * Time.deltaTime);
+        float timeElapsed = 0f;
+
+        isPanning = true;
+
+        while (timeElapsed < panDuration)
+        {
+            transform.position = Vector3.Lerp(transform.position, gatePosition, panSpeed * Time.deltaTime);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Lerp back to the player
+        timeElapsed = 0f;
+        while (timeElapsed < panDuration)
+        {
+            transform.position = Vector3.Lerp(transform.position, returnPosition, panSpeed * Time.deltaTime);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        isPanning = false;
     }
 }
