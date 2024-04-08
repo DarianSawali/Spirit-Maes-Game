@@ -86,10 +86,10 @@ public class HealthManager : MonoBehaviour
     public void decreaseHealth()
     {
         health--;
-        if (health <= 0)
-        {
-            SceneManager.LoadScene(0);
-        }
+        // if (health <= 0)
+        // {
+        //     SceneManager.LoadScene(0);
+        // }
     }
 
     public void addHealth()
@@ -98,6 +98,10 @@ public class HealthManager : MonoBehaviour
         {
             health++;
         }
+    }
+
+    public void ResetHealth(){
+        health = 3;
     }
 
 }
