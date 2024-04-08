@@ -18,6 +18,7 @@ public class Door : MonoBehaviour
     // public AnimationClip openAnimation;
     public Animator doorAnimator;
     // Function called when a button is pressed
+    public CameraFollowVertical cameraScript;
     public void ButtonPressed()
     {
         buttonCount++;
@@ -26,6 +27,7 @@ public class Door : MonoBehaviour
         if (buttonCount >= totalButtonCount)
         {
             UnlockDoor();
+            cameraScript.PanToGate();
             PlayOpenAnimation();
         }
     }
