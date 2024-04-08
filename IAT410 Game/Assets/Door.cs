@@ -19,6 +19,9 @@ public class Door : MonoBehaviour
     public Animator doorAnimator;
     // Function called when a button is pressed
     public CameraFollowVertical cameraScript;
+    
+    public ButtonTrigger button;
+    
     public void ButtonPressed()
     {
         buttonCount++;
