@@ -45,6 +45,7 @@ public class ButtonTrigger : MonoBehaviour
     public void resetPanCounter()
     {
         panCounter = 0;
+        Debug.Log(panCounter);
     }
 
     public void TileSwitch()
