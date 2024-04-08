@@ -18,7 +18,7 @@ public class CameraFollowVertical : MonoBehaviour
 
     public Transform gate; // Assign the gate's transform here
     public float panSpeed = 5f; // Speed for panning to gate
-    public float panDuration = 2f; // Time to keep the camera on the gate
+    private float panDuration = 2.5f; // Time to keep the camera on the gate
     private bool isPanning = false;
 
     private void Start()
@@ -116,12 +116,10 @@ public class CameraFollowVertical : MonoBehaviour
 
         // Lerp back to the player
         timeElapsed = 0f;
-        while (timeElapsed < panDuration)
-        {
-            transform.position = Vector3.Lerp(transform.position, returnPosition, panSpeed * Time.deltaTime);
-            timeElapsed += Time.deltaTime;
-            yield return null;
-        }
+        transform.position = Vector3.Lerp(transform.position, returnPosition, panSpeed * Time.deltaTime);
+        timeElapsed += Time.deltaTime;
+        yield return null;
+
 
         isPanning = false;
     }
