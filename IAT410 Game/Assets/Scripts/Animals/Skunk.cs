@@ -48,6 +48,9 @@ public class Skunk : MonoBehaviour
     public AudioManager audioManager;
     public AudioClip digSound;
 
+ 
+    // public DigTrigger digTrigger;
+
 
     private void Awake()
     {
@@ -184,8 +187,45 @@ public class Skunk : MonoBehaviour
             audioManager.PlaySoundEffect(digSound);
             TeleportToDigLocation(teleportTarget.position);
             Debug.Log("Teleporting after dig");
+
+            // digTrigger.TriggerAnimation();
         }
     }
+
+    // private void TriggerAnimatedTile()
+    // {
+    //     if (animatedTilemap != null)
+    //     {
+    //         Vector3Int digPosition = animatedTilemap.WorldToCell(transform.position);
+
+    //         animatedTilemap.SetTileFlags(digPosition, TileFlags.None);
+    //         animatedTilemap.SetTile(digPosition, null); 
+
+    //     }
+    // }
+
+    // public void ResumeAnimationAtPosition(Vector3Int position)
+    // {
+    //     TileBase tile = animatedTilemap.GetTile(position);
+    //     if (tile != null && tile is AnimatedTile)
+    //     {
+    //         AnimatedTile animatedTile = (AnimatedTile)tile;
+            
+    //         if (animatedTile.flags == TileFlags.AnimationPaused)
+    //         {
+    //             animatedTile.flags = TileFlags.LockTransform | TileFlags.LockColor | TileFlags.Animation;
+                
+    //             animatedTilemap.RefreshTile(position);
+    //         }
+    //     }
+    // }
+
+    // public void ResumeAnimation()
+    // {
+    //     Vector3Int position = new Vector3Int(0, 0, 0);
+
+    //     ResumeAnimationAtPosition(position);
+    // }
 
     // public void OnDig()
     // {

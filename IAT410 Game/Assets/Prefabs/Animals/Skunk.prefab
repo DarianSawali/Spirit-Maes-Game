@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1091675105, guid: c677e6c9bf12fd54cb0575598d05bb83, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -211,10 +211,10 @@ MonoBehaviour:
     m_Bits: 128
   spawnPoint: {fileID: 0}
   playerInput: {fileID: 0}
-  playerModel: {fileID: 0}
+  playerModel: {fileID: 6243248192482893930}
   hasDug: 0
   health: {fileID: 0}
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 8194980054624917327, guid: 39726a7cbca0fee4b8e3cb4c73da7595, type: 3}
   digSound: {fileID: 8300000, guid: 43b261a3388010a4a9f49a7779d5cab6, type: 3}
 --- !u!114 &-2505343339626628100
 MonoBehaviour:
@@ -237,7 +237,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   platform: {fileID: 0}
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 8194980054624917327, guid: 39726a7cbca0fee4b8e3cb4c73da7595, type: 3}
   jump: {fileID: 8300000, guid: 8e6d6dbe49cd2194e9364fb995d88f23, type: 3}
 --- !u!95 &-3752344205760156987
 Animator:

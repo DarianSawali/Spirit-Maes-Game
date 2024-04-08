@@ -113,7 +113,7 @@ MonoBehaviour:
   dug: 0
   health: {fileID: 0}
   platform: {fileID: 0}
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 8194980054624917327, guid: 39726a7cbca0fee4b8e3cb4c73da7595, type: 3}
   possess: {fileID: 8300000, guid: 28096783318c2304abc2130e8cbd457a, type: 3}
   dispossess: {fileID: 8300000, guid: 56af26ef4ae05af45a09a805e421f07c, type: 3}
 --- !u!114 &6506658845060363743
