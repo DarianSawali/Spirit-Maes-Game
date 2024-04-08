@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -1703231721, guid: c2fddcc6b9b4abc4e9d465f890181560, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
     m_Bits: 0
   spawnPoint: {fileID: 0}
   playerInput: {fileID: 0}
-  playerModel: {fileID: 0}
+  playerModel: {fileID: 6243248192482893930}
   health: {fileID: 0}
 --- !u!114 &-3065237953329670601
 MonoBehaviour:
@@ -234,7 +234,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   platform: {fileID: 0}
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 8194980054624917327, guid: 39726a7cbca0fee4b8e3cb4c73da7595, type: 3}
   jump: {fileID: 8300000, guid: 3acf08772f41c16479f049132ecbaade, type: 3}
 --- !u!95 &6903377384770454532
 Animator:
