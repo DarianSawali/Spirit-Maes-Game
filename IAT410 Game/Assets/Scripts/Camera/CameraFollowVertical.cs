@@ -102,7 +102,7 @@ public class CameraFollowVertical : MonoBehaviour
         Vector3 returnPosition = transform.position;
 
         // Lerp towards the gate
-        Vector3 gatePosition = new Vector3(gate.position.x, gate.position.y, gate.position.z + zOffset);
+        Vector3 gatePosition = new Vector3(gate.position.x, transform.position.y, gate.position.z);
         float timeElapsed = 0f;
 
         isPanning = true;
