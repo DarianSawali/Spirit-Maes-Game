@@ -250,6 +250,8 @@ public class Skunk : MonoBehaviour
         || other.CompareTag("ArrowUp") || other.CompareTag("ArrowDown"))) // if being possessed and hit by arrow, decrease health
         {
             health.decreaseHealth();
+            isDamaged = true;
+            animator.SetBool("Damaged", true);
         }
     }
     private void OnTriggerExit(Collider other)

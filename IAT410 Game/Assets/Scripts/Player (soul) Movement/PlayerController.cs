@@ -254,6 +254,8 @@ public class PlayerController : MonoBehaviour
         || other.CompareTag("ArrowUp") || other.CompareTag("ArrowDown")) // decrease health if hit by arrow
         {
             health.decreaseHealth();
+            isDamaged = true;
+            animator.SetBool("Damaged", true);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -262,7 +264,6 @@ public class PlayerController : MonoBehaviour
         {
             targetAnimal.GetComponent<CapsuleCollider>().enabled = true;
             targetAnimal = null;
-
         }
     }
 

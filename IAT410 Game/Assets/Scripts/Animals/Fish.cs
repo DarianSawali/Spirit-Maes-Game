@@ -28,6 +28,9 @@ public class Fish : MonoBehaviour
 
     public HealthManager health; // reduce health when falling
 
+    protected bool isDamaged = false; // handle damage animation
+    private float damageDuration = 1f; // damage animation duration
+
     // for colour changing
     Color originalColor;
     SpriteRenderer spriteRenderer;
@@ -63,6 +66,18 @@ public class Fish : MonoBehaviour
             if (beingPossessed)
             {
                 health.decreaseHealth();
+                isDamaged = true;
+                animator.SetBool("Damaged", true);
+            }
+        }
+        if (isDamaged) // to handle damage animation duration
+        {
+            damageDuration -= Time.deltaTime;
+            if (damageDuration <= 0)
+            {
+                animator.SetBool("Damaged", false);
+                isDamaged = false;
+                damageDuration = 1f;
             }
         }
     }
@@ -169,6 +184,8 @@ public class Fish : MonoBehaviour
         || other.CompareTag("ArrowUp") || other.CompareTag("ArrowDown"))) // if being possessed and hit by arrow, decrease health
         {
             health.decreaseHealth();
+            isDamaged = true;
+            animator.SetBool("Damaged", true);
         }
     }
 
