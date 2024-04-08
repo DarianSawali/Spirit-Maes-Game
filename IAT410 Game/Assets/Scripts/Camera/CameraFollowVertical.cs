@@ -18,7 +18,7 @@ public class CameraFollowVertical : MonoBehaviour
 
     public Transform gate; // Assign the gate's transform here
     public float panSpeed = 5f; // Speed for panning to gate
-    public float panTime = .5f; // Time to keep the camera on the gate
+    public float panDuration = 5f; // Time to keep the camera on the gate
     private bool isPanningToGate = false;
 
     private void Start()
@@ -30,7 +30,17 @@ public class CameraFollowVertical : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!isPanningToGate)
+        if (isPanningToGate)
+        {
+            panDuration -= Time.deltaTime;
+
+            if (panDuration <= 0)
+            {
+                isPanningToGate = false;
+                panDuration = 5f;
+            }
+        }
+        else
         {
             // Follow player's Z-axis position
             Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, target.position.z + zOffset);
@@ -91,23 +101,9 @@ public class CameraFollowVertical : MonoBehaviour
     // This method is called when the player presses the button
     public void PanToGate()
     {
-        StartCoroutine(PanToGateCoroutine());
-    }
-
-    private IEnumerator PanToGateCoroutine()
-    {
         isPanningToGate = true;
 
-        // Lerp towards the gate
-        float startTime = Time.time;
-        while (Time.time - startTime < panTime)
-        {
-            Vector3 gatePosition = new Vector3(gate.position.x, gate.position.y, initialPosition.z);
-            transform.position = Vector3.Lerp(transform.position, gatePosition, panSpeed * Time.deltaTime);
-            yield return null;
-        }
-
-        // Return to following the player after panning
-        isPanningToGate = false;
+        Vector3 gatePosition = new Vector3(gate.position.x, gate.position.y, gate.position.z);
+        transform.position = Vector3.Lerp(transform.position, gatePosition, panSpeed * Time.deltaTime);
     }
 }
