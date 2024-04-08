@@ -11,6 +11,8 @@ public class LoseScreen : MonoBehaviour
     public LevelReset reset;
     private bool lost = false;
 
+    private int currLevel;
+
     void Start()
     {
         loseScreenCanvas.SetActive(false);
@@ -32,10 +34,18 @@ public class LoseScreen : MonoBehaviour
 
     public void Retry()
     {
-        // reset.ResetLevel();
-        healthManager.health = 3;
+        reset.ResetLevel();
+        healthManager.ResetHealth();
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        currLevel = SceneManager.GetActiveScene().buildIndex;
+        if(currLevel >= 2 && currLevel < 5){
+            SceneManager.LoadScene(2);
+        } else if(currLevel >= 6 && currLevel < 9){
+            SceneManager.LoadScene(6);
+        } else if(currLevel >= 10 && currLevel < 13){
+            SceneManager.LoadScene(10);
+        }
     }
 
     public void Quit()
