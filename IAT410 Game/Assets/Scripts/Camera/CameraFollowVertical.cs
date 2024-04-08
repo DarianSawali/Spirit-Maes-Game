@@ -18,7 +18,7 @@ public class CameraFollowVertical : MonoBehaviour
 
     public Transform gate; // Assign the gate's transform here
     public float panSpeed = 5f; // Speed for panning to gate
-    public float panTime = 2f; // Time to keep the camera on the gate
+    public float panTime = .5f; // Time to keep the camera on the gate
     private bool isPanningToGate = false;
 
     private void Start()
