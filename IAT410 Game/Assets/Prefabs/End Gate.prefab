@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3500376085661521548}
   - component: {fileID: 6248955715986505159}
+  - component: {fileID: 3329131536077738077}
   m_Layer: 7
   m_Name: End Platform
   m_TagString: Untagged
@@ -189,6 +190,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3329131536077738077
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242178051385798805}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 30775d0bc403d9543a0e4337f9e3ee8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6029917820350302403
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,3 +411,7 @@ MonoBehaviour:
   doorCollider: {fileID: 2075183425066945356}
   totalButtonCount: 1
   sceneToLoad: L2
+  objectToSwitch: {fileID: 0}
+  newSprite: {fileID: 0}
+  doorAnimation: {fileID: 0}
+  openAnimation: {fileID: 7400000, guid: fdb21f84825ad204e9735c8278b53e21, type: 2}

@@ -13,9 +13,10 @@ public class Door : MonoBehaviour
     public string sceneToLoad;
 
     public GameObject objectToSwitch;
-
     public Sprite newSprite;
-
+    // public Animation doorAnimation;
+    // public AnimationClip openAnimation;
+    public Animator doorAnimator;
     // Function called when a button is pressed
     public void ButtonPressed()
     {
@@ -25,22 +26,49 @@ public class Door : MonoBehaviour
         if (buttonCount >= totalButtonCount)
         {
             UnlockDoor();
-            SwitchSprite();
+            PlayOpenAnimation();
+        }
+    }
+
+    private void UnlockDoor()
+    {
+        isLocked = false;
+        doorCollider.isTrigger = true;
+    }
+
+    private void PlayOpenAnimation()
+    {
+        if (doorAnimator != null)
+        {
+            doorAnimator.SetTrigger("Open"); // Assuming "Open" is the trigger parameter in your Animator Controller
+        }
+        else
+        {
+            Debug.LogError("Door Animator not assigned!");
         }
     }
 
     // Function to unlock the door
-    private void UnlockDoor()
-    {
-        isLocked = false;
-        doorCollider.isTrigger = true; 
-    }
+    // private void UnlockDoor()s
+    // {
+    //     isLocked = false;
+    //     doorCollider.isTrigger = true; 
+    //     if (doorAnimation != null && openAnimation != null)
+    //     {
+    //         doorAnimation.clip = openAnimation;
+    //         doorAnimation.Play();
+    //     }
+    //     else
+    //     {
+    //         Debug.LogError("Door Animation or Open Animation Clip not set.");
+    //     }
+    // }
 
     public void ResetDoor()
     {
         isLocked = true;
-        // pressedButtonCount = 0;
         doorCollider.isTrigger = false;
+        buttonCount = 0;
     }
 
     private void OnTriggerEnter(Collider other){
@@ -55,7 +83,7 @@ public class Door : MonoBehaviour
         }
     }
 
-    public void SwitchSprite()
+ public void SwitchSprite()
     {
         if (objectToSwitch != null)
         {

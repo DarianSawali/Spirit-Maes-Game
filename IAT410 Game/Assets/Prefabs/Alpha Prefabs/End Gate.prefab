@@ -194,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1975913356857811186}
   - component: {fileID: 9198621799525088136}
-  - component: {fileID: 3162295716931505062}
+  - component: {fileID: 5064441382796340224}
   m_Layer: 7
   m_Name: End Platform
   m_TagString: Untagged
@@ -269,20 +269,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3162295716931505062
-MonoBehaviour:
+--- !u!95 &5064441382796340224
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2580096799649279633}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94b3292e3bd661c47a0bad0201294fd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToSwitch: {fileID: 2580096799649279633}
-  newSprite: {fileID: 1576591061, guid: db9a2be91f1e0de4ab602bf2eed4313a, type: 3}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 30775d0bc403d9543a0e4337f9e3ee8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5031202366897492353
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,3 +411,6 @@ MonoBehaviour:
   doorCollider: {fileID: 7421123352571935990}
   totalButtonCount: 1
   sceneToLoad: L2
+  objectToSwitch: {fileID: 2580096799649279633}
+  newSprite: {fileID: 1576591061, guid: db9a2be91f1e0de4ab602bf2eed4313a, type: 3}
+  doorAnimator: {fileID: 5064441382796340224}

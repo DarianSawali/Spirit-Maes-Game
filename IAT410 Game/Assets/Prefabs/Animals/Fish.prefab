@@ -212,7 +212,8 @@ MonoBehaviour:
     m_Bits: 0
   spawnPoint: {fileID: 1730543349837619362}
   playerInput: {fileID: 0}
-  playerModel: {fileID: 0}
+  playerModel: {fileID: 4004658441953011929}
+  health: {fileID: 0}
 --- !u!114 &6922127243896704147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +233,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  platform: {fileID: 0}
 --- !u!95 &7603784244029880020
 Animator:
   serializedVersion: 5
