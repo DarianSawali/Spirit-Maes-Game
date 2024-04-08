@@ -2827,10 +2827,73 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression1
+      value: 
+      objectReference: {fileID: 21300000, guid: 9ac8cad73ef6184429fd4b998d677ee4, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression2
+      value: 
+      objectReference: {fileID: 21300000, guid: e8fb244ba5520c34fa7e13c76a1e14a6, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression3
+      value: 
+      objectReference: {fileID: 21300000, guid: c887e679ce72eab4e9e7faa16a22d0c6, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression4
+      value: 
+      objectReference: {fileID: 21300000, guid: e73a5eb1880af5e4faa7eb237c5f671f, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression5
+      value: 
+      objectReference: {fileID: 21300000, guid: 42bec4e621769be42bb833d6bb45f853, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression6
+      value: 
+      objectReference: {fileID: 21300000, guid: 60debb7278b11e745a41da3cd73b8e25, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression7
+      value: 
+      objectReference: {fileID: 21300000, guid: 149d41effb389a24794f82ba36f9b0c6, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression8
+      value: 
+      objectReference: {fileID: 21300000, guid: 568c4d026d2ef494096e0aede3a6ca78, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression9
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f8206bf0ef39de40a16a266e3979c70, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression10
+      value: 
+      objectReference: {fileID: 21300000, guid: 25db76107b89dd344889027c5e16deb6, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression11
+      value: 
+      objectReference: {fileID: 21300000, guid: aac3025b0958884479a1b1de3a41630b, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression12
+      value: 
+      objectReference: {fileID: 21300000, guid: 3cf715c67ff314e44a728630cf151420, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgression13
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ead0e8249bca1747ae25747616f6d75, type: 3}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgressions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915820136861913715, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      propertyPath: levelProgressionSprites.Array.data[13]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ead0e8249bca1747ae25747616f6d75, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6695144162251952440, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1907239631}
   m_SourcePrefab: {fileID: 100100000, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
 --- !u!4 &1062637989 stripped
 Transform:
@@ -5240,6 +5303,41 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 793b3d7dbf3cc844c9f15a08baf6cf8c, type: 3}
+--- !u!1 &1907239628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6695144162251952440, guid: c3954597d62f3a947a8b53b3df77d224, type: 3}
+  m_PrefabInstance: {fileID: 1031602492}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1907239631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907239628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &2112419452
 PrefabInstance:
   m_ObjectHideFlags: 0
