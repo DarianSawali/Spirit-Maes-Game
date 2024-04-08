@@ -31,11 +31,11 @@ public class HealthManager : MonoBehaviour
         //testing purposes
         if (Input.GetKeyDown(KeyCode.U))
         {
-            decreaseHealth();
+            // decreaseHealth();
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            addHealth();
+            // addHealth();
         }
 
         switch (health)
@@ -85,7 +85,7 @@ public class HealthManager : MonoBehaviour
 
     public void decreaseHealth()
     {
-        health--;
+        health -= 1;
         // if (health <= 0)
         // {
         //     SceneManager.LoadScene(0);
