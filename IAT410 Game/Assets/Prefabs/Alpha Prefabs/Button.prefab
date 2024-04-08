@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 0}
   isPressed: 0
-  audioManager: {fileID: 8194980054624917327, guid: 39726a7cbca0fee4b8e3cb4c73da7595, type: 3}
+  audioManager: {fileID: 0}
   click: {fileID: 8300000, guid: efea447359e2cc444b2c6beee2a10d8f, type: 3}
   ping: {fileID: 8300000, guid: 87c64a598c16a974b9e43ab0119f2087, type: 3}
 --- !u!114 &7353590787664618637
