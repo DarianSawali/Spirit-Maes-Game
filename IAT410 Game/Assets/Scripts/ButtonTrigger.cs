@@ -14,6 +14,10 @@ public class ButtonTrigger : MonoBehaviour
     public AudioManager audioManager;
     public AudioClip click;
     public AudioClip ping;
+
+    private int panCounter = 0; // only pan to gate when first button is pressed
+    // used for levels with multiple buttons
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Animal") || other.CompareTag("Player") || other.CompareTag("Skunk") || other.CompareTag("Pigeon") || other.CompareTag("Fish"))
@@ -27,11 +31,20 @@ public class ButtonTrigger : MonoBehaviour
 
                 audioManager.PlaySoundEffect(ping);
 
-                cameraScript.PanToGate();
+                if (panCounter == 0) ;
+                {
+                    cameraScript.PanToGate();
+                    panCounter++;
+                }
 
                 Debug.Log("Button Pressed");
             }
         }
+    }
+
+    public void resetPanCounter()
+    {
+        panCounter = 0;
     }
 
     public void TileSwitch()
