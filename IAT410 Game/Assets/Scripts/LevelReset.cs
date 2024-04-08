@@ -14,7 +14,7 @@ public class LevelReset : MonoBehaviour
 
     private void Start()
     {
-        // Save the initial state of the scene
+        Time.timeScale = 1f;
         SaveInitialState();
     }
 
