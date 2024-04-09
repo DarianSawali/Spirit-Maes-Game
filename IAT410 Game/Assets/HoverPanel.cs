@@ -25,7 +25,7 @@ public class HoverPanel : MonoBehaviour
     public void Hard()
     {
         PlayerPrefs.SetInt("PlayerCurrentLives", playerLives);
-        SceneManager.LoadScene(9);
+        SceneManager.LoadScene(10);
     }
 
     public void OnFadeComplete()
