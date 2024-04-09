@@ -37,19 +37,19 @@ public class HealthManager : MonoBehaviour
     void Update()
     {
         //testing purposes
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            decreaseHealth();
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            addHealth();
-        }
+        // if (Input.GetKeyDown(KeyCode.U))
+        // {
+        //     decreaseHealth();
+        // }
+        // if (Input.GetKeyDown(KeyCode.I))
+        // {
+        //     addHealth();
+        // }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ResetHealth();
-        }
+        // if (Input.GetKeyDown(KeyCode.R))
+        // {
+        //     ResetHealth();
+        // }
 
         switch (health)
         {
