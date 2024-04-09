@@ -22,7 +22,7 @@ public class HealthManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 10)
         {
             // Reset health to default health
-            ResetHealthToDefault();
+            ResetHealth();
         }
 
         else
