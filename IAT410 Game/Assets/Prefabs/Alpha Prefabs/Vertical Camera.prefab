@@ -107,6 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   followSpeed: 2
-  zOffset: 0.5
+  zOffset: 0.25
   orthoZoomSpeed: 1
   targetOrthoSize: 1.35
+  gate: {fileID: 0}
+  panSpeed: 5
