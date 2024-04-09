@@ -9337,6 +9337,10 @@ PrefabInstance:
       propertyPath: objectToSwitch
       value: 
       objectReference: {fileID: 2072585186}
+    - target: {fileID: 2274990362066834582, guid: 1a9e0ab3cc2edb24d88a4bda76f46e3f, type: 3}
+      propertyPath: totalButtonCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6029917820350302403, guid: 1a9e0ab3cc2edb24d88a4bda76f46e3f, type: 3}
       propertyPath: m_Name
       value: End Gate
