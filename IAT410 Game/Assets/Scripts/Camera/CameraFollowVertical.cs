@@ -90,7 +90,7 @@ public class CameraFollowVertical : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().buildIndex == 8) //L6
             {
-                if (target.position.x > 2.7f)
+                if (target.position.x > 2.6f)
                 {
                     // Move the camera to the new position when player's x position is less than 3
                     transform.position = new Vector3(5.5f, transform.position.y, transform.position.z);
