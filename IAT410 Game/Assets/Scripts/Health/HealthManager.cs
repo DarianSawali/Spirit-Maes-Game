@@ -16,27 +16,10 @@ public class HealthManager : MonoBehaviour
     private int maxHealth = 4;
     private int defaultHealth = 3;
 
-    void Awake()
-    {
-        void Awake()
-        {
-            if (instance == null)
-            {
-                instance = this;
-                DontDestroyOnLoad(gameObject);
-                health = defaultHealth; // Only set health here
-            }
-            else if (instance != this)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        health = defaultHealth;
+        health = PlayerPrefs.GetInt("PlayerCurrentLives");
     }
 
     // Update is called once per frame
