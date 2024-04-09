@@ -6139,6 +6139,10 @@ PrefabInstance:
       value: L10
       objectReference: {fileID: 0}
     - target: {fileID: 3441214690494621520, guid: f4a1bf19a7451034787474e6025effca, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1659373031}
+    - target: {fileID: 3441214690494621520, guid: f4a1bf19a7451034787474e6025effca, type: 3}
       propertyPath: cameraScript
       value: 
       objectReference: {fileID: 170277526}
