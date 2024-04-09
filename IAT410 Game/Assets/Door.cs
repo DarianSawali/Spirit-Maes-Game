@@ -29,6 +29,10 @@ public class Door : MonoBehaviour
         button = FindObjectOfType<ButtonTrigger>();
 
         health = FindObjectOfType<HealthManager>(); // to reset health every difficulty increase
+        if (health == null)
+        {
+            Debug.Log("No health manager");
+        }
     }
 
     public void ButtonPressed()

@@ -120,7 +120,7 @@ public class HealthManager : MonoBehaviour
 
     public void ResetHealth()
     {
-        PlayerPrefs.SetInt("PlayerCurrentLives", 3);
+        PlayerPrefs.SetInt("PlayerCurrentLives", defaultHealth);
     }
 
 }
