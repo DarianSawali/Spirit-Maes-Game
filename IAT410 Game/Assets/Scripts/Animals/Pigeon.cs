@@ -102,7 +102,7 @@ public class Pigeon : MonoBehaviour
         }
 
         // make pigeon dance when in reward room 1
-        if (SceneManager.GetActiveScene().buildIndex == 8)
+        if (SceneManager.GetActiveScene().buildIndex == 9)
         {
             animator.SetBool("isDancing", true);
         }
