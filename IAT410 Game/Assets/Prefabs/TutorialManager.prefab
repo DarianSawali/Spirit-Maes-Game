@@ -607,12 +607,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUps:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  abilityPopUps: []
+  - {fileID: 9213531473203504620}
+  - {fileID: 731708089166472789}
+  - {fileID: 150569459422096944}
+  - {fileID: 8100221870392761779}
+  - {fileID: 3560637656694559162}
+  - {fileID: 8734213120554480112}
+  abilityPopUps:
+  - {fileID: 4554615598594292081}
+  - {fileID: 8358673509641786332}
+  - {fileID: 2559540299035620033}
+  - {fileID: 2859627328330120275}
 --- !u!1 &8100221870392761779
 GameObject:
   m_ObjectHideFlags: 0
