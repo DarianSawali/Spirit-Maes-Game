@@ -111,7 +111,7 @@ public class TutorialManager : MonoBehaviour
             abilityPopUps[0].SetActive(true);
         }
 
-        if (popUpIndex == 4)
+        if (popUpIndex == 5)
         {
             abilityPopUps[1].SetActive(true);
         }
