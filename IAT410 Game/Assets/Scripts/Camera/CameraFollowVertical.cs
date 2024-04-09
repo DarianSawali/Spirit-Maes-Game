@@ -96,7 +96,7 @@ public class CameraFollowVertical : MonoBehaviour
                     transform.position = new Vector3(5.5f, transform.position.y, transform.position.z);
                     Debug.Log("Move camera");
                 }
-                if (target.position.x > 8.3f)
+                if (target.position.x > 8f)
                 {
                     // Reset the camera to the initial position when player's x position is greater than 8.9
                     transform.position = new Vector3(9f, transform.position.y, transform.position.z);
