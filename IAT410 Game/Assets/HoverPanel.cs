@@ -8,29 +8,40 @@ public class HoverPanel : MonoBehaviour
 
     public Animator transition;
 
-    public void Easy(){
+    public int playerLives;
+
+    public void Easy()
+    {
+        PlayerPrefs.SetInt("PlayerCurrentLives", playerLives);
         SceneManager.LoadScene(2);
     }
 
-    public void Medium(){
+    public void Medium()
+    {
+        PlayerPrefs.SetInt("PlayerCurrentLives", playerLives);
         SceneManager.LoadScene(6);
     }
 
-    public void Hard(){
+    public void Hard()
+    {
+        PlayerPrefs.SetInt("PlayerCurrentLives", playerLives);
         SceneManager.LoadScene(9);
     }
 
-    public void OnFadeComplete(){
+    public void OnFadeComplete()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void FadeToLevel(int levelIndex){
+    public void FadeToLevel(int levelIndex)
+    {
         transition.SetTrigger("FadeOut");
     }
 
-    public void Fade(){
+    public void Fade()
+    {
         transition.SetTrigger("FadeOut");
     }
 
-    
+
 }

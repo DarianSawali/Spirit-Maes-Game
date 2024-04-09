@@ -9,34 +9,42 @@ public class MainMenu : MonoBehaviour
     //private SceneTransition sceneTransition;
     //private SceneTransition sceneTransition;
 
+    public int playerLives;
+
     // public void Awake()
     // {
-    //     sceneTransition = GameObject.Find("TransitionObject").GetComponent<SceneTransition>();
-    //     if (sceneTransition == null)
-    //     {
-    //         Debug.LogError("SceneTransition component not found.");
-    //     }
+    // sceneTransition = GameObject.Find("TransitionObject").GetComponent<SceneTransition>();
+    // if (sceneTransition == null)
+    // {
+    //     Debug.LogError("SceneTransition component not found.");
+    // }
     // }
 
-    public void PlayGame(){
+    public void PlayGame()
+    {
+        PlayerPrefs.SetInt("PlayerCurrentLives", playerLives);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void QuitGame(){
+    public void QuitGame()
+    {
         Application.Quit();
     }
 
-    public void OnFadeComplete(){
+    public void OnFadeComplete()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void FadeToLevel(int levelIndex){
+    public void FadeToLevel(int levelIndex)
+    {
         transition.SetTrigger("FadeOut");
     }
 
-    public void Fade(){
+    public void Fade()
+    {
         transition.SetTrigger("FadeOut");
     }
 
-    
+
 }

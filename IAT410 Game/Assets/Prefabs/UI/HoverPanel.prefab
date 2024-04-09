@@ -400,6 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 0}
+  playerLives: 3
 --- !u!82 &3136302579132001631
 AudioSource:
   m_ObjectHideFlags: 0
