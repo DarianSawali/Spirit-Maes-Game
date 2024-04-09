@@ -28,6 +28,7 @@ public class healthPowerup : MonoBehaviour
             {
                 Debug.Log("health up");
                 health.addHealth();
+                audioManager.PlaySoundEffect(buff);
                 Destroy(gameObject); // remove powerup
             }
         }
@@ -38,6 +39,7 @@ public class healthPowerup : MonoBehaviour
             if (skunkComponent.getSkunkPossessedStatus()) // if in possession, health up
             {
                 health.addHealth();
+                audioManager.PlaySoundEffect(buff);
                 Destroy(gameObject); // remove powerup
             }
         }
@@ -48,6 +50,7 @@ public class healthPowerup : MonoBehaviour
             if (fishComponent.getFishPossessedStatus()) // if in possession, health up
             {
                 health.addHealth();
+                audioManager.PlaySoundEffect(buff);
                 Destroy(gameObject); // remove powerup
             }
         }
