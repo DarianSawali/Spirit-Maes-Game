@@ -86,6 +86,8 @@ public class Pigeon : MonoBehaviour
             if (beingPossessed)
             {
                 health.decreaseHealth();
+                // Access the singleton instance of HealthManager and call decreaseHealth
+                // HealthManager.instance.decreaseHealth();
                 isDamaged = true;
                 animator.SetBool("Damaged", true);
             }
@@ -225,6 +227,8 @@ public class Pigeon : MonoBehaviour
         || other.CompareTag("ArrowUp") || other.CompareTag("ArrowDown"))) // if being possessed and hit by arrow, decrease health
         {
             health.decreaseHealth();
+            // Access the singleton instance of HealthManager and call decreaseHealth
+            // HealthManager.instance.decreaseHealth();
             isDamaged = true;
             animator.SetBool("Damaged", true);
         }
