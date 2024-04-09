@@ -91,12 +91,12 @@ public class TutorialManager : MonoBehaviour
             abilityPopUp.SetActive(false); // ability description pop up
         }
 
-        if (popUpIndex == 1)
+        if (popUpIndex == 3)
         {
             abilityPopUps[0].SetActive(true);
         }
 
-        if (popUpIndex == 3)
+        if (popUpIndex == 4)
         {
             abilityPopUps[1].SetActive(true);
         }
