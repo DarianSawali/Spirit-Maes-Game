@@ -3432,6 +3432,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 302866619025094213, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 302866619025094213, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 347835472717015646, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 347835472717015646, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4316
+      objectReference: {fileID: 0}
+    - target: {fileID: 347835472717015646, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4316
+      objectReference: {fileID: 0}
+    - target: {fileID: 347835472717015646, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 158
+      objectReference: {fileID: 0}
+    - target: {fileID: 347835472717015646, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -44
+      objectReference: {fileID: 0}
     - target: {fileID: 1353293015102104536, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: m_Camera
       value: 
@@ -3548,6 +3576,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 199028b90ec9af7438f9de5270df61a8, type: 3}
+    - target: {fileID: 6018726921648748571, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -67
+      objectReference: {fileID: 0}
     - target: {fileID: 6474543596246845245, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: m_Sprite
       value: 
