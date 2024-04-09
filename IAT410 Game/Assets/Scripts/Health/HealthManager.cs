@@ -16,12 +16,13 @@ public class HealthManager : MonoBehaviour
     public GameObject Heart4;
 
     public int health;
-    public int maxHealth = 3;
+    private int maxHealth = 4;
+    private int defaultHealth = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
+        health = defaultHealth;
         Animator animator = GetComponent<Animator>();
     }
 
@@ -81,6 +82,25 @@ public class HealthManager : MonoBehaviour
                     break;
                 }
         }
+
+        // if (SceneManager.GetActiveScene().buildIndex == 2)
+        // {
+        //     if (health < defaultHealth)
+        //     {
+        //         ResetHealth(); // if health is below 3, reset
+        //     }
+        // }
+
+        // if (SceneManager.GetActiveScene().buildIndex == 6)
+        // {
+        //     if (health < defaultHealth)
+        //     {
+        //         ResetHealth(); // if health is below 3, reset
+        //         // if health is above 3, which is 4, keep it at 4 as a form
+        //         // of their hardwork that pays offs
+        //     }
+        // }
+        // Debug.Log(health);
     }
 
     public void decreaseHealth()
@@ -94,14 +114,15 @@ public class HealthManager : MonoBehaviour
 
     public void addHealth()
     {
-        if (health <= maxHealth)
+        if (health < maxHealth)
         {
             health++;
         }
     }
 
-    public void ResetHealth(){
-        health = maxHealth;
+    public void ResetHealth()
+    {
+        health = defaultHealth;
     }
 
 }
