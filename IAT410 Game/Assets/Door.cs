@@ -101,11 +101,13 @@ public class Door : MonoBehaviour
             if (doorCollider.isTrigger)
             {
                 Debug.Log("door test working");
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                if (SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 10)
+
+                if (SceneManager.GetActiveScene().buildIndex + 1 == 6 || SceneManager.GetActiveScene().buildIndex + 1 == 10)
                 {
                     health.ResetHealth();
                 }
+
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else
             {
