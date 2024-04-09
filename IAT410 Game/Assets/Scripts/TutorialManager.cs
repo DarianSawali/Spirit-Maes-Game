@@ -113,11 +113,12 @@ public class TutorialManager : MonoBehaviour
 
         if (popUpIndex == 4)
         {
-            abilityPopUps[2].SetActive(true);
+            abilityPopUps[1].SetActive(true);
         }
 
-        if (popUpIndex == 5)
+        if (popUpIndex == 6)
         {
+            abilityPopUps[2].SetActive(true);
             abilityPopUps[3].SetActive(true);
         }
     }
