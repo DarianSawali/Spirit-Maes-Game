@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -160,10 +161,6 @@ public class PlayerController : MonoBehaviour
         {
             audioManager.PlaySoundEffect(possess);
             PossessAnimal(targetAnimal);
-            // cameraFollowScript.SetTarget(skunk.transform); // Make the camera follow the skunk
-            // CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
-            // cameraManager.SetCameraTarget(skunk.transform);
-
         }
     }
 

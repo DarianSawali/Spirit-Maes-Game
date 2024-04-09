@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
@@ -33,6 +32,11 @@ public class HealthManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             addHealth();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetHealth();
         }
 
         switch (health)
@@ -121,6 +125,7 @@ public class HealthManager : MonoBehaviour
     public void ResetHealth()
     {
         PlayerPrefs.SetInt("PlayerCurrentLives", defaultHealth);
+        Debug.Log("reset health" + health);
     }
 
 }
