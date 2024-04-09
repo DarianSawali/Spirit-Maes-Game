@@ -101,7 +101,8 @@ public class HealthManager : MonoBehaviour
 
     public void decreaseHealth()
     {
-        health -= 1;
+        health--;
+        PlayerPrefs.SetInt("PlayerCurrentLives", health);
         // if (health <= 0)
         // {
         //     SceneManager.LoadScene(0);
@@ -113,6 +114,7 @@ public class HealthManager : MonoBehaviour
         if (health < maxHealth)
         {
             health++;
+            PlayerPrefs.SetInt("PlayerCurrentLives", health);
         }
     }
 
