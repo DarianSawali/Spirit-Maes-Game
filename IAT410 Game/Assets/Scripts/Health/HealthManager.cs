@@ -18,7 +18,17 @@ public class HealthManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = PlayerPrefs.GetInt("PlayerCurrentLives");
+        // Check if the current scene is scene index 6
+        if (SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 10)
+        {
+            // Reset health to default health
+            ResetHealthToDefault();
+        }
+
+        else
+        {
+            health = PlayerPrefs.GetInt("PlayerCurrentLives");
+        }
     }
 
     // Update is called once per frame
