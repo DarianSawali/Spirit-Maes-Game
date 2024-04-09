@@ -7,6 +7,9 @@ public class healthPowerup : MonoBehaviour
 
     public HealthManager health;
 
+    public AudioManager audioManager;
+    public AudioClip buff;
+
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +17,7 @@ public class healthPowerup : MonoBehaviour
         {
             Debug.Log("health up");
             health.addHealth();
+            audioManager.PlaySoundEffect(buff);
             Destroy(gameObject); // remove powerup
         }
 

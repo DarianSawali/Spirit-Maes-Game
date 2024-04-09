@@ -235,7 +235,7 @@ MonoBehaviour:
     m_Bits: 128
   platform: {fileID: 0}
   audioManager: {fileID: 8194980054624917327, guid: 39726a7cbca0fee4b8e3cb4c73da7595, type: 3}
-  jump: {fileID: 8300000, guid: 3acf08772f41c16479f049132ecbaade, type: 3}
+  jump: {fileID: 8300000, guid: 8e6d6dbe49cd2194e9364fb995d88f23, type: 3}
 --- !u!95 &6903377384770454532
 Animator:
   serializedVersion: 5

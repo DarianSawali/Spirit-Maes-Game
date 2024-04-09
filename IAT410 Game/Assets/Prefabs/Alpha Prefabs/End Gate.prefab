@@ -414,3 +414,6 @@ MonoBehaviour:
   objectToSwitch: {fileID: 2580096799649279633}
   newSprite: {fileID: 1576591061, guid: db9a2be91f1e0de4ab602bf2eed4313a, type: 3}
   doorAnimator: {fileID: 5064441382796340224}
+  cameraScript: {fileID: 0}
+  audioManager: {fileID: 0}
+  door: {fileID: 8300000, guid: 7c32d8852da7d7f4fa8a429532be8e55, type: 3}

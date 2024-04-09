@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414738, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4412,6 +4412,10 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 8381354}
+    - target: {fileID: 3761172081468479777, guid: bea3e4380d561f847a02d931747e9b9a, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 8381353}
     - target: {fileID: 7343575368437945312, guid: bea3e4380d561f847a02d931747e9b9a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.68
@@ -4773,6 +4777,10 @@ PrefabInstance:
       propertyPath: newSprite
       value: 
       objectReference: {fileID: 1576591061, guid: db9a2be91f1e0de4ab602bf2eed4313a, type: 3}
+    - target: {fileID: 3441214690494621520, guid: f4a1bf19a7451034787474e6025effca, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 8381353}
     - target: {fileID: 3441214690494621520, guid: f4a1bf19a7451034787474e6025effca, type: 3}
       propertyPath: cameraScript
       value: 

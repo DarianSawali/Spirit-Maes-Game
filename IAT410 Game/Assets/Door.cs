@@ -22,6 +22,9 @@ public class Door : MonoBehaviour
 
     private ButtonTrigger button;
 
+    public AudioManager audioManager;
+    public AudioClip door;
+
     protected void Start()
     {
         button = FindObjectOfType<ButtonTrigger>();
@@ -102,6 +105,8 @@ public class Door : MonoBehaviour
             else
             {
                 Debug.Log("door closed");
+                audioManager.PlaySoundEffect(door);
+                
             }
         }
     }

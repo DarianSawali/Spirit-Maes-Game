@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 0}
+  audioManager: {fileID: 0}
+  buff: {fileID: 8300000, guid: 3acf08772f41c16479f049132ecbaade, type: 3}
 --- !u!135 &3902795880988796020
 SphereCollider:
   m_ObjectHideFlags: 0
