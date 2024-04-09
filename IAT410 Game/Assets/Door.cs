@@ -22,9 +22,13 @@ public class Door : MonoBehaviour
 
     private ButtonTrigger button;
 
+    private HealthManager health;
+
     protected void Start()
     {
         button = FindObjectOfType<ButtonTrigger>();
+
+        health = FindObjectOfType<HealthManager>(); // to reset health every difficulty increase
     }
 
     public void ButtonPressed()
@@ -98,6 +102,10 @@ public class Door : MonoBehaviour
             {
                 Debug.Log("door test working");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                if (SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 10)
+                {
+                    health.resetHealth();
+                }
             }
             else
             {

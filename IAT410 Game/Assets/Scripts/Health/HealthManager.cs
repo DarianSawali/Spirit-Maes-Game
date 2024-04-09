@@ -28,11 +28,11 @@ public class HealthManager : MonoBehaviour
         //testing purposes
         if (Input.GetKeyDown(KeyCode.U))
         {
-            // decreaseHealth();
+            decreaseHealth();
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            // addHealth();
+            addHealth();
         }
 
         switch (health)
@@ -111,16 +111,16 @@ public class HealthManager : MonoBehaviour
 
     public void addHealth()
     {
-        if (health < maxHealth)
+        if (health < 5)
         {
             health++;
             PlayerPrefs.SetInt("PlayerCurrentLives", health);
         }
     }
 
-    public void ResetHealth()
+    public void resetHealth()
     {
-        health = defaultHealth;
+        PlayerPrefs.SetInt("PlayerCurrentLives", 3);
     }
 
 }
