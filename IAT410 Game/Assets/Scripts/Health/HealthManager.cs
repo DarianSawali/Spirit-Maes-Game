@@ -118,7 +118,7 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    public void resetHealth()
+    public void ResetHealth()
     {
         PlayerPrefs.SetInt("PlayerCurrentLives", 3);
     }

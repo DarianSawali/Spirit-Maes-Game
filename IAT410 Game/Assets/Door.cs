@@ -104,7 +104,7 @@ public class Door : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 if (SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 10)
                 {
-                    health.resetHealth();
+                    health.ResetHealth();
                 }
             }
             else
