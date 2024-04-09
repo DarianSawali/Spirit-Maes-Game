@@ -106,7 +106,7 @@ public class Door : MonoBehaviour
             {
                 Debug.Log("door test working");
 
-                if (SceneManager.GetActiveScene().buildIndex + 1 == 6 || SceneManager.GetActiveScene().buildIndex + 1 == 10)
+                if ((SceneManager.GetActiveScene().buildIndex + 1) == 6 || (SceneManager.GetActiveScene().buildIndex + 1) == 10)
                 {
                     health.ResetHealth();
                 }
