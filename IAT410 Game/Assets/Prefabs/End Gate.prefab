@@ -413,5 +413,7 @@ MonoBehaviour:
   sceneToLoad: L2
   objectToSwitch: {fileID: 0}
   newSprite: {fileID: 0}
-  doorAnimation: {fileID: 0}
-  openAnimation: {fileID: 7400000, guid: fdb21f84825ad204e9735c8278b53e21, type: 2}
+  doorAnimator: {fileID: 0}
+  cameraScript: {fileID: 0}
+  audioManager: {fileID: 0}
+  door: {fileID: 8300000, guid: 3acf08772f41c16479f049132ecbaade, type: 3}
