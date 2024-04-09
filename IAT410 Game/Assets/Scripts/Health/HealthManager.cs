@@ -115,7 +115,7 @@ public class HealthManager : MonoBehaviour
 
     public void addHealth()
     {
-        if (health < 5)
+        if (health < maxHealth)
         {
             health++;
             PlayerPrefs.SetInt("PlayerCurrentLives", health);
@@ -124,7 +124,8 @@ public class HealthManager : MonoBehaviour
 
     public void ResetHealth()
     {
-        PlayerPrefs.SetInt("PlayerCurrentLives", defaultHealth);
+        health = defaultHealth;
+        PlayerPrefs.SetInt("PlayerCurrentLives", health);
         Debug.Log("reset health" + health);
     }
 

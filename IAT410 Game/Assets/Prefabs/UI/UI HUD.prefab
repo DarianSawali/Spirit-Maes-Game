@@ -2171,7 +2171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35aa97991e0b8ae4ab24bafdca9a7144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
   Heart1: {fileID: 4081175873837639361}
   Heart2: {fileID: 761362249304427802}
   Heart3: {fileID: 7448356245258243811}
@@ -2433,7 +2432,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -270, y: -98}
+  m_AnchoredPosition: {x: -350, y: -98}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5367178936411858958
