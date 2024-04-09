@@ -44,6 +44,11 @@ public class Door : MonoBehaviour
         }
     }
 
+    public int getButtonPressedCount()
+    {
+        return buttonCount;
+    }
+
     private void UnlockDoor()
     {
         isLocked = false;

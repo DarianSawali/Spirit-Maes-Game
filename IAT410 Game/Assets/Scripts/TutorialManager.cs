@@ -14,6 +14,13 @@ public class TutorialManager : MonoBehaviour
     private bool sPressed = false;
     private bool dPressed = false;
 
+    private Door door;
+
+    void Start()
+    {
+        door = FindObjectOfType<Door>();
+    }
+
     void Update()
     {
         // Deactivate all pop-ups first
@@ -80,6 +87,14 @@ public class TutorialManager : MonoBehaviour
 
         if (popUpIndex == 4)
         {
+            if (door.getButtonPressedCount() > 0)
+            {
+                popUpIndex++;
+            }
+        }
+
+        if (popUpIndex == 5)
+        {
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 popUpIndex++;
@@ -94,7 +109,6 @@ public class TutorialManager : MonoBehaviour
         if (popUpIndex == 3)
         {
             abilityPopUps[0].SetActive(true);
-            abilityPopUps[1].SetActive(true);
         }
 
         if (popUpIndex == 4)

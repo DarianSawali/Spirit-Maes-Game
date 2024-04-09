@@ -3667,7 +3667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: popUps.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: popUps.Array.data[0]
@@ -3688,14 +3688,14 @@ PrefabInstance:
     - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: popUps.Array.data[4]
       value: 
-      objectReference: {fileID: 302249842}
+      objectReference: {fileID: 1250288104}
     - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: popUps.Array.data[5]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 302249842}
     - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: abilityPopUps.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: abilityPopUps.Array.data[0]
@@ -3704,11 +3704,11 @@ PrefabInstance:
     - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: abilityPopUps.Array.data[1]
       value: 
-      objectReference: {fileID: 1250288104}
+      objectReference: {fileID: 1250288102}
     - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: abilityPopUps.Array.data[2]
       value: 
-      objectReference: {fileID: 1250288102}
+      objectReference: {fileID: 1250288101}
     - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: abilityPopUps.Array.data[3]
       value: 
@@ -3716,7 +3716,7 @@ PrefabInstance:
     - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: abilityPopUps.Array.data[4]
       value: 
-      objectReference: {fileID: 1250288101}
+      objectReference: {fileID: 1250288104}
     - target: {fileID: 6945348840536340076, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: m_Sprite
       value: 
