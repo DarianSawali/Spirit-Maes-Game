@@ -71,7 +71,40 @@ public class CameraFollowVertical : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 7)
+        if (SceneManager.GetActiveScene().buildIndex == 7) //L5
+        {
+            if (target.position.x < -2f)
+            {
+                // Move the camera to the new position when player's x position is less than -2
+                transform.position = new Vector3(-4f, transform.position.y, transform.position.z);
+                Debug.Log("Move camera");
+            }
+            else if (target.position.x > -2f)
+            {
+                // Reset the camera to the initial position when player's x position is greater than -2
+                transform.position = new Vector3(initialPosition.x, transform.position.y, transform.position.z);
+            }
+        }
+
+        if (!isPanning)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 8) //L6
+            {
+                if (target.position.x > 3f)
+                {
+                    // Move the camera to the new position when player's x position is less than -2
+                    transform.position = new Vector3(6f, transform.position.y, transform.position.z);
+                    Debug.Log("Move camera");
+                }
+                else if (target.position.x > -2f)
+                {
+                    // Reset the camera to the initial position when player's x position is greater than -2
+                    transform.position = new Vector3(initialPosition.x, transform.position.y, transform.position.z);
+                }
+            }
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == 12) //L9
         {
             if (target.position.x < -2f)
             {
@@ -86,6 +119,7 @@ public class CameraFollowVertical : MonoBehaviour
             }
         }
     }
+
 
     // This method is called to start the panning process
     public void PanToGate()

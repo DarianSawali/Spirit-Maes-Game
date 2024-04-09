@@ -76,9 +76,14 @@ public class HUDProgressionManager : MonoBehaviour
             progressBarImage.sprite = levelProgressionSprites[9];
         }
 
-        // if (SceneManager.GetActiveScene().buildIndex == 12)
-        // {
-        //     progressBarImage.sprite = levelProgressionSprites[10];
-        // }
+        if (SceneManager.GetActiveScene().buildIndex == 12)
+        {
+            progressBarImage.sprite = levelProgressionSprites[10];
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == 13)
+        {
+            progressBarImage.sprite = levelProgressionSprites[11];
+        }
     }
 }
