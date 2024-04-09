@@ -12606,8 +12606,12 @@ PrefabInstance:
       value: UI HUD
       objectReference: {fileID: 0}
     - target: {fileID: 1502254366576403169, guid: ed97c20488fe6624c8870c9f0e24bdbc, type: 3}
+      propertyPath: backgroundMusicClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f36c70dd763de5e4a8d82a6f34811449, type: 3}
+    - target: {fileID: 1502254366576403169, guid: ed97c20488fe6624c8870c9f0e24bdbc, type: 3}
       propertyPath: backgroundMusicVolume
-      value: 0.05
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4595339214704016767, guid: ed97c20488fe6624c8870c9f0e24bdbc, type: 3}
       propertyPath: Player
