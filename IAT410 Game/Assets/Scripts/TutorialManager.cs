@@ -5,7 +5,9 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {
     public GameObject[] popUps;
+    public GameObject[] abilityPopUps;
     private int popUpIndex;
+    private int abilityIndex;
 
     private bool wPressed = false;
     private bool aPressed = false;
@@ -17,7 +19,7 @@ public class TutorialManager : MonoBehaviour
         // Deactivate all pop-ups first
         foreach (GameObject popUp in popUps)
         {
-            popUp.SetActive(false);
+            popUp.SetActive(false); // controls pop up
         }
 
         // Then, only activate the current pop-up
@@ -59,7 +61,7 @@ public class TutorialManager : MonoBehaviour
                 popUpIndex++;
             }
         }
-        
+
         if (popUpIndex == 2)
         {
             if (Input.GetKeyDown("space"))
@@ -82,6 +84,26 @@ public class TutorialManager : MonoBehaviour
             {
                 popUpIndex++;
             }
+        }
+
+        foreach (GameObject abilityPopUp in abilityPopUps)
+        {
+            abilityPopUp.SetActive(false); // ability description pop up
+        }
+
+        if (popUpIndex == 1)
+        {
+            abilityPopUps[0].SetActive(true);
+        }
+
+        if (popUpIndex == 3)
+        {
+            abilityPopUps[1].SetActive(true);
+        }
+
+        if (popUpIndex == 5)
+        {
+            abilityPopUps[2].SetActive(true);
         }
     }
 }

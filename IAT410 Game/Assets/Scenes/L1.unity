@@ -3522,6 +3522,14 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5387345939438661770, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 199028b90ec9af7438f9de5270df61a8, type: 3}
+    - target: {fileID: 6474543596246845245, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 56132e8d928f02a44ba2e88de73f10e2, type: 3}
     - target: {fileID: 6533529272418923656, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
       propertyPath: m_Name
       value: TutorialManager
@@ -3546,11 +3554,46 @@ PrefabInstance:
       propertyPath: popUps.Array.data[4]
       value: 
       objectReference: {fileID: 302249842}
+    - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: abilityPopUps.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: abilityPopUps.Array.data[0]
+      value: 
+      objectReference: {fileID: 1250288103}
+    - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: abilityPopUps.Array.data[1]
+      value: 
+      objectReference: {fileID: 1250288102}
+    - target: {fileID: 6846557959942398572, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: abilityPopUps.Array.data[2]
+      value: 
+      objectReference: {fileID: 1250288101}
+    - target: {fileID: 6945348840536340076, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c6cad30db261fc448bac48711dcf51c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+--- !u!1 &1250288101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2559540299035620033, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+  m_PrefabInstance: {fileID: 1250288100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1250288102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8358673509641786332, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+  m_PrefabInstance: {fileID: 1250288100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1250288103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4554615598594292081, guid: 5bbb4476310f8574f81ac6f86a654407, type: 3}
+  m_PrefabInstance: {fileID: 1250288100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1305850183
 GameObject:
   m_ObjectHideFlags: 0
