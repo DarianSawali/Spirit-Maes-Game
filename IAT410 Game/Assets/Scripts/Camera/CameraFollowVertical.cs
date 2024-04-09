@@ -109,18 +109,21 @@ public class CameraFollowVertical : MonoBehaviour
             }
         }
 
-        if (SceneManager.GetActiveScene().buildIndex == 12) //L9
+        if (!isPanning)
         {
-            if (target.position.x < -2f)
+            if (SceneManager.GetActiveScene().buildIndex == 12) //L9
             {
-                // Move the camera to the new position when player's x position is less than -2
-                transform.position = new Vector3(-4f, transform.position.y, transform.position.z);
-                Debug.Log("Move camera");
-            }
-            else if (target.position.x > -2f)
-            {
-                // Reset the camera to the initial position when player's x position is greater than -2
-                transform.position = new Vector3(initialPosition.x, transform.position.y, transform.position.z);
+                if (target.position.x < -2.1f)
+                {
+                    // Move the camera to the new position when player's x position is less than -2
+                    transform.position = new Vector3(-6.5f, transform.position.y, transform.position.z);
+                    Debug.Log("Move camera");
+                }
+                else if (target.position.x > -2f)
+                {
+                    // Reset the camera to the initial position when player's x position is greater than -2
+                    transform.position = new Vector3(initialPosition.x, transform.position.y, transform.position.z);
+                }
             }
         }
     }
