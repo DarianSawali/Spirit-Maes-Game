@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414738, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1950,6 +1950,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthPowerup (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1884324514506875485, guid: bea3e4380d561f847a02d931747e9b9a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884324514506875485, guid: bea3e4380d561f847a02d931747e9b9a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884324514506875485, guid: bea3e4380d561f847a02d931747e9b9a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884324514506875485, guid: bea3e4380d561f847a02d931747e9b9a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100854916142107555, guid: bea3e4380d561f847a02d931747e9b9a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f1a83279ccf2b741948fedb948f9e47, type: 3}
+    - target: {fileID: 3431959967010506193, guid: bea3e4380d561f847a02d931747e9b9a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f1a83279ccf2b741948fedb948f9e47, type: 3}
     - target: {fileID: 3761172081468479777, guid: bea3e4380d561f847a02d931747e9b9a, type: 3}
       propertyPath: health
       value: 
