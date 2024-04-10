@@ -1253,7 +1253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusicClip: {fileID: 8300000, guid: 2b309c48fd1a27949a88a52e27640781, type: 3}
   soundEffectClip: {fileID: 0}
-  backgroundMusicVolume: 0.1
+  backgroundMusicVolume: 0.2
   soundEffectVolume: 1
 --- !u!4 &1911454638
 Transform:
