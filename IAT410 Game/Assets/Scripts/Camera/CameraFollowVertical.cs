@@ -117,7 +117,7 @@ public class CameraFollowVertical : MonoBehaviour
 
         if (!isPanning)
         {
-            if (SceneManager.GetActiveScene().buildIndex == 12) //L9
+            if (SceneManager.GetActiveScene().buildIndex == 10) //L7
             {
                 if (target.position.x < -2.1f)
                 {
