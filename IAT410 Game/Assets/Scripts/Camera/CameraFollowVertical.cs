@@ -32,6 +32,12 @@ public class CameraFollowVertical : MonoBehaviour
             targetOrthoSize = 1.6f; // Target orthographic size for the zoom level
             zOffset = 0f;
         }
+
+        if (SceneManager.GetActiveScene().buildIndex == 12) //L9
+        {
+            targetOrthoSize = 1.9f; // Target orthographic size for the zoom level
+            zOffset = 0.15f;
+        }
     }
 
     private void LateUpdate()
