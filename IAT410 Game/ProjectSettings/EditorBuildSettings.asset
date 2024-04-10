@@ -37,13 +37,13 @@ EditorBuildSettings:
     guid: f5ac66c45799da441beca836c9fb02f4
   - enabled: 1
     path: Assets/Scenes/L7.unity
-    guid: f01e238ee4ef06e4891451a99ab7a678
+    guid: 21fa2a3cdc1cff44096e3a8cb21a73a0
   - enabled: 1
     path: Assets/Scenes/L8.unity
-    guid: 997431e13e380ed46ba2c0e1a2cb844d
+    guid: f01e238ee4ef06e4891451a99ab7a678
   - enabled: 1
     path: Assets/Scenes/L9.unity
-    guid: 21fa2a3cdc1cff44096e3a8cb21a73a0
+    guid: 997431e13e380ed46ba2c0e1a2cb844d
   - enabled: 1
     path: Assets/Scenes/FinalRoom.unity
     guid: 4110cefaf7b62f7448d6457a7e9fb34a
