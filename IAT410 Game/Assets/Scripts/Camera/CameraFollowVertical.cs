@@ -27,7 +27,7 @@ public class CameraFollowVertical : MonoBehaviour
 
         initialPosition = transform.position; // Save the initial position of the camera
 
-        if (SceneManager.GetActiveScene().buildIndex == 10) //L7
+        if (SceneManager.GetActiveScene().buildIndex == 11) //L8
         {
             targetOrthoSize = 1.6f; // Target orthographic size for the zoom level
             zOffset = 0f;
@@ -164,7 +164,7 @@ public class CameraFollowVertical : MonoBehaviour
 
         // Lerp back to the player
         timeElapsed = 0f;
-        transform.position = Vector3.Lerp(returnPosition, returnPosition, panSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, returnPosition, panSpeed * Time.deltaTime);
         timeElapsed += Time.deltaTime;
         yield return null;
 
