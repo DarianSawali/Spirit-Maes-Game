@@ -17,6 +17,9 @@ public class HealthManager : MonoBehaviour
     private int maxHealth = 4;
     private int defaultHealth = 3;
 
+    public AudioManager audioManager;
+    public AudioClip damage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -118,7 +121,9 @@ public class HealthManager : MonoBehaviour
     public void decreaseHealth()
     {
         health--;
+        audioManager.PlaySoundEffect(damage);
         PlayerPrefs.SetInt("PlayerCurrentLives", health);
+        
         // if (health <= 0)
         // {
         //     SceneManager.LoadScene(0);
