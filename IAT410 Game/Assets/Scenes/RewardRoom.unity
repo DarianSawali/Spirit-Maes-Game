@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 660679738290123425, guid: c0aae75736c385047b6f0a6e52ae852e, type: 3}
       propertyPath: backgroundMusicVolume
-      value: 0.05
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 1133424630358398522, guid: c0aae75736c385047b6f0a6e52ae852e, type: 3}
       propertyPath: m_Name
