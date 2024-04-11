@@ -11,6 +11,7 @@ public class VideoController : MonoBehaviour
 
     void Start()
     {
+        hasVideoFinished = false;
         videoPlayer.loopPointReached += OnVideoFinished;
     }
 
@@ -26,6 +27,7 @@ public class VideoController : MonoBehaviour
     void OnVideoFinished(VideoPlayer vp)
     {
         hasVideoFinished = true;
+        videoPlayer.loopPointReached -= OnVideoFinished;
         LoadNextScene();
     }
 
@@ -40,5 +42,10 @@ public class VideoController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+    }
+
+    void OnEnable()
+    {
+        hasVideoFinished = false;
     }
 }

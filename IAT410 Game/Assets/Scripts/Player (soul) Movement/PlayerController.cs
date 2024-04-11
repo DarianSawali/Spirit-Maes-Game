@@ -43,6 +43,10 @@ public class PlayerController : MonoBehaviour
     public AudioClip possess;
     public AudioClip dispossess;
 
+    private bool delayComplete = false;
+    private float currentDelayTime = 0f;
+    private float startDelay = 1f;
+
 
     protected void Start()
     {
@@ -50,7 +54,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-        input.actions.FindAction("SkunkJump").Disable();
+        //input.actions.FindAction("SkunkJump").Disable();
+        DisablePlayerInput();
 
         skunk = FindObjectOfType<Skunk>();
         pigeon = FindObjectOfType<Pigeon>();
@@ -58,14 +63,15 @@ public class PlayerController : MonoBehaviour
 
         animator = GetComponent<Animator>(); // get animator component
 
-        if (isPlayerActive)
-        {
-            // Disable SkunkMove action, enable PlayerMove action, enable possession
-            input.actions.FindAction("PlayerMove").Enable();
-            input.actions.FindAction("Possess").Enable();
+        // if (isPlayerActive)
+        // {
+        //     // Disable SkunkMove action, enable PlayerMove action, enable possession
+        //     input.actions.FindAction("PlayerMove").Enable();
+        //     input.actions.FindAction("Possess").Enable();
 
-            input.actions.FindAction("SkunkMove").Disable();
-        }
+        //     input.actions.FindAction("SkunkMove").Disable();
+        // }
+        StartCoroutine(DelayedEnablePlayerInput());
     }
 
     protected void OnPlayerMove(InputValue value)
@@ -79,6 +85,12 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
 
         rb.velocity = movement;
+    }
+
+    IEnumerator DelayedEnablePlayerInput()
+    {
+        yield return new WaitForSeconds(startDelay); // Wait for the specified delay
+        EnablePlayerInput(); // Enable player input after the delay
     }
 
     protected void DisableJump()
@@ -141,15 +153,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (isPlayerActive)
-        {
-            EnablePlayerInput();
-        }
 
-        if (!isPlayerActive)
-        {
-            DisablePlayerInput();
-        }
     }
 
     //possessing mechanic
@@ -212,6 +216,7 @@ public class PlayerController : MonoBehaviour
         }
 
         isPlayerActive = false;
+        EnablePlayerInput();
 
         playerModel.SetActive(false);
     }
@@ -230,6 +235,7 @@ public class PlayerController : MonoBehaviour
         targetAnimal = null; // Clear the target animal
 
         isPlayerActive = true;
+        EnablePlayerInput();
 
         CameraFollowVertical cameraFollowScript = Camera.main.GetComponent<CameraFollowVertical>();
         cameraFollowScript.SetTarget(transform); // set camera to follow player back
