@@ -71,7 +71,20 @@ public class PlayerController : MonoBehaviour
 
         //     input.actions.FindAction("SkunkMove").Disable();
         // }
-        StartCoroutine(DelayedEnablePlayerInput());
+        // StartCoroutine(DelayedEnablePlayerInput());
+        DelayOneSecond();
+
+    }
+
+    public void DelayOneSecond()
+    {
+        Invoke("DelayedAction", 1f);
+    }
+
+    private void DelayedAction()
+    {
+        Debug.Log("Delay complete! 1 second has passed.");
+        EnablePlayerInput();
     }
 
     protected void OnPlayerMove(InputValue value)
@@ -90,7 +103,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator DelayedEnablePlayerInput()
     {
         yield return new WaitForSeconds(startDelay); // Wait for the specified delay
-        EnablePlayerInput(); // Enable player input after the delay
+        // EnablePlayerInput(); // Enable player input after the delay
     }
 
     protected void DisableJump()
