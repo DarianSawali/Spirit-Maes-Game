@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private bool delayComplete = false;
     private float currentDelayTime = 0f;
     private float startDelay = 1f;
+    private bool hasDelayedFixedUpdate = false;
 
     protected void Start()
     {
@@ -69,7 +70,15 @@ public class PlayerController : MonoBehaviour
         //     input.actions.FindAction("SkunkMove").Disable();
         // }
         // StartCoroutine(DelayedEnablePlayerInput());
+        StartCoroutine(DelayedFixedUpdate());
+
     }
+
+    IEnumerator DelayedFixedUpdate(){
+        yield return new WaitForSeconds(1.0f);
+        hasDelayedFixedUpdate = true;
+    }
+
 
     protected void OnPlayerMove()
     {
@@ -129,7 +138,11 @@ public class PlayerController : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        if (isPlayerActive) OnPlayerMove();
+        if(hasDelayedFixedUpdate){
+            if (isPlayerActive) {
+                OnPlayerMove();
+            }
+        }
     }
 
     //possessing mechanic

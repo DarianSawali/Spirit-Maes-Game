@@ -84,6 +84,7 @@ public class Fish : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
         if (beingPossessed) OnFishMove();
+        else rb.velocity = Vector3.zero;
     }
 
     protected void OnFishMove()
