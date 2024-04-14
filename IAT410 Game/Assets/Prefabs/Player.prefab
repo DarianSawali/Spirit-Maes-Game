@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7821376414815833981}
   - component: {fileID: 7038262668623279178}
   - component: {fileID: 7202041524181253439}
-  - component: {fileID: 3760863988256959415}
   - component: {fileID: 7011785407881220862}
   - component: {fileID: 1199828169316217900}
   - component: {fileID: 8659788521771094750}
@@ -116,36 +115,6 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   possess: {fileID: 8300000, guid: 28096783318c2304abc2130e8cbd457a, type: 3}
   dispossess: {fileID: 8300000, guid: 56af26ef4ae05af45a09a805e421f07c, type: 3}
---- !u!114 &3760863988256959415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5203985500442100438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 16660225e73eafe49b365d4ce4e1b6d7, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!136 &7011785407881220862
 CapsuleCollider:
   m_ObjectHideFlags: 0

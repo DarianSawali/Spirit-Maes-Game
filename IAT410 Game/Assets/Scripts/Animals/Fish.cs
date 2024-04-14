@@ -42,13 +42,10 @@ public class Fish : MonoBehaviour
 
     void Start()
     {
-        PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
 
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-
-        DisableFishInput();
 
         player = FindObjectOfType<PlayerController>();
 
@@ -85,11 +82,14 @@ public class Fish : MonoBehaviour
     protected void FixedUpdate()
     {
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
+        if (beingPossessed) OnFishMove();
     }
 
-    protected void OnFishMove(InputValue value)
+    protected void OnFishMove()
     {
-        Vector2 moveInput = value.Get<Vector2>();
+        Vector2 moveInput = new((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) ? 1 : 0) - (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ? 1 : 0),
+                                (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)    ? 1 : 0) - (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) ? 1 : 0));
         Vector3 horizontalMoveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
 
         horizontalMoveDirection.Normalize();
@@ -109,14 +109,13 @@ public class Fish : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
+
+        if (Input.GetKey(KeyCode.Q)) OnDispossess();
     }
 
-    public void OnDispossess(InputValue value)
+    public void OnDispossess()
     {
         Debug.Log("OnDispossess called");
-        PlayerInput input = GetComponent<PlayerInput>();
-        input.actions.FindAction("FishMove").Disable();
-        input.actions.FindAction("Dispossess").Disable();
 
         playerModel.SetActive(true);
 
@@ -125,25 +124,6 @@ public class Fish : MonoBehaviour
         player.DispossessAnimal();
         isFishActive = false;
     }
-
-    public void EnableFishInput()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-        isFishActive = true;
-        input.actions.FindAction("PlayerMove").Disable();
-        input.actions.FindAction("FishMove").Enable();
-        input.actions.FindAction("Dispossess").Enable();
-    }
-
-    public void DisableFishInput()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-        isFishActive = false;
-        input.actions.FindAction("PlayerMove").Enable();
-        input.actions.FindAction("FishMove").Disable();
-        input.actions.FindAction("Dispossess").Disable();
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {

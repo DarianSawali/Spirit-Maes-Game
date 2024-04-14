@@ -17,7 +17,6 @@ public class PlayerJump : MonoBehaviour
     private Skunk skunk;
     
     protected void Start(){
-        PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
 
@@ -32,6 +31,8 @@ public class PlayerJump : MonoBehaviour
         {
             rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
         }
+
+        if (Input.GetKey(KeyCode.Space)) OnJump();
     }
 
     public void OnJump()

@@ -33,43 +33,12 @@ public class Player : MonoBehaviour
 
     protected void Start()
     {
-        PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-        input.actions.FindAction("Jump").Disable();
         //playerInput.Disable();
 
         skunk = FindObjectOfType<Skunk>();
-
-        if (isPlayerActive)
-        {
-            // Disable SkunkMove action, enable PlayerMove action, enable possession
-            input.actions.FindAction("PlayerMove").Enable();
-            input.actions.FindAction("Possess").Enable();
-        }
-    }
-
-    protected void DisableJump()
-    {
-        playerInput.actions["Jump"].Disable();
-    }
-
-    public void EnablePlayerInput()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-        isPlayerActive = true;
-        input.actions.FindAction("PlayerMove").Enable();
-        input.actions.FindAction("SkunkMove").Disable();
-        input.actions.FindAction("Jump").Disable();
-    }
-
-    public void DisablePlayerInput()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-        isPlayerActive = false;
-        input.actions.FindAction("PlayerMove").Disable();
-        input.actions.FindAction("SkunkMove").Enable();
     }
 
     protected void Update()
@@ -85,18 +54,6 @@ public class Player : MonoBehaviour
         if (transform.position.z < -2f)
         {
             transform.position = spawnPoint.position;
-        }
-
-        if (!isPossessing)
-        {
-            EnablePlayerInput();
-            EnablePlayerPossession();
-        }
-
-        if (isPossessing)
-        {
-            DisablePlayerPossession();
-            DisablePlayerInput();
         }
     }
 
@@ -115,13 +72,6 @@ public class Player : MonoBehaviour
     //     controlsEnabled = false;
     // }
 
-    protected void OnPlayerMove(InputValue value)
-    {
-        Vector3 moveInput = value.Get<Vector3>();
-        Vector3 movement = new Vector3(moveInput.x * moveSpeed, moveInput.y * moveSpeed, moveInput.z * moveSpeed);
-        rb.velocity = movement;
-    }
-
     protected bool CheckGrounded()
     {
         if (Physics.Raycast(transform.position, Vector3.down, groundedCheckDist, groundLayer))
@@ -129,20 +79,6 @@ public class Player : MonoBehaviour
             return true;
         }
         return false;
-    }
-
-    public void EnablePlayerPossession()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-        input.actions.FindAction("Possess").Enable();
-        // input.actions.FindAction("Dispossess").Disable();
-    }
-
-    public void DisablePlayerPossession()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-        input.actions.FindAction("Possess").Disable();
-        input.actions.FindAction("Dispossess").Enable();
     }
 
     protected void OnPossess(InputValue value)
@@ -176,8 +112,6 @@ public class Player : MonoBehaviour
         Debug.Log("Possessing animal");
 
         playerModel.SetActive(false);
-        DisablePlayerInput();
-        skunk.EnableSkunkInput();
 
         // cameraFollowScript.SetTarget(targetAnimal.transform); // Make the camera follow the skunk
 

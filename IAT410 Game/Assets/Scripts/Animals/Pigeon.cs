@@ -45,14 +45,11 @@ public class Pigeon : MonoBehaviour
 
     protected void Start()
     {
-        PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
 
         // freeze rotations
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-
-        DisablePigeonInput();
 
         player = FindObjectOfType<PlayerController>();
 
@@ -61,13 +58,9 @@ public class Pigeon : MonoBehaviour
         originalColor = spriteRenderer.color;
     }
 
-    public void OnDispossess(InputValue value)
+    public void OnDispossess()
     {
         Debug.Log("OnDispossess called");
-        PlayerInput input = GetComponent<PlayerInput>();
-        input.actions.FindAction("PigeonMove").Disable();
-        input.actions.FindAction("PigeonJump").Disable();
-        input.actions.FindAction("Dispossess").Disable();
 
         setPigeonPossessedFlagOff();
 
@@ -114,9 +107,10 @@ public class Pigeon : MonoBehaviour
         }
     }
 
-    protected void OnPigeonMove(InputValue value)
+    protected void OnPigeonMove()
     {
-        Vector2 moveInput = value.Get<Vector2>();
+        Vector2 moveInput = new((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) ? 1 : 0) - (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ? 1 : 0),
+                                (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)    ? 1 : 0) - (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) ? 1 : 0));
         Vector3 horizontalMoveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
 
         horizontalMoveDirection.Normalize();
@@ -136,32 +130,16 @@ public class Pigeon : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
+        
+        if (Input.GetKey(KeyCode.Q)) OnDispossess();
     }
 
     protected void FixedUpdate()
     {
         isGrounded = CheckGrounded();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-    }
 
-    public void EnablePigeonInput()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-
-        input.actions.FindAction("PlayerMove").Disable();
-        input.actions.FindAction("PigeonMove").Enable();
-        input.actions.FindAction("PigeonJump").Enable();
-        input.actions.FindAction("Dispossess").Enable();
-    }
-
-    public void DisablePigeonInput()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-
-        input.actions.FindAction("PlayerMove").Enable();
-        input.actions.FindAction("PigeonMove").Disable();
-        input.actions.FindAction("PigeonJump").Disable();
-        input.actions.FindAction("Dispossess").Disable();
+        if (beingPossessed) OnPigeonMove();
     }
 
     protected bool CheckGrounded()

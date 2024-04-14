@@ -47,15 +47,12 @@ public class PlayerController : MonoBehaviour
     private float currentDelayTime = 0f;
     private float startDelay = 1f;
 
-
     protected void Start()
     {
-        PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         //input.actions.FindAction("SkunkJump").Disable();
-        DisablePlayerInput();
 
         skunk = FindObjectOfType<Skunk>();
         pigeon = FindObjectOfType<Pigeon>();
@@ -72,24 +69,12 @@ public class PlayerController : MonoBehaviour
         //     input.actions.FindAction("SkunkMove").Disable();
         // }
         // StartCoroutine(DelayedEnablePlayerInput());
-        DelayOneSecond();
-
     }
 
-    public void DelayOneSecond()
+    protected void OnPlayerMove()
     {
-        Invoke("DelayedAction", 1f);
-    }
-
-    private void DelayedAction()
-    {
-        Debug.Log("Delay complete! 1 second has passed.");
-        EnablePlayerInput();
-    }
-
-    protected void OnPlayerMove(InputValue value)
-    {
-        Vector2 moveInput = value.Get<Vector2>();
+        Vector2 moveInput = new((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) ? 1 : 0) - (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ? 1 : 0),
+                                (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)    ? 1 : 0) - (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) ? 1 : 0));
         Vector3 horizontalMoveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
 
         horizontalMoveDirection.Normalize();
@@ -98,39 +83,14 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = horizontalMoveDirection * moveSpeed + Vector3.up * verticalVelocity;
 
         rb.velocity = movement;
+
+        if (Input.GetKey(KeyCode.E)) OnPossess();
     }
 
     IEnumerator DelayedEnablePlayerInput()
     {
         yield return new WaitForSeconds(startDelay); // Wait for the specified delay
         // EnablePlayerInput(); // Enable player input after the delay
-    }
-
-    protected void DisableJump()
-    {
-        playerInput.actions["SkunkJump"].Disable();
-    }
-
-    public void EnablePlayerInput()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-        input.actions.FindAction("PlayerMove").Enable();
-        input.actions.FindAction("SkunkMove").Disable();
-        input.actions.FindAction("SkunkJump").Disable();
-
-        input.actions.FindAction("Possess").Enable();
-        input.actions.FindAction("Dispossess").Disable();
-    }
-
-    public void DisablePlayerInput()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-        input.actions.FindAction("PlayerMove").Disable();
-        input.actions.FindAction("SkunkMove").Enable();
-
-        input.actions.FindAction("Possess").Disable();
-        input.actions.FindAction("Dispossess").Enable();
-
     }
 
     protected void Update()
@@ -165,12 +125,15 @@ public class PlayerController : MonoBehaviour
                 damageDuration = 1f;
             }
         }
+    }
 
-
+    protected void FixedUpdate()
+    {
+        if (isPlayerActive) OnPlayerMove();
     }
 
     //possessing mechanic
-    protected void OnPossess(InputValue value)
+    protected void OnPossess()
     {
         Debug.Log("OnPossess called");
         if (targetAnimal != null && isPlayerActive)
@@ -178,13 +141,6 @@ public class PlayerController : MonoBehaviour
             audioManager.PlaySoundEffect(possess);
             PossessAnimal(targetAnimal);
         }
-    }
-
-    public void OnDispossess(InputValue value)
-    {
-        Debug.Log("OnDispossess called");
-
-        DispossessAnimal();
     }
 
     public void PossessAnimal(GameObject animal)
@@ -195,7 +151,6 @@ public class PlayerController : MonoBehaviour
         Skunk skunkComponent = targetAnimal.GetComponent<Skunk>();
         if (skunkComponent != null)
         {
-            skunk.EnableSkunkInput();
             skunk.GetComponent<CapsuleCollider>().enabled = true;
             Debug.Log("Possessing Skunk");
 
@@ -207,7 +162,6 @@ public class PlayerController : MonoBehaviour
         Pigeon pigeonComponent = targetAnimal.GetComponent<Pigeon>();
         if (pigeonComponent != null)
         {
-            pigeon.EnablePigeonInput();
             pigeon.GetComponent<CapsuleCollider>().enabled = true;
             Debug.Log("Possessing Pigeon");
 
@@ -219,7 +173,6 @@ public class PlayerController : MonoBehaviour
         Fish fishComponent = targetAnimal.GetComponent<Fish>();
         if (fishComponent != null)
         {
-            fish.EnableFishInput();
             fish.GetComponent<CapsuleCollider>().enabled = true;
             Debug.Log("Possessing Fish");
 
@@ -229,7 +182,6 @@ public class PlayerController : MonoBehaviour
         }
 
         isPlayerActive = false;
-        EnablePlayerInput();
 
         playerModel.SetActive(false);
     }
@@ -240,7 +192,6 @@ public class PlayerController : MonoBehaviour
         audioManager.PlaySoundEffect(dispossess);
 
         playerModel.SetActive(true); // Show the player model again
-        EnablePlayerInput();
 
         transform.position = new Vector3(targetAnimal.transform.position.x, targetAnimal.transform.position.y, (targetAnimal.transform.position.z - 0.005f));
         // upon dispossessing, player will spawn in front of the dispossessed animal
@@ -248,7 +199,6 @@ public class PlayerController : MonoBehaviour
         targetAnimal = null; // Clear the target animal
 
         isPlayerActive = true;
-        EnablePlayerInput();
 
         CameraFollowVertical cameraFollowScript = Camera.main.GetComponent<CameraFollowVertical>();
         cameraFollowScript.SetTarget(transform); // set camera to follow player back

@@ -13,7 +13,6 @@ public class DigTrigger : MonoBehaviour
     public Vector3Int animatedTilePosition;
     
     protected void start(){
-        PlayerInput input = GetComponent<PlayerInput>();
         //animatedTilemap = FindObjectOfType<Tilemap>();
     }
 

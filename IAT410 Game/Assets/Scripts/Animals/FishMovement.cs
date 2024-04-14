@@ -22,7 +22,6 @@ public class FishMovement : MonoBehaviour
 
     void Start()
     {
-        PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
 

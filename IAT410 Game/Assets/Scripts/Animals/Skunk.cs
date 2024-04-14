@@ -48,7 +48,8 @@ public class Skunk : MonoBehaviour
     public AudioManager audioManager;
     public AudioClip digSound;
 
- 
+    private bool digPressed;
+
     // public DigTrigger digTrigger;
 
 
@@ -59,14 +60,11 @@ public class Skunk : MonoBehaviour
 
     protected void Start()
     {
-        PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
 
         // freeze rotations
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-
-        DisableSkunkInput();
 
         player = FindObjectOfType<PlayerController>();
 
@@ -75,14 +73,9 @@ public class Skunk : MonoBehaviour
         originalColor = spriteRenderer.color;
     }
 
-    public void OnDispossess(InputValue value)
+    public void OnDispossess()
     {
         Debug.Log("OnDispossess called");
-        PlayerInput input = GetComponent<PlayerInput>();
-        input.actions.FindAction("SkunkMove").Disable();
-        input.actions.FindAction("SkunkJump").Disable();
-        input.actions.FindAction("Dispossess").Disable();
-        input.actions.FindAction("Dig").Disable();
 
         setSkunkPossessedFlagOff();
 
@@ -127,11 +120,13 @@ public class Skunk : MonoBehaviour
             animator.SetBool("isDancing", false);
         }
 
+        digPressed |= Input.GetKeyDown(KeyCode.F);
     }
 
-    protected void OnSkunkMove(InputValue value)
+    protected void OnSkunkMove()
     {
-        Vector2 moveInput = value.Get<Vector2>();
+        Vector2 moveInput = new((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) ? 1 : 0) - (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ? 1 : 0),
+                                (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) ? 1 : 0) - (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) ? 1 : 0));
         Vector3 horizontalMoveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
 
         horizontalMoveDirection.Normalize();
@@ -151,33 +146,18 @@ public class Skunk : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
+
+        if (Input.GetKey(KeyCode.Q)) OnDispossess();
+
+        if (digPressed) OnDig();
+        digPressed = false;
     }
 
     protected void FixedUpdate()
     {
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-    }
 
-    public void EnableSkunkInput()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-        isSkunkActive = true;
-        input.actions.FindAction("PlayerMove").Disable();
-        input.actions.FindAction("SkunkMove").Enable();
-        input.actions.FindAction("SkunkJump").Enable();
-        input.actions.FindAction("Dispossess").Enable();
-        input.actions.FindAction("Dig").Enable();
-    }
-
-    public void DisableSkunkInput()
-    {
-        PlayerInput input = GetComponent<PlayerInput>();
-        isSkunkActive = false;
-        input.actions.FindAction("PlayerMove").Enable();
-        input.actions.FindAction("SkunkMove").Disable();
-        input.actions.FindAction("SkunkJump").Disable();
-        input.actions.FindAction("Dispossess").Disable();
-        input.actions.FindAction("Dig").Disable();
+        if (beingPossessed) OnSkunkMove();
     }
 
     public void OnDig()
@@ -273,7 +253,6 @@ public class Skunk : MonoBehaviour
 
         if (other.CompareTag("DigTrigger"))
         {
-            PlayerInput input = GetComponent<PlayerInput>();
             canDig = true;
             teleportTarget = other.GetComponent<DigTrigger>().teleportLocation;
             Debug.Log("canDig");

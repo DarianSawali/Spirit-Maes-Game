@@ -29,7 +29,6 @@ public class PidgeonJump : MonoBehaviour
 
     protected void Start()
     {
-        PlayerInput input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
 
@@ -62,6 +61,8 @@ public class PidgeonJump : MonoBehaviour
             rb.AddForce(Vector3.down * gravityScale * gravity * Time.deltaTime, ForceMode.Acceleration);
             // Debug.Log("Land");
         }
+
+        if (Input.GetKey(KeyCode.Space)) OnPigeonJump();
     }
 
     public void OnPigeonJump()
